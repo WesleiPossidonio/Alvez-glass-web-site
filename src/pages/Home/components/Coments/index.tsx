@@ -5,37 +5,37 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 const comentsArray = [
   {
     name: 'Rafael',
-    text: 'Ótima escolha para a regularização imobiliária da casa dos meus pais. Com conhecimento e experiência na área, ela garantiu um processo seguro e eficiente, trazendo mais tranquilidade e segurança.',
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
     id: 1,
   },
 
   {
     name: 'Claudia',
-    text: 'Quando eu pensei que não tinha mais solução, eis que Dra. Emely com toda sua humanidade e eficiência conduziu o processo para um bom desfecho. Sem dúvidas que recomendo seus serviços.',
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
     id: 2,
   },
 
   {
     name: 'Otávio',
-    text: 'Ela foi impecável na negociação. Contratei para consultoria de compra e venda de imóvel. Fiquei muito seguro com todo trabalho e transparência.',
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
     id: 3,
   },
 
   {
     name: 'Sheila',
-    text: 'Dra. Emely foi uma excelente escolha na consultoria trabalhista da minha empresa! Com visão estratégica, conseguimos alinhar segurança jurídica e crescimento sustentável da empresa.',
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
     id: 4,
   },
 
   {
     name: 'Luiz Paulo',
-    text: 'A demanda da minha empresa era complexa. Inicialmente demoramos para buscar profissional e quando recebemos a indicação da Dra. Emely, agendamos consulta jurídica. Do primeiro contato até a finalização da negociação a transparência em cada ato realizado nos garantia o comprometimento com a nossa questão e a segurança da transparência. Foi uma excelente experiência.',
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
     id: 5,
   },
 
   {
     name: 'Larissa',
-    text: 'Dra. Emely com todo profissionalismo e humanidade desembolou uma demanda que estava “em aberto” por mais de dez anos. Não tenho palavras para agradecer a boa condução da negociação, a transparência e a segurança em cada etapa até a finalização do procedimento.',
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
     id: 6,
   },
 
