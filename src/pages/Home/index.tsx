@@ -1,0 +1,31 @@
+import {
+  About,
+  AdjectsSection,
+  Coments,
+  Contacts,
+  Header,
+  Hero,
+  InstagramSection,
+  Portifolio,
+  ServicesSection,
+  WhatsappButton
+} from "./components"
+
+export const Home = () => {
+  return (
+    <main className="w-full mx-0 ml-auto">
+      <Header />
+      <Hero />
+      <About />
+      <ServicesSection />
+      <AdjectsSection />
+      <Coments />
+      <Portifolio />
+      <InstagramSection />
+      <Contacts />
+      <WhatsappButton />
+    </main>
+  )
+}
+
+
