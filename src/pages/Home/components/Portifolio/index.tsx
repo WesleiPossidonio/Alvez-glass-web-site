@@ -12,7 +12,7 @@ export const Portifolio = () => {
       <div className="container mx-auto h-full grid grid-cols-3 gap-5">
 
         <div className="col-span-3 flex flex-col items-center justify-center gap-1 mb-8" data-aos="zoom-in" data-aos-duration="1000">
-          <p className="font-bold">Portifólio</p>
+          <p className="font-bold">Portfolio</p>
           <h3 className="text-3xl font-bold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro repellendus tempora non provident vel
           </h3>
