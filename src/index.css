@@ -134,3 +134,7 @@
     transform: scale(1);
   }
 }
+
+.test > div {
+  overflow: visible !important;
+}

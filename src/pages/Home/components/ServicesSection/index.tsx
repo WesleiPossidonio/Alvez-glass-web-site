@@ -3,6 +3,7 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import Image from '@/assets/ImageAbout.jpg'
 import { useEffect } from "react"
 import Aos from "aos"
+import { DoorOpen, Expand, LayoutPanelLeft, PanelsTopLeft, Ruler } from "lucide-react"
 
 export const ServicesSection = () => {
   useEffect(() => {
@@ -10,77 +11,104 @@ export const ServicesSection = () => {
   }, [])
 
   return (
-    <section className="w-full bg-neutral-100 h-[35rem]">
-      <div className="container mx-auto h-full flex items-center justify-center gap-14 pt-16 px-8 xl:px-0">
+    <section className="w-full bg-neutral-100 h-[42rem]">
+      <div className="container mx-auto h-full grid grid-cols-2 items-center gap-2.5 px-8 ">
 
-        <div className="w-1/3 h-[28rem] space-y-2 pt-10" data-aos="fade-right" data-aos-duration="1000">
-          <p className="font-semibold"> - Serviços</p>
-          <h1 className="text-3xl font-semibold">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus quis
+        <div className=" col-span-2 w-2/4 space-y-2" data-aos="fade-right" data-aos-duration="1000">
+          <p className="font-semibold text-base text-base-blue-blue"> - Serviços</p>
+          <h1 className="text-4xl font-semibold">
+            Transformamos <span className="text-base-blue"> <br /> Vidro, Alumínio  e Design </span>  em Ambientes Incríveis
           </h1>
           <p className="mt-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Laudantium aliquid nam ut sed adipisci iste quia perferendis laborum dol
+            Soluções sob medida em esquadrias, vidros e móveis planejados que unem beleza, funcionalidade e sofisticação para o seu projeto.
           </p>
         </div>
 
-        <Carousel className="w-2/3"
+        <Carousel
+          className="col-span-2 h-full z-0 test"
           plugins={[
             Autoplay({
               delay: 4500,
             }),
           ]}
-          data-aos="zoom-in" data-aos-duration="1000"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
         >
-          <CarouselContent className="px-12 gap-12 ">
-            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative pb-22">
-              <div className="w-full h-28 p-4 bg-white shadow-lg rounded ml-6 mt-8 absolute bottom-12">
-                <p>helooo 1</p>
-              </div>
+          <CarouselContent className="px-12 gap-12">
 
-              <img src={Image} alt="" className="w-full h-72 rounded-lg shadow" />
+            {/* 1 - Esquadrias */}
+            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative">
+
+              <div className="w-[22rem] h-28 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-8 z-10 flex gap-4 items-start">
+                <DoorOpen className="text-neutral-700 size-8" />
+                <div>
+                  <h3 className="font-semibold text-base text-base-blue">Esquadrias de Alumínio</h3>
+                  <p className="text-sm">Durabilidade e design com vedação térmica e acústica.</p>
+                </div>
+              </div>
+              <img src={Image} alt="Esquadrias de Alumínio" className="w-full h-72 rounded-lg shadow object-cover" />
+
             </CarouselItem>
 
-            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative pb-22">
-              <div className="w-full h-28 p-4 bg-white shadow-lg rounded ml-6 mt-8 absolute bottom-12">
-                <p>helooo 2</p>
-              </div>
+            {/* 2 - Vidros Temperados */}
+            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative">
 
-              <img src={Image} alt="" className="w-full h-72 rounded-lg shadow" />
+              <div className="w-[22rem] h-28 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-8 z-10 flex gap-4 items-start">
+                <PanelsTopLeft className="text-neutral-700 size-8" />
+                <div>
+                  <h3 className="font-semibold text-base text-base-blue">Vidros Temperados</h3>
+                  <p className="text-sm">Sofisticação e segurança em cada instalação.</p>
+                </div>
+              </div>
+              <img src={Image} alt="Vidros Temperados" className="w-full h-72 rounded-lg shadow object-cover" />
+
             </CarouselItem>
 
-            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative pb-22">
-              <div className="w-full h-28 p-4 bg-white shadow-lg rounded ml-6 mt-8 absolute bottom-12">
-                <p>helooo 3</p>
-              </div>
+            {/* 3 - Box para Banheiro */}
+            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative">
 
-              <img src={Image} alt="" className="w-full h-72 rounded-lg shadow" />
+              <div className="w-[22rem] h-28 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-8 z-10 flex gap-4 items-start">
+                <Ruler className="text-neutral-700 size-8" />
+                <div>
+                  <h3 className="font-semibold text-base text-base-blue">Box Sob Medida</h3>
+                  <p className="text-sm">Funcionalidade e beleza com acabamento premium.</p>
+                </div>
+              </div>
+              <img src={Image} alt="Box de Vidro" className="w-full h-72 rounded-lg shadow object-cover" />
+
             </CarouselItem>
 
-            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative pb-22">
-              <div className="w-full h-28 p-4 bg-white shadow-lg rounded ml-6 mt-8 absolute bottom-12">
-                <p>helooo 4</p>
+            {/* 4 - Móveis Planejados */}
+            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative">
+
+              <div className="w-[22rem] h-28 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-8 z-10 flex gap-4 items-start">
+                <LayoutPanelLeft className="text-neutral-700 size-8" />
+                <div>
+                  <h3 className="font-semibold text-base text-base-blue">Móveis Planejados</h3>
+                  <p className="text-sm">Personalização, aproveitamento e estilo único.</p>
+                </div>
               </div>
+              <img src={Image} alt="Móveis Planejados" className="w-full h-72 rounded-lg shadow object-cover" />
 
-              <img src={Image} alt="" className="w-full h-72 rounded-lg shadow" />
             </CarouselItem>
-            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative pb-22">
-              <div className="w-full h-28 p-4 bg-white shadow-lg rounded ml-6 mt-8 absolute bottom-12">
-                <p>helooo 5</p>
+
+            {/* 5 - Fechamentos Panorâmicos */}
+            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative">
+
+              <div className="w-[22rem] h-28 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-8 z-10 flex gap-4 items-start">
+                <Expand className="text-neutral-700 size-8" />
+                <div>
+                  <h3 className="font-semibold text-base text-base-blue">Fechamentos Panorâmicos</h3>
+                  <p className="text-sm">Integração visual com proteção e elegância.</p>
+                </div>
               </div>
+              <img src={Image} alt="Fechamento em Vidro" className="w-full h-72 rounded-lg shadow object-cover" />
 
-              <img src={Image} alt="" className="w-full h-72 rounded-lg shadow" />
             </CarouselItem>
 
-            <CarouselItem className="md:basis-1/2 xl:basis-1/3 relative pb-22">
-              <div className="w-full h-28 p-4 bg-white shadow-lg rounded ml-6 mt-8 absolute bottom-12">
-                <p>helooo 6</p>
-              </div>
-
-              <img src={Image} alt="" className="w-full h-72 rounded-lg shadow" />
-            </CarouselItem>
           </CarouselContent>
         </Carousel>
+
       </div>
     </section>
   )

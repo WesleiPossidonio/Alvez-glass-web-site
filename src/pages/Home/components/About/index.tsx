@@ -9,8 +9,8 @@ export const About = () => {
   }, [])
 
   return (
-    <section className="container xl:max-w-[95rem] mx-auto bg-white mb-13">
-      <div className="flex h-max px-16 py-24">
+    <section className="xl:max-w-[95rem] mx-auto bg-white mb-13 bg-cover bg-no-repeat">
+      <div className="container flex h-max px-16 py-24">
         <div className="w-1/2 flex items-center justify-start gap-3 relative" data-aos="fade-right" data-aos-duration="1000">
 
           <div className="w-62 h-74 xl:w-[25rem] xl:h-[25rem] relative">
@@ -35,17 +35,23 @@ export const About = () => {
         <div className="w-1/2 flex flex-col items-start justify-center gap-3" data-aos="fade-left" data-aos-duration="1000">
           <div className="space-y-1">
             <h3 className="text-md font-bold text-base-blue">- Sobre Nós</h3>
-            <h1 className="text-4xl font-bold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
+            <h1 className="text-4xl font-bold text-neutral-700">
+              Soluções sob medida em alumínio, vidro e móveis <span className='text-base-blue'> com  precisão, elegância.</span>
             </h1>
           </div>
           <p className="text-gray-600">
-            Somos uma empresa especializada em soluções de vidro, oferecendo produtos de alta qualidade e serviços personalizados para atender às suas necessidades.
+            Na Alves Glass,<strong> unimos inovação, segurança e sofisticação para
+              transformar ambientes com excelência. </strong> Com ampla experiência no mercado,
+            oferecemos soluções completas em <strong> esquadrias de alumínio, vidros em
+              geral e móveis planejados,</strong> atendendo projetos residenciais, comerciais e industriais.
           </p>
           <p className="text-gray-600">
-            Nossa missão é proporcionar inovação e excelência em cada projeto, garantindo a satisfação total dos nossos clientes.
+            Cada detalhe importa — por isso, trabalhamos com materiais certificados,
+            equipe qualificada e um <strong> atendimento personalizado do início ao fim. </strong>
           </p>
-          <Button className="w-52 py-7 mt-4 text-lg bg-base-blue border border-base-blue text-white font-semibold">Saiba Mais!</Button>
+          <Button className="w-56 py-6 mt-4 text-lg bg-base-blue border border-base-blue text-white font-semibold">
+            Solicite um orçamento!
+          </Button>
         </div>
 
       </div>

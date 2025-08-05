@@ -1,6 +1,6 @@
 import {
   About,
-  AdjectsSection,
+  // AdjectsSection,
   Coments,
   Contacts,
   Header,
@@ -18,9 +18,10 @@ export const Home = () => {
       <Hero />
       <About />
       <ServicesSection />
-      <AdjectsSection />
-      <Coments />
       <Portifolio />
+      {/* <AdjectsSection /> */}
+      <Coments />
+
       <InstagramSection />
       <Contacts />
       <WhatsappButton />
