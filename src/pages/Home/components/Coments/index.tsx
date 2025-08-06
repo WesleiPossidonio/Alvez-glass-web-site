@@ -57,7 +57,7 @@ export const Coments = () => {
         <div className="w-full flex flex-col items-center justify-start gap-3" data-aos="fade-right" data-aos-duration="1000">
           <div className="self-center text-center">
             <h4 className="text-white font-semibold drop-shadow-md">Testemunhos</h4>
-            <h1 className="text-white text-2xl md:text-3xl font-semibold drop-shadow-md">O que Falam da Alves Glass</h1>
+            <h1 className="text-white text-2xl md:text-4xl font-semibold drop-shadow-md">O que Falam da Alves Glass</h1>
             <p className="text-white text-md md:text-lg m-0 self-start drop-shadow-md">
               Veja o que nossos clientes dizem sobre o nosso trabalho
             </p>

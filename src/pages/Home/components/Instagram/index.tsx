@@ -1,6 +1,7 @@
 import Image from '@/assets/ImageAbout.jpg'
 import Aos from 'aos';
 import { useEffect } from 'react';
+import { FaInstagram } from 'react-icons/fa';
 
 export const InstagramSection = () => {
   useEffect(() => {
@@ -14,13 +15,44 @@ export const InstagramSection = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam delectus enim
         </p>
       </div>
-
       <div className="container mx-auto h-full grid grid-cols-4 gap-8 items-center">
-        <img src={Image} alt="" className="col-span-1 w-full h-64 rounded object-cover" data-aos="zoom-in" data-aos-duration="1000" />
-        <img src={Image} alt="" className="col-span-1 w-full h-64 rounded object-cover mt-20" data-aos="zoom-in" data-aos-duration="1000" />
-        <img src={Image} alt="" className="col-span-1 w-full h-64 rounded object-cover" data-aos="zoom-in" data-aos-duration="1000" />
-        <img src={Image} alt="" className="col-span-1 w-full h-64 rounded object-cover mt-20" data-aos="zoom-in" data-aos-duration="1000" />
+        <div
+          className="col-span-1 w-full h-64 rounded-lg relative bg-center bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(https://img.freepik.com/fotos-gratis/design-de-interiores-de-cozinha-minimalista_23-2151008708.jpg)` }}
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
+          <FaInstagram className='absolute bottom-4 right-4 size-7 text-white' />
+        </div>
+
+        <div
+          className="col-span-1 w-full h-64 rounded-lg relative mt-20 bg-center bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(https://img.freepik.com/fotos-gratis/banheiro-pequeno-com-estilo-e-decoracao-modernos_23-2150836697.jpg)` }}
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
+          <FaInstagram className='absolute bottom-4 right-4 size-7 text-white' />
+        </div>
+
+        <div
+          className="col-span-1 w-full h-64 rounded-lg relative bg-center bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(https://img.freepik.com/fotos-gratis/interior-de-um-edificio-moderno-com-janelas-de-vidro-e-ambiente-branco_181624-8808.jpg)` }}
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
+          <FaInstagram className='absolute bottom-4 right-4 size-7 text-white' />
+        </div>
+
+        <div
+          className="col-span-1 w-full h-64 rounded-lg relative mt-20 bg-center bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(${Image})` }}
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
+          <FaInstagram className='absolute bottom-4 right-4 size-7 text-white' />
+        </div>
       </div>
+
     </section>
   )
 }

@@ -136,5 +136,10 @@
 }
 
 .test > div {
-  overflow: visible !important;
+  height: 100%;
+  overflow-y: visible !important;
+}
+* {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }

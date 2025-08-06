@@ -9,7 +9,7 @@ export const About = () => {
   }, [])
 
   return (
-    <section className="xl:max-w-[95rem] mx-auto bg-white mb-13 bg-cover bg-no-repeat">
+    <section className="xl:max-w-[95rem] mx-auto bg-white mb-13 bg-cover bg-no-repeat" id='about'>
       <div className="container flex h-max px-16 py-24">
         <div className="w-1/2 flex items-center justify-start gap-3 relative" data-aos="fade-right" data-aos-duration="1000">
 
