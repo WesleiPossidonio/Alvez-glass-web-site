@@ -62,18 +62,18 @@ export const Portifolio = () => {
           data-aos-duration="1000"
         >
           {/* Coluna 1 */}
-          <div className="flex col-span-4 md:flex-col gap-5">
+          <div className="flex col-span-4 md:col-span-1 flex-col gap-5">
             <img
               src={galleryImages[0].src}
               alt={galleryImages[0].alt}
-              className="h-[20rem] md:h-[36rem] w-full object-cover rounded-lg"
+              className="h-[36rem] w-full object-cover rounded-lg"
               data-aos="zoom-in"
               data-aos-duration="1000"
             />
           </div>
 
           {/* Coluna 2 */}
-          <div className="flex flex-col md:flex-row col-span-4 gap-5">
+          <div className="flex flex-col col-span-4 md:col-span-1 gap-5">
             <img
               src={galleryImages[1].src}
               alt={galleryImages[1].alt}
@@ -91,18 +91,18 @@ export const Portifolio = () => {
           </div>
 
           {/* Coluna 3 */}
-          <div className="flex flex-col  col-span-4 md:flex-row gap-5">
+          <div className="flex flex-col col-span-4 md:col-span-1 gap-5">
             <img
               src={galleryImages[3].src}
               alt={galleryImages[3].alt}
-              className="h-[20rem] h-[20rem]md:h-[36rem] w-full object-cover rounded-lg"
+              className="h-[36rem] w-full object-cover rounded-lg"
               data-aos="zoom-in"
               data-aos-duration="1000"
             />
           </div>
 
           {/* Coluna 4 */}
-          <div className="flex flex-col md:flex-row col-span-4 gap-5">
+          <div className="flex flex-col  col-span-4 md:col-span-1 gap-5">
             <img
               src={galleryImages[4].src}
               alt={galleryImages[4].alt}
@@ -113,7 +113,7 @@ export const Portifolio = () => {
             <img
               src={galleryImages[5].src}
               alt={galleryImages[5].alt}
-              className="md:h-[20rem] w-full object-cover rounded-lg"
+              className="h-[20rem] w-full object-cover rounded-lg"
               data-aos="zoom-in"
               data-aos-duration="1000"
             />
