@@ -12,7 +12,7 @@ export const Login = () => {
         <img src={logo} className='w-24 md:w-32 absolute top-0 left-0' alt="" />
         <div className='w-full space-y-2'>
           <h2 className='font-semibold text-base-blue'>- Login</h2>
-          <h1 className='text-2xl md:text-5xl'>
+          <h1 className='text-3xl md:text-5xl'>
             Bem Vindo  ao <br /> <span className='text-base-blue'> Portal do Usuário </span>
           </h1>
           <p className='text-sm md:text-md'>
