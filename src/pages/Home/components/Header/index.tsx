@@ -59,7 +59,7 @@ export const Header = () => {
 
       {/* Menu mobile */}
       {menuOpen && (
-        <nav className="md:hidden mt-4 flex flex-col items-center space-y-4">
+        <nav className="md:hidden mt-4 flex flex-col items-center space-y-4 py-4">
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('/')}>Home</a>
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#about')}>Sobre Nós</a>
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#services')}>Serviços</a>
