@@ -15,7 +15,7 @@ import {
 
 export const Home = () => {
   return (
-    <main className="w-full mx-0 ml-auto">
+    <main className="w-full h-auto mx-0 ml-auto">
       <Header />
       <Hero />
       <About />

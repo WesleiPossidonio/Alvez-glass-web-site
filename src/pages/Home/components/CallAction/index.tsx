@@ -23,7 +23,7 @@ export const CallAction = () => {
       <div className="container mx-auto py-10 px-8 space-y-5 flex flex-col items-start justify-center gap-7 relative z-5">
         <div className="w-full flex flex-col items-center justify-start gap-5" data-aos="fade-right" data-aos-duration="1000">
           <div className="self-center text-center">
-            <h1 className="text-white text-2xl md:text-4xl font-semibold drop-shadow-md">
+            <h1 className="text-white text-3xl md:text-4xl font-semibold drop-shadow-md">
               Design, elegância e exclusividade <br /> em cada detalhe.
             </h1>
 

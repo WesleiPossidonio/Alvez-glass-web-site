@@ -66,7 +66,7 @@ export const Contacts = () => {
   }
 
   return (
-    <section className="w-full h-auto min-h-[40rem] flex flex-col items-center justify-content-center gap-5 bg-white relative px-16">
+    <section className="w-full h-auto min-h-[40rem] flex flex-col items-center justify-content-center gap-5 bg-white relative px-6 md:px-16">
       <div className="w-full container xl:max-w-[80%] h-auto min-h-[35rem] py-14 px-6 md:px-8 flex flex-col gap-16" data-aos="zoom-in" data-aos-duration="1000"
       >
         <div className="flex flex-col items-center justify-center gap-1">
@@ -81,7 +81,7 @@ export const Contacts = () => {
 
         <div className='grid grid-cols-2 gap-16'>
 
-          <div className='col-1 flex flex-col items-start justify-start gap-2'>
+          <div className='col-span-2 md:col-span-1 flex flex-col items-start justify-start gap-2'>
             <h2 className='text-2xl font-semibold'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </h2>
@@ -111,12 +111,12 @@ export const Contacts = () => {
                 </div>
               </div>
 
-              <div className='flex items-center gap-2 w-full'>
+              <div className='flex items-center gap-2'>
                 <span className='bg-base-blue w-18 h-18 flex items-center justify-center rounded-2xl'>
                   <MapPinSimpleIcon size={42} color='#fff' />
                 </span>
 
-                <div>
+                <div className=''>
                   <h1 className='font-semibold text-base-blue'>Endereço:</h1>
                   <a href="#" className='font-semibold'>
                     R. Otávio Laurindo de Azevedo, N° 1040, <br /> Praia Campista, Macaé - RJ
@@ -128,7 +128,7 @@ export const Contacts = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit(handlesendMail)} className="w-full grid grid-cols-2 gap-6" action="">
+          <form onSubmit={handleSubmit(handlesendMail)} className="w-full grid grid-cols-2 gap-6 col-span-2 md:col-span-1" action="">
             <Input className="col-span-2 md:col-span-1 py-3.5 md:py-6 
             text-sm md:text-md text-black placeholder:text-black bg-white"
               type="text" placeholder="Digite seu Nome"  {...register('name')} />

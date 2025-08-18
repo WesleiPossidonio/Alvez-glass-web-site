@@ -81,7 +81,7 @@ export const Coments = () => {
                 className="md:basis-1/2 lg:basis-1/1 flex items-center justify-center px-3"
               >
                 <div
-                  className="w-2/3 h-64 p-6 flex flex-col items-center justify-center gap-3 rounded-2xl
+                  className="md:w-2/3 h-64 p-6 flex flex-col items-center justify-center gap-3 rounded-2xl
                   bg-transparent backdrop-blur-lg border border-white/20
                   shadow-lg shadow-white/10 relative cursor-default
                   hover:scale-[1.03] transition-transform duration-300 text-center"

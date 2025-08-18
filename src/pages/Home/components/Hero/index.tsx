@@ -21,7 +21,7 @@ export const Hero = () => {
         loop: true,
       }}>
       <CarouselContent className=" text-white">
-        <CarouselItem className="h-svh relative border-0 bg-black bg-center bg-no-repeat flex items-center p-16">
+        <CarouselItem className="h-svh relative border-0 bg-black bg-center bg-no-repeat flex items-center  px-8 md:p-16">
           {/* Camada de imagem escurecida */}
           <div
             className="absolute inset-0 bg-cover bg-center filter brightness-80 z-0"
@@ -29,20 +29,20 @@ export const Hero = () => {
           />
 
           {/* Conteúdo em cima da imagem */}
-          <div className="relative z-10 w-2/3 flex flex-col gap-4 text-white">
-            <p className="text-md font-semibold">
+          <div className="w-full relative z-10 md:w-2/3 flex flex-col gap-2 md:gap-4 text-white mt-26">
+            <p className=" text-sm md:text-md font-semibold">
               Soluções em Vidro com Design Inteligente
             </p>
-            <h1 className="text-6xl font-bold">
+            <h1 className="text-3xl md:text-6xl font-bold">
               Transformamos Vidro em Experiência, Elegância e Segurança.
             </h1>
-            <p className="text-xl font-semibold">
+            <p className="text-md md:text-xl font-semibold">
               Nossa equipe é formada por especialistas que entendem a importância de cada detalhe — do primeiro atendimento à entrega final.
             </p>
 
-            <div className="space-x-4">
-              <Button className="w-52 py-7 text-lg bg-transparent border text-white font-semibold">Saiba Mais!</Button>
-              <Button className="w-52 py-7 text-lg bg-base-blue border border-base-blue text-white font-semibold">Solicitar Orçamento!</Button>
+            <div className="w-full flex space-x-4">
+              <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-transparent border text-white font-semibold">Saiba Mais!</Button>
+              <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-base-blue border border-base-blue text-white font-semibold">Solicitar Orçamento!</Button>
             </div>
 
           </div>

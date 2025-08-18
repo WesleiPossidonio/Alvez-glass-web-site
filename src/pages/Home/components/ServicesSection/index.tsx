@@ -12,15 +12,15 @@ export const ServicesSection = () => {
   }, [])
 
   return (
-    <section className="w-full bg-neutral-100 h-[35rem]" id="services">
-      <div className="container mx-auto h-full grid grid-cols-5 items-center justify-center gap-4 px-8 ">
+    <section className="w-full bg-neutral-100 min-h-[35rem] h-auto pb-10 md:pb-0" id="services">
+      <div className="container mx-auto h-full grid grid-cols-5 items-center justify-center gap-10 md:gap-4 px-6 md:px-8 ">
 
-        <div className=" col-span-2 self-start space-y-2 mt-14" data-aos="fade-right" data-aos-duration="1000">
+        <div className=" col-span-5 md:col-span-2 self-start space-y-2 mt-14" data-aos="fade-right" data-aos-duration="1000">
           <p className="font-semibold text-base text-base-blue-blue"> - Serviços</p>
-          <h1 className="text-4xl font-semibold">
+          <h1 className="text-2xl md:text-4xl font-semibold">
             Transformamos <span className="text-base-blue"> <br /> Vidro, Alumínio  e Design </span>  em Ambientes Incríveis
           </h1>
-          <p className="mt-3">
+          <p className="mt-3 text-sm md:text-md">
             Soluções sob medida em esquadrias, vidros e móveis planejados que unem beleza, funcionalidade e sofisticação para o seu projeto.
           </p>
 
@@ -30,7 +30,7 @@ export const ServicesSection = () => {
         </div>
 
         <Carousel
-          className="col-span-3 z-0 test h-[20rem]"
+          className="col-span-5 md:col-span-3 z-0 test h-[20rem]"
           plugins={[
             Autoplay({
               delay: 4500,
@@ -39,7 +39,7 @@ export const ServicesSection = () => {
           data-aos="zoom-in"
           data-aos-duration="1000"
         >
-          <CarouselContent className="px-12 gap-12">
+          <CarouselContent className="md:px-12 gap-12">
 
             {/* 1 - Esquadrias */}
             <CarouselItem className="md:basis-1/2 xl:basis-1/2 relative">
