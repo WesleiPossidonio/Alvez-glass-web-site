@@ -9,7 +9,7 @@ export const Login = () => {
     <main className="w-full h-svh grid grid-cols-3">
       <div className="col-span-1 md:col-span-2 bg-image bg-cover bg-no-repeat" style={{ backgroundImage: `url(${Image})` }}></div>
       <div className="col-span-2 md:col-span-1 w-full p-4 md:p-8 flex flex-col justify-center gap-2 relative">
-        <img src={logo} className='w-26 md:w-32 absolute top-0 left-0' alt="" />
+        <img src={logo} className='w-24 md:w-32 absolute top-0 left-0' alt="" />
         <div className='w-full space-y-2'>
           <h2 className='font-semibold text-base-blue'>- Login</h2>
           <h1 className='text-2xl md:text-5xl'>
