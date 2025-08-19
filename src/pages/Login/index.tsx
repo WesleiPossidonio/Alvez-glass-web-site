@@ -1,10 +1,64 @@
+import * as zod from 'zod'
+import ReCAPTCHA from "react-google-recaptcha";
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import Image from '@/assets/bg-bannerTwo.jpg'
 import logo from '@/assets/Logo.png'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useUser } from '@/hooks/userUser';
+import { toast } from 'react-toastify';
+
+
+const confirmOrderLoginValidationSchema = zod.object({
+  email: zod.string().email('Informe o seu email'),
+  password: zod.string().min(6, 'Informe a Senha'),
+})
+
+export type OrderLoginData = zod.infer<typeof confirmOrderLoginValidationSchema>
+
+type ConfirmOrderFormLoginData = OrderLoginData
 
 export const Login = () => {
+
+  const {
+    register,
+    handleSubmit,
+    // formState: { errors },
+    reset,
+  } = useForm<ConfirmOrderFormLoginData>({
+    resolver: zodResolver(confirmOrderLoginValidationSchema),
+  })
+
+  const [captcha, setCaptcha] = useState<string | null>('')
+  const { handleLoginUser } = useUser()
+
+  const handleCapcha = (token: string | null) => {
+    setCaptcha(token)
+  }
+
+  const handleLogin = (data: ConfirmOrderFormLoginData) => {
+    const { email, password } = data
+
+    if (!captcha) {
+      toast.error('Captcha pendente!', {
+        position: 'top-right',
+      })
+      return
+    }
+
+    const dataLogin = {
+      email,
+      password,
+      typeSessions: "prof"
+    }
+    handleLoginUser(dataLogin)
+    reset()
+  }
+
   return (
     <main className="w-full h-svh grid grid-cols-3">
       <div className="col-span-1 lg:col-span-2 bg-image bg-cover bg-no-repeat" style={{ backgroundImage: `url(${Image})` }}></div>
@@ -20,9 +74,15 @@ export const Login = () => {
           </p>
         </div>
 
-        <form className='w-full space-y-4 mt-6' action="">
-          <Input className='shadow-md py-5 bg-neutral-50' placeholder='Email:' />
-          <Input className='shadow-md py-5 bg-neutral-50' placeholder='Senha:' />
+        <form className='w-full space-y-4 mt-6' action="" onSubmit={handleSubmit(handleLogin)}>
+          <Input className='shadow-md py-5 bg-neutral-50' placeholder='Email:' {...register('email')} />
+          <Input className='shadow-md py-5 bg-neutral-50' placeholder='Senha:' {...register('password')} />
+          <div id="self-start sm:w-[80%]" style={{ alignSelf: 'start ' }}>
+            <ReCAPTCHA
+              sitekey={import.meta.env.VITE_RECAPTCHA_KEY}
+              onChange={handleCapcha}
+            />
+          </div>
 
           <div className='w-full flex flex-col md:flex-row justify-between gap-2'>
             <Button className='w-36 text-lg py-6 bg-base-blue font-semibold cursor-pointer hover:bg-blue-900'>

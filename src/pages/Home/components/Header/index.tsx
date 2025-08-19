@@ -10,6 +10,8 @@ export const Header = () => {
 
   const toggleMenu = () => setMenuOpen(!menuOpen)
 
+
+
   // Função para navegação e manipulação de âncoras
   const handleNavigate = (path: string) => {
     if (path.startsWith('#')) {
@@ -40,8 +42,8 @@ export const Header = () => {
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#contacts')}>Contatos</a>
 
           <button
-            onClick={() => handleNavigate('/login-estudante')}
-            className="hover:text-base-blue font-semibold px-3 py-4 bg-base-blue text-white rounded-xl"
+            onClick={() => handleNavigate('/login')}
+            className="hover:text-white font-semibold px-3 py-4 bg-base-blue text-white rounded-xl"
           >
             Portal do Cliente
           </button>
@@ -66,8 +68,8 @@ export const Header = () => {
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#contact')}>Contatos</a>
 
           <button
-            onClick={() => handleNavigate('/login-estudante')}
-            className="hover:text-base-blue font-semibold"
+            onClick={() => handleNavigate('/login')}
+            className="hover:text-white font-semibold text-white"
           >
             Portal do Cliente
           </button>
