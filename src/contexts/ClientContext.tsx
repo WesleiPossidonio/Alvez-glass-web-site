@@ -92,7 +92,7 @@ export const ClientContextProvider = ({ children }: ClientContextProviderProps) 
 
         setClientDataLogin({ ...dataClient, id: decodeClientId?.id })
 
-        void (typeSessions === 'client' ? navigate('/dashboard') : navigate('/portal-client'))
+        void (typeSessions === 'client' ? navigate('/portal-client') : navigate('/login'))
       } catch (error) {
         console.log(error)
       }

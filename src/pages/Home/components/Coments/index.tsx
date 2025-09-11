@@ -1,7 +1,7 @@
 import { Star } from "lucide-react"
 import Autoplay from "embla-carousel-autoplay"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import image from '@/assets/bg-bannerOne.jpg'
+import image from '@/assets/BannerHero.jpg'
 
 const comentsArray = [
   {
@@ -56,7 +56,7 @@ export const Coments = () => {
       <div className="container mx-auto py-10 px-8 space-y-5 flex flex-col items-start justify-center gap-7 relative z-5">
         <div className="w-full flex flex-col items-center justify-start gap-3" data-aos="fade-right" data-aos-duration="1000">
           <div className="self-center text-center">
-            <h4 className="text-white font-semibold drop-shadow-md">Testemunhos</h4>
+            <h4 className="text-white font-semibold drop-shadow-md">Avaliações</h4>
             <h1 className="text-white text-2xl md:text-4xl font-semibold drop-shadow-md">O que Falam da Alves Glass</h1>
             <p className="text-white text-md md:text-lg m-0 self-start drop-shadow-md">
               Veja o que nossos clientes dizem sobre o nosso trabalho

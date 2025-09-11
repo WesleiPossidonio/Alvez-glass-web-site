@@ -1,5 +1,5 @@
 
-import image from '@/assets/bg-bannerOne.jpg'
+import image from '@/assets/BannerHero.jpg'
 import { Button } from '@/components/ui/button'
 
 

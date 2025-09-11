@@ -75,7 +75,7 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
 
   const handleLoginUser = useCallback(
     async (data: UserLoginProps) => {
-      const { email, password, typeSessions, } = data
+      const { email, password } = data
 
       try {
         const response = await toast.promise(
@@ -88,11 +88,11 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
         )
         const dataUser = response.data
         const decodeUserId = decodeToken(dataUser)
-        await localStorage.setItem('src/services/api.ts', JSON.stringify(dataUser))
+        await localStorage.setItem('AlvesClass:userData1.0', JSON.stringify(dataUser))
 
         setUserDataLogin({ ...dataUser, id: decodeUserId?.id })
 
-        void (typeSessions === 'User' ? navigate('/dashboard') : navigate('/portal-aluno'))
+        void (dataUser.role === 'admin' ? navigate('/dashboard') : navigate('/login'))
       } catch (error) {
         console.log(error)
       }

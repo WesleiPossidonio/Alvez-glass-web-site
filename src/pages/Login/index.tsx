@@ -2,11 +2,10 @@ import * as zod from 'zod'
 import ReCAPTCHA from "react-google-recaptcha";
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import Image from '@/assets/bg-bannerTwo.jpg'
+import Image from '@/assets/BannerHero.jpg'
 import logo from '@/assets/Logo.png'
 
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useUser } from '@/hooks/userUser';
@@ -22,7 +21,7 @@ export type OrderLoginData = zod.infer<typeof confirmOrderLoginValidationSchema>
 
 type ConfirmOrderFormLoginData = OrderLoginData
 
-export const Login = () => {
+export const LoginClient = () => {
 
   const {
     register,
@@ -53,7 +52,7 @@ export const Login = () => {
     const dataLogin = {
       email,
       password,
-      typeSessions: "prof"
+      typeSessions: 'admin'
     }
     handleLoginUser(dataLogin)
     reset()
@@ -75,8 +74,8 @@ export const Login = () => {
         </div>
 
         <form className='w-full space-y-4 mt-6' action="" onSubmit={handleSubmit(handleLogin)}>
-          <Input className='shadow-md py-5 bg-neutral-50' placeholder='Email:' {...register('email')} />
-          <Input className='shadow-md py-5 bg-neutral-50' placeholder='Senha:' {...register('password')} />
+          <input className='w-full px-3 py-2 border-b-2 border-neutral-400 focus:outline-none' placeholder='Email:' {...register('email')} />
+          <input className='w-full px-3 py-2 border-b-2 border-neutral-400 focus:outline-none' placeholder='Senha:' type='password' {...register('password')} />
           <div id="self-start sm:w-[80%]" style={{ alignSelf: 'start ' }}>
             <ReCAPTCHA
               sitekey={import.meta.env.VITE_RECAPTCHA_KEY}

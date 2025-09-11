@@ -35,14 +35,19 @@ export const About = () => {
             </h1>
           </div>
           <p className="text-sm md:text-md text-gray-600">
-            Na Alves Glass,<strong> unimos inovação, segurança e sofisticação para
-              transformar ambientes com excelência. </strong> Com ampla experiência no mercado,
-            oferecemos soluções completas em <strong> esquadrias de alumínio, vidros em
-              geral e móveis planejados,</strong> atendendo projetos residenciais, comerciais e industriais.
+            Somos uma empresa especializada em <strong>
+              vidros em geral, esquadrias de alumínio
+              e móveis planejados</strong>, unindo tecnologia,
+            design e sofisticação para criar ambientes
+            únicos. Atendemos tanto projetos
+            residenciais quanto comerciais e
+            industriais.
           </p>
           <p className="text-sm md:text-md text-gray-600">
-            Cada detalhe importa — por isso, trabalhamos com materiais certificados,
-            equipe qualificada e um <strong> atendimento personalizado do início ao fim. </strong>
+            Mais do que produtos, entregamos
+            <strong> soluções personalizadas </strong> que refletem
+            confiança, estilo e durabilidade — sempre
+            com atendimento próximo e cuidadoso.
           </p>
           <Button className="w-56 py-6 mt-4 text-lg bg-base-blue border border-base-blue text-white font-semibold">
             Solicite um orçamento!
