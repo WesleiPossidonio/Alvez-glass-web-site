@@ -92,7 +92,17 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
 
         setUserDataLogin({ ...dataUser, id: decodeUserId?.id })
 
-        void (dataUser.role === 'admin' ? navigate('/dashboard') : navigate('/login'))
+        switch (dataUser.role) {
+          case 'client':
+            navigate('/dashboard-client')
+            break
+          case 'admin':
+            navigate('/dashboard-admin')
+            break
+          default:
+            navigate('/login')
+        }
+
       } catch (error) {
         console.log(error)
       }

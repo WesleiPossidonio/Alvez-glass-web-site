@@ -52,7 +52,7 @@ export const LoginClient = () => {
     const dataLogin = {
       email,
       password,
-      typeSessions: 'admin'
+      typeSessions: 'user'
     }
     handleLoginUser(dataLogin)
     reset()
