@@ -62,7 +62,7 @@ export const ClientsSection = () => {
         <Input
           type="text"
           placeholder="Buscar Cliente"
-          className="w-1/2 py-6"
+          className="w-2/3 py-6"
           onBlur={(e) => {
             setSearchClient(e.target.value)
             setCurrentPage(1) // resetar para primeira página ao buscar
@@ -103,12 +103,13 @@ export const ClientsSection = () => {
               <p className="text-center py-6 text-gray-500">Nenhum cliente encontrado</p>
             ) : getPaginatedItems().map(client => (
               <div key={client.id} className="w-full grid grid-cols-4 
-              text-center p-2.5 rounded-sm shadow-md mb-3 cursor-pointer hover:bg-gray-50 transition"
+              text-center p-2.5 rounded-sm shadow-md mb-3 cursor-pointer 
+              hover:bg-gray-50 hover:text-neutral-950 transition"
               >
-                <p>{client.name}</p>
-                <p>{client.cpf_cnpj}</p>
-                <p>{client.email}</p>
-                <p>{client.phone}</p>
+                <p className="text-sm text-neutral-700">{client.name}</p>
+                <p className="text-sm text-neutral-700">{client.cpf_cnpj}</p>
+                <p className="text-sm text-neutral-700">{client.email}</p>
+                <p className="text-sm text-neutral-700">{client.phone}</p>
               </div>
             ))
           }

@@ -1,11 +1,13 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useUser } from "@/hooks/userUser"
 
-import { User } from "lucide-react"
+import { User, UserCircle } from "lucide-react"
 
 
 export const MyData = () => {
+  const { userDataLogin } = useUser()
   return (
     <section className="flex flex-col items-center col-span-4 p-8 space-y-16">
       <div className='w-full flex justify-between items-center'>
@@ -18,15 +20,14 @@ export const MyData = () => {
             <span className='text-sm font-semibold'>Olá |</span>
             <User className='size-5' />
           </div>
-          <p>Weslei Possidonio</p>
+          <p>{userDataLogin.name}</p>
         </div>
       </div>
 
       <form className="w-2/3 h-auto mt-36 flex flex-col items-center justify-center gap-3 py-8 px-6 border-2 rounded-md shadow-md">
 
         <Avatar className="w-32 h-32">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
+          <UserCircle className="size-14 text-neutral-600" />
         </Avatar>
 
         <div className="w-full space-y-3 mt-6">
