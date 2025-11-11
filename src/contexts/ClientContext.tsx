@@ -42,12 +42,9 @@ export interface ListDataClient extends CreaterClient {
   id: string
   token: string
 }
-interface UpdateClient {
+interface UpdateClient extends CreaterClient {
   id: string
-  name: string
-  password: string
-  registration: string
-  email: string
+  password?: string
 }
 interface ConfirmMailProps {
   email: string
@@ -180,17 +177,9 @@ export const ClientContextProvider = ({ children }: ClientContextProviderProps) 
   }, [])
 
   const handleUpdateClient = useCallback(async (data: UpdateClient) => {
-    const { email, id, name, password, registration } = data
-
-    const updatedData = {
-      email,
-      name,
-      password,
-      registration,
-    }
-
+    const { id } = data
     try {
-      await toast.promise(api.put(`Clients/${id}`, updatedData), {
+      await toast.promise(api.put(`Clients/${id}`, data), {
         pending: 'Verificando seus dados',
         success: 'Senha Atualizada com Sucesso!',
         error: 'Ops! Verifique os Dados Digitados',

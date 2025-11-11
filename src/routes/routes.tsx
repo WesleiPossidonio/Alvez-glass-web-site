@@ -1,4 +1,4 @@
-import { Home, LoginAdmin, LoginClient } from "@/pages";
+import { Home, LoginClient, UpdatePassword } from "@/pages";
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoutes } from "./privateRoutes";
 
@@ -11,7 +11,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginClient />} />
-      <Route path="/admin" element={<LoginAdmin />} />
+      <Route path="/admin" element={<UpdatePassword />} />
 
       <Route path="/dashboard-client" element={<PrivateRoutesClients />}>
         <Route index element={<DashboardClient />} />

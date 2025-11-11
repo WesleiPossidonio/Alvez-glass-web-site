@@ -18,7 +18,7 @@ export type OrderLoginData = zod.infer<typeof confirmOrderLAdminValidationSchema
 
 type ConfirmOrderFormLoginData = OrderLoginData
 
-export const LoginAdmin = () => {
+export const UpdatePassword = () => {
   const {
     register,
     handleSubmit,
@@ -57,9 +57,9 @@ export const LoginAdmin = () => {
   return (
     <section className="w-full h-svh flex items-center justify-center bg-neutral-100">
       <div className="bg-white w-[35rem] h-[28rem] rounded-lg shadow flex flex-col items-center gap-4 justify-center p-8">
-        <p className="text-2xl">Login</p>
+        <p className="text-2xl">Cadastrar senha</p>
         <form className="w-full space-y-3" action="" onSubmit={handleSubmit(handleLogin)}>
-          <Input className="p-3" placeholder="Email" {...register('email')} />
+          <Input className="p-3" placeholder="Numero de Verificação" {...register('email')} />
           <Input className="p-3" type="password" placeholder="Senha" {...register('password')} />
           <div id="self-start sm:w-[80%]" style={{ alignSelf: 'start ' }}>
             <ReCAPTCHA

@@ -2,4 +2,4 @@
 
 export * from './Home'
 export * from './Login'
-export * from './LoginAdmin'
+export * from './UpdatePassword'

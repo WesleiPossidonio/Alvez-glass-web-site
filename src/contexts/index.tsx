@@ -1,8 +1,7 @@
 import { type ReactNode } from 'react'
 import { UserContextProvider } from './UserContext'
 import { ClientContextProvider } from './ClientContext'
-
-
+import { OrderProductContextProvider } from './OrderProductContext'
 interface AppProviderProps {
   children: ReactNode
 }
@@ -10,7 +9,9 @@ interface AppProviderProps {
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <UserContextProvider>
-      <ClientContextProvider >{children}</ClientContextProvider>
+      <OrderProductContextProvider>
+        <ClientContextProvider >{children}</ClientContextProvider>
+      </OrderProductContextProvider>
     </UserContextProvider>
   )
 }

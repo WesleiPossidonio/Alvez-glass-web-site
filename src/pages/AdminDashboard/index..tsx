@@ -1,9 +1,7 @@
 import Logo from '@/assets/Logo.png'
-import { Camera, User, Users } from 'lucide-react'
+import { ShoppingBagIcon, User, Users } from 'lucide-react'
 import { useState } from 'react'
-import { MyData } from './components'
-import { Projects } from './components/Projects'
-import { ClientsSection } from './components/ClientsSection'
+import { ClientsSection, MyData, ProductsSection } from './components'
 
 export const AdminDashboard = () => {
   const [clickMenu, setClikMenu] = useState('')
@@ -29,11 +27,11 @@ export const AdminDashboard = () => {
               </div>
 
               <div data-success={clickMenu} className='group flex items-center gap-1 py-3.5 px-2 border-l-6 border-neutral-50
-             hover:border-base-blue data-[success="Projetos"]:border-base-blue cursor-pointer transform transition-all ease-in-out duration-350'>
-                <Camera data-success={clickMenu} className='text-neutral-500 group-hover:text-base-blue size-7 data-[success="Projetos"]:text-base-blue' />
+             hover:border-base-blue data-[success="Produtos"]:border-base-blue cursor-pointer transform transition-all ease-in-out duration-350'>
+                <ShoppingBagIcon data-success={clickMenu} className='text-neutral-500 group-hover:text-base-blue size-7 data-[success="Produtos"]:text-base-blue' />
                 <p data-success={clickMenu} className='text-neutral-500 group-hover:text-neutral-900
-               font-semibold data-[success="Projetos"]:text-neutral-900'  onClick={() => setClikMenu('Projetos')}>
-                  Projetos
+               font-semibold data-[success="Produtos"]:text-neutral-900'  onClick={() => setClikMenu('Produtos')}>
+                  Vendas
                 </p>
               </div>
 
@@ -55,8 +53,8 @@ export const AdminDashboard = () => {
         <div className='col-span-4'>
           {
             clickMenu === 'Meus-Dados' && <MyData /> ||
-            clickMenu === 'Projetos' && <Projects /> ||
             clickMenu === 'Clientes' && <ClientsSection /> ||
+            clickMenu === 'Produtos' && <ProductsSection /> ||
             <div className='w-full h-full flex flex-col justify-center items-center gap-4'>
               <h1 className='text-2xl font-bold text-neutral-900'>Bem vindo ao painel administrativo!</h1>
               <p className='text-neutral-600'>Selecione uma opção no menu para começar.</p>

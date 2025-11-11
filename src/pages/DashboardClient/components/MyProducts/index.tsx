@@ -66,11 +66,77 @@ export const MyProducts = () => {
             <ShoppingCartIcon className="size-8 text-base-blue" />
             <h1 className="text-lg font-semibold text-base-blue">Name Product</h1>
           </div>
-          <p className="font-semibold text-neutral-500 self-end">Pendente</p>
+          <div>
+            <div className="flex items-center justify-between mt-5">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+
+            <div className="flex items-center justify-between mt-1">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+          </div>
+
         </div>
-        <div className="w-76 h-40 py-4 px-6 bg-neutral-50 shadow-lg rounded-xl">Heloo</div>
-        <div className="w-76 h-40 py-4 px-6 bg-neutral-50 shadow-lg rounded-xl">Heloo</div>
-        <div className="w-76 h-40 py-4 px-6 bg-neutral-50 shadow-lg rounded-xl">Heloo</div>
+
+        <div className="w-76 h-40 py-4 px-6 flex flex-col bg-neutral-50 shadow-md rounded-xl border border-neutral-50
+         hover:border-base-blue transition-all duration-250 ease-in-out cursor-pointer">
+          <div className="flex items-center justify-start gap-2">
+            <ShoppingCartIcon className="size-8 text-base-blue" />
+            <h1 className="text-lg font-semibold text-base-blue">Name Product</h1>
+          </div>
+          <div>
+            <div className="flex items-center justify-between mt-5">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+
+            <div className="flex items-center justify-between mt-1">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-76 h-40 py-4 px-6 flex flex-col bg-neutral-50 shadow-md rounded-xl border border-neutral-50
+         hover:border-base-blue transition-all duration-250 ease-in-out cursor-pointer">
+          <div className="flex items-center justify-start gap-2">
+            <ShoppingCartIcon className="size-8 text-base-blue" />
+            <h1 className="text-lg font-semibold text-base-blue">Name Product</h1>
+          </div>
+          <div>
+            <div className="flex items-center justify-between mt-5">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+
+            <div className="flex items-center justify-between mt-1">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-76 h-40 py-4 px-6 flex flex-col bg-neutral-50 shadow-md rounded-xl border border-neutral-50
+         hover:border-base-blue transition-all duration-250 ease-in-out cursor-pointer">
+          <div className="flex items-center justify-start gap-2">
+            <ShoppingCartIcon className="size-8 text-base-blue" />
+            <h1 className="text-lg font-semibold text-base-blue">Name Product</h1>
+          </div>
+          <div>
+            <div className="flex items-center justify-between mt-5">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+
+            <div className="flex items-center justify-between mt-1">
+              <p className=" text-neutral-500">Produto 1</p>
+              <p className="text-neutral-500">UN: 2</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   )

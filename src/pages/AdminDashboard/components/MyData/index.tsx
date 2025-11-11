@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input"
 
 import { User, UserCircle } from "lucide-react"
 
-
 export const MyData = () => {
   return (
     <section className="flex flex-col items-center col-span-4 p-8 space-y-16">
