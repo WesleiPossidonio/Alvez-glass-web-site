@@ -4,9 +4,9 @@ import Aos from 'aos';
 import { useEffect } from 'react';
 // import Image from '@/assets/ImageAbout.jpg'
 
-import Pergolado from '@/assets/pergolado.jpeg'
+import Pergolado from '@/assets/ImageAboutMe-Two.jpeg'
 import Esquadrilha from '@/assets/esquadrilahs.jpeg'
-import Moveis from '@/assets/moveis-planejados.jpeg'
+import Moveis from '@/assets/ImageAboutMeTree.jpeg'
 
 export const About = () => {
   useEffect(() => {
@@ -37,12 +37,12 @@ export const About = () => {
             </div>
 
             <div className='w-64 h-54 ml-16'>
-              <img className='w-full h-full object-cover rounded-lg shadow' src={Moveis} alt="" />
+              <img className='w-full h-full object-cover rounded-lg shadow' src={Pergolado} alt="" />
             </div>
           </div>
 
           <div className='w-84 h-64 -mt-27 mr-25'>
-            <img className='w-full h-full object-cover rounded-lg shadow' src={Pergolado} alt="" />
+            <img className='w-full h-full object-cover rounded-lg shadow' src={Moveis} alt="" />
           </div>
 
         </div>
