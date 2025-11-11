@@ -32,7 +32,9 @@ export const CallAction = () => {
             </p>
 
             <Button className="w-max py-7 mt-4 text-lg bg-base-blue border border-base-blue text-white font-semibold">
-              Entrar em Contato agora!
+              <a href="https://wa.me/22981445335" target="_blank">
+                Entrar em Contato agora!
+              </a>
             </Button>
           </div>
         </div>

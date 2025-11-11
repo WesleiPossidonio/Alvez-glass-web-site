@@ -30,12 +30,12 @@ export const Header = () => {
   return (
     <header className="bg-white lg:px-15 fixed top-0 z-10 w-full px-5">
       <div className="mx-auto flex items-center justify-between">
-        <div onClick={() => handleNavigate('/')} className="flex justify-center items-center cursor-pointer">
+        <a href="/" className="flex justify-center items-center cursor-pointer">
           <img className="w-20 md:w-23.5" src={Logo} alt="" />
-        </div>
+        </a>
 
         <nav className="hidden md:flex md:items-center space-x-6">
-          <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('/')}>Home</a>
+          <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" href="/">Home</a>
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#about')}>Sobre Nós</a>
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#services')}>Serviços</a>
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#portfolio')}>Portfólio</a>

@@ -50,7 +50,9 @@ export const About = () => {
             com atendimento próximo e cuidadoso.
           </p>
           <Button className="w-56 py-6 mt-4 text-lg bg-base-blue border border-base-blue text-white font-semibold">
-            Solicite um orçamento!
+            <a href="https://wa.me/22981445335" target="_blank">
+              Solicite um orçamento!
+            </a>
           </Button>
         </div>
 

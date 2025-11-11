@@ -46,7 +46,11 @@ export const Hero = () => {
 
             <div className="w-full flex space-x-4">
               <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-transparent border text-white font-semibold">Saiba Mais!</Button>
-              <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-base-blue border border-base-blue text-white font-semibold">Solicitar Orçamento!</Button>
+              <a href="https://wa.me/22981445335" target="_blank">
+                <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-base-blue border border-base-blue text-white font-semibold">
+                  Solicitar Orçamento!
+                </Button>
+              </a>
             </div>
 
           </div>
