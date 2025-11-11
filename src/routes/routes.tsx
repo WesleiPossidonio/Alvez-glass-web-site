@@ -12,6 +12,7 @@ export const AppRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginClient />} />
       <Route path="/admin" element={<UpdatePassword />} />
+      <Route path="/cadastrar-senha" element={<UpdatePassword />} />
 
       <Route path="/dashboard-client" element={<PrivateRoutesClients />}>
         <Route index element={<DashboardClient />} />

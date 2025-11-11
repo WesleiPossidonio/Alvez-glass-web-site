@@ -7,72 +7,69 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { useUser } from '@/hooks/userUser';
+import { useClient } from '@/hooks/useClient';
 
-const confirmOrderLAdminValidationSchema = zod.object({
-  email: zod.string().email('Informe o seu email'),
-  password: zod.string().min(6, 'Informe a Senha'),
+const validationSchema = zod.object({
+  update_number: zod.string().min(6, 'O numero deve ter no mínimo 6 caracteres'),
+  password: zod.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
 })
 
-export type OrderUpdatePasswordData = zod.infer<typeof confirmOrderLAdminValidationSchema>
-
-type ConfirmOrderFormLoginData = OrderUpdatePasswordData
+export type FormData = zod.infer<typeof validationSchema>
 
 export const UpdatePassword = () => {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
     reset,
-  } = useForm<ConfirmOrderFormLoginData>({
-    resolver: zodResolver(confirmOrderLAdminValidationSchema),
+  } = useForm<FormData>({
+    resolver: zodResolver(validationSchema),
   })
 
-  const { handleLoginUser } = useUser()
+  const { updatePassword } = useClient()
+  const [captcha, setCaptcha] = useState<string | null>(null)
 
-  const [captcha, setCaptcha] = useState<string | null>('')
-
-  const handleCapcha = (token: string | null) => {
-    setCaptcha(token)
-  }
-
-  const handleLogin = (data: ConfirmOrderFormLoginData) => {
-    const { email, password } = data
-
+  const handleLogin = (data: FormData) => {
     if (!captcha) {
       toast.error('Captcha pendente!', {
         position: 'top-right',
       })
       return
     }
-
-    const dataLogin = {
-      email,
-      password,
-      typeSessions: 'admin'
-    }
-    handleLoginUser(dataLogin)
+    updatePassword(data)
     reset()
   }
+
   return (
     <section className="w-full h-svh flex items-center justify-center bg-neutral-100">
       <div className="bg-white w-[35rem] h-[28rem] rounded-lg shadow flex flex-col items-center gap-4 justify-center p-8">
         <p className="text-2xl">Cadastrar senha</p>
-        <form className="w-full space-y-3" action="" onSubmit={handleSubmit(handleLogin)}>
-          <Input className="p-3" placeholder="Numero de Verificação" {...register('email')} />
-          <Input className="p-3" type="password" placeholder="Senha" {...register('password')} />
-          <div id="self-start sm:w-[80%]" style={{ alignSelf: 'start ' }}>
+
+        <form className="w-full space-y-3" onSubmit={handleSubmit(handleLogin)}>
+          <div>
+            <Input className="p-3" placeholder="Número de verificação" {...register('update_number')} />
+            {errors.update_number && (
+              <p className="text-red-500 text-sm">{errors.update_number.message}</p>
+            )}
+          </div>
+
+          <div>
+            <Input className="p-3" type="password" placeholder="Senha" {...register('password')} />
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password.message}</p>
+            )}
+          </div>
+
+          <div className="self-start sm:w-[80%]">
             <ReCAPTCHA
               sitekey={import.meta.env.VITE_RECAPTCHA_KEY}
-              onChange={handleCapcha}
+              onChange={(t) => setCaptcha(t)}
             />
           </div>
-          <Button className="w-32 py-4 bg-base-blue">Entrar</Button>
+
+          <Button type="submit" className="w-32 py-4 bg-base-blue">Entrar</Button>
         </form>
       </div>
     </section>
   )
 }
-
-
-

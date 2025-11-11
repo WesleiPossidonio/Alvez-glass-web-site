@@ -25,9 +25,8 @@ export interface ResponseLoginDataClient {
   cpf_cnpj?: string
 }
 interface CreaterClient {
-  // clientNumber: string
   name: string
-  // registration: string
+  update_number?: string
   cpf_cnpj: string
   email: string
   phone: string
@@ -41,6 +40,7 @@ interface CreaterClient {
 export interface ListDataClient extends CreaterClient {
   id: string
   token: string
+  clientNumber: string
 }
 interface UpdateClient extends CreaterClient {
   id: string
@@ -51,8 +51,7 @@ interface ConfirmMailProps {
 }
 interface UpdatePasswordProps {
   password: string
-  confirmPassword: string
-  updateNumber: string
+  update_number: string
 }
 interface ClientContextType {
   handleCreateClient: (data: CreaterClient) => Promise<void>
@@ -190,28 +189,20 @@ export const ClientContextProvider = ({ children }: ClientContextProviderProps) 
   }, [])
 
   const updatePassword = useCallback(async (data: UpdatePasswordProps) => {
-    const confirmEmailId = localStorage.getItem('Emam:DataConfirmEmail')
-    const idClient = decodeToken(confirmEmailId)
-
-    const { password, updateNumber } = data
-
-    if (idClient) {
-      const updateData = { password, updateNumber }
-
-      try {
-        await toast.promise(
-          api.patch(`updatePassword/${idClient.id}`, updateData),
-          {
-            pending: 'Verificando seus dados',
-            success: 'Senha Atualizada com Sucesso!',
-            error: 'Ops! Verifique os Dados Digitados',
-          }
-        )
-      } catch (error) {
-        console.log(error)
-      }
+    const findId = listClients.find(list => list.update_number === data.update_number)
+    try {
+      await toast.promise(
+        api.patch(`updatePassword/${findId?.id}`, data),
+        {
+          pending: 'Verificando seus dados',
+          success: 'Senha Atualizada com Sucesso!',
+          error: 'Ops! Verifique os Dados Digitados',
+        }
+      )
+    } catch (error) {
+      console.log(error)
     }
-  }, [])
+  }, [listClients])
 
   return (
     <ClientContext.Provider
