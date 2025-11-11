@@ -1,7 +1,12 @@
-import Image from '@/assets/ImageAbout.jpg'
+
 import { Button } from '@/components/ui/button';
 import Aos from 'aos';
 import { useEffect } from 'react';
+// import Image from '@/assets/ImageAbout.jpg'
+
+import Pergolado from '@/assets/pergolado.jpeg'
+import Esquadrilha from '@/assets/esquadrilahs.jpeg'
+import Moveis from '@/assets/moveis-planejados.jpeg'
 
 export const About = () => {
   useEffect(() => {
@@ -9,11 +14,11 @@ export const About = () => {
   }, [])
 
   return (
-    <section className="xl:max-w-[95rem] h-auto mx-auto bg-white mb-13 bg-cover bg-no-repeat overflow-x-hidden" id='about'>
-      <div className="container flex flex-col lg:flex-row min-h-auto px-6 md:px-16 py-24">
-        <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start gap-3 relative order-2 lg:order-1 mt-11 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
+    <section className="w-full h-auto mx-auto bg-white mb-13 bg-cover bg-no-repeat overflow-x-hidden" id='about'>
+      <div className="container my-0 mx-auto grid grid-cols-2 min-h-auto px-6 md:px-10 py-24">
+        <div className="col-span-1 flex items-center justify-center lg:justify-start gap-6 relative order-2 lg:order-1 mt-11 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
 
-          <div className="w-62 h-74 xl:w-[25rem] xl:h-[25rem] relative">
+          {/* <div className="w-62 h-74 xl:w-[25rem] xl:h-[25rem] relative">
             <div className='w-62 h-62 md:w-full md:h-full border-5 border-base-blue rounded '></div>
             <img src={Image} alt="" className='w-62 h-62 md:w-full md:h-full rounded absolute top-5 left-5' />
           </div>
@@ -23,11 +28,24 @@ export const About = () => {
               <div className='w-full h-full border-5 border-base-blue rounded absolute top-5 left-5'></div>
               <img src={Image} alt="" className=' w-full h-full rounded' />
             </div>
+          </div> */}
+
+          <div className='w-84 h-64 '>
+            <img className='w-full h-full object-cover rounded-lg shadow' src={Pergolado} alt="" />
+          </div>
+
+          <div className='space-y-6 w-1/2'>
+            <div className='w-74 h-74 '>
+              <img className='w-full h-full object-cover rounded-lg shadow' src={Esquadrilha} alt="" />
+            </div>
+            <div className='w-64 h-54  '>
+              <img className='w-full h-full object-cover rounded-lg shadow' src={Moveis} alt="" />
+            </div>
           </div>
 
         </div>
 
-        <div className="w-full lg:w-1/2 flex flex-col items-start justify-center gap-3 order-1 lg:order-2" data-aos="fade-left" data-aos-duration="1000">
+        <div className="col-span-1 flex flex-col items-start justify-center gap-3 order-1 lg:order-2" data-aos="fade-left" data-aos-duration="1000">
           <div className="space-y-1">
             <h3 className="text-md font-bold text-base-blue">- Sobre Nós</h3>
             <h1 className=" text-2xl md:text-4xl font-bold text-neutral-700">
