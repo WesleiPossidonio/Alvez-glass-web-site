@@ -1,35 +1,43 @@
 import Aos from 'aos';
 import { useEffect } from 'react';
 
+import imageCozinha from '@/assets/cozinhaTwo.jpg'
+import imageSacada from '@/assets/IMG_9432.jpg'
+import imagePorteiro from '@/assets/IMG_9638.jpg'
+import imageEscada from '@/assets/IMG_9882.jpg'
+import imageMoveis from '@/assets/IMG_8615.jpg'
+import ImageTwo from '@/assets/IMG_8173.jpg'
+
+
 const galleryImages = [
   {
     id: 1,
-    src: 'https://img.freepik.com/fotos-premium/interior-contemporaneo-da-cabina-de-duche-com-porta-com-moldura-de-metal-preto-plantas-da-casa-em-vaso_81262-1729.jpg',
+    src: imageMoveis,
     alt: 'Cabine de duche com moldura de metal preto',
   },
   {
     id: 2,
-    src: 'https://img.freepik.com/fotos-gratis/interior-de-um-edificio-moderno-com-janelas-de-vidro-e-ambiente-branco_181624-8808.jpg',
+    src: imageSacada,
     alt: 'Interior moderno com janelas de vidro',
   },
   {
     id: 3,
-    src: 'https://img.freepik.com/psd-premium/maquete-do-logotipo-da-parede-do-escritorio_779229-19.jpg',
+    src: imageEscada,
     alt: 'Mockup de logotipo em parede de escritório',
   },
   {
     id: 4,
-    src: 'https://img.freepik.com/fotos-gratis/design-de-interiores-de-cozinha-minimalista_23-2151008708.jpg',
+    src: imagePorteiro,
     alt: 'Cozinha minimalista branca',
   },
   {
     id: 5,
-    src: 'https://img.freepik.com/fotos-gratis/entrada-da-casa-e-escadas-cultura-japonesa_23-2149301065.jpg',
+    src: ImageTwo,
     alt: 'Entrada de casa com escadas estilo japonês',
   },
   {
     id: 6,
-    src: 'https://img.freepik.com/fotos-premium/armarios-de-cozinha-modernos-com-gavetas-retrateis_716147-5283.jpg',
+    src: imageCozinha,
     alt: 'Armários modernos com gavetas retráteis',
   },
 ];
