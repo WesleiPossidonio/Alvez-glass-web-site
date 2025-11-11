@@ -14,9 +14,10 @@ export const About = () => {
   }, [])
 
   return (
-    <section className="w-full h-auto mx-auto bg-white mb-13 bg-cover bg-no-repeat overflow-x-hidden" id='about'>
+    <section className="w-[90%] h-auto mx-auto bg-white mb-13 bg-cover bg-no-repeat overflow-x-hidden" id='about'>
       <div className="container my-0 mx-auto grid grid-cols-2 min-h-auto px-6 md:px-10 py-24">
-        <div className="col-span-1 flex items-center justify-center lg:justify-start gap-6 relative order-2 lg:order-1 mt-11 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
+        <div className="col-span-1 flex items-center justify-center lg:justify-start 
+        gap-3 relative order-2 lg:order-1 mt-11 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
 
           {/* <div className="w-62 h-74 xl:w-[25rem] xl:h-[25rem] relative">
             <div className='w-62 h-62 md:w-full md:h-full border-5 border-base-blue rounded '></div>
@@ -30,17 +31,18 @@ export const About = () => {
             </div>
           </div> */}
 
-          <div className='w-84 h-64 '>
-            <img className='w-full h-full object-cover rounded-lg shadow' src={Pergolado} alt="" />
-          </div>
-
-          <div className='space-y-6 w-1/2'>
-            <div className='w-74 h-74 '>
+          <div className='space-y-6'>
+            <div className='w-74 h-74'>
               <img className='w-full h-full object-cover rounded-lg shadow' src={Esquadrilha} alt="" />
             </div>
-            <div className='w-64 h-54  '>
+
+            <div className='w-64 h-54 ml-16'>
               <img className='w-full h-full object-cover rounded-lg shadow' src={Moveis} alt="" />
             </div>
+          </div>
+
+          <div className='w-84 h-64 -mt-27 mr-25'>
+            <img className='w-full h-full object-cover rounded-lg shadow' src={Pergolado} alt="" />
           </div>
 
         </div>
