@@ -81,7 +81,7 @@ export const Contacts = () => {
 
         <div className='grid grid-cols-2 gap-16'>
 
-          <div className='col-span-2 md:col-span-1 flex flex-col items-start justify-start gap-2'>
+          <div className='col-span-2 lg:col-span-1 flex flex-col items-start justify-start gap-2'>
             <h2 className='text-2xl font-semibold'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </h2>
@@ -128,7 +128,7 @@ export const Contacts = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit(handlesendMail)} className="w-full grid grid-cols-2 gap-6 col-span-2 md:col-span-1" action="">
+          <form onSubmit={handleSubmit(handlesendMail)} className="w-full grid grid-cols-2 gap-6 col-span-2 lg:col-span-1" action="">
             <Input className="col-span-2 md:col-span-1 py-3.5 md:py-6 
             text-sm md:text-md text-black placeholder:text-black bg-white"
               type="text" placeholder="Digite seu Nome"  {...register('name')} />

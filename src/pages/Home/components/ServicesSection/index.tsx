@@ -54,7 +54,7 @@ export const ServicesSection = () => {
             {
               carouselItems.map(list => {
                 return (
-                  <CarouselItem className="md:basis-1/2 xl:basis-1/2 relative" key={list.id}>
+                  <CarouselItem className="md:basis-2/2 xl:basis-1/2 relative" key={list.id}>
                     <div className="w-[95%] h-32 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-11 z-10 flex gap-4 items-start">
                       {list.icon}
                       <div>

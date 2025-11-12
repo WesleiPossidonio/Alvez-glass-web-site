@@ -1,107 +1,78 @@
 import { Star } from "lucide-react"
 import Autoplay from "embla-carousel-autoplay"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import image from '@/assets/BannerHero.jpg'
-
-const comentsArray = [
-  {
-    name: 'Rafael',
-    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
-    id: 1,
-  },
-  {
-    name: 'Claudia',
-    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
-    id: 2,
-  },
-  {
-    name: 'Otávio',
-    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
-    id: 3,
-  },
-  {
-    name: 'Sheila',
-    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
-    id: 4,
-  },
-  {
-    name: 'Luiz Paulo',
-    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
-    id: 5,
-  },
-  {
-    name: 'Larissa',
-    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, quo suscipit. Dolore culpa voluptatem explicabo obcaecati, ullam sint rerum sequi voluptatibus accusamus, delectus reprehenderit impedit, harum quam aspernatur porro sunt.',
-    id: 6,
-  },
-]
+import { ReactGoogleReviews } from "react-google-reviews"
+import "react-google-reviews/dist/index.css"
+import image from "@/assets/BannerHero.jpg"
 
 export const Coments = () => {
+  const featurableWidgetId = "36bd4ab2-a057-4c3b-8d42-f4f49bc71a98"
+
   return (
     <section
-      className="relative w-full h-auto flex items-center overflow-hidden"
+      className="relative w-full flex items-center justify-center overflow-hidden py-16"
       style={{
-        minHeight: '35rem',
         backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
-      {/* Overlay branca sutil */}
-      <div className="absolute inset-0 z-0 pointer-events-none" style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.3)', // branco com 10% de opacidade
-      }} />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50 z-0" />
 
-      <div className="container mx-auto py-10 px-8 space-y-5 flex flex-col items-start justify-center gap-7 relative z-5">
-        <div className="w-full flex flex-col items-center justify-start gap-3" data-aos="fade-right" data-aos-duration="1000">
-          <div className="self-center text-center">
-            <h4 className="text-white font-semibold drop-shadow-md">Avaliações</h4>
-            <h1 className="text-white text-2xl md:text-4xl font-semibold drop-shadow-md">O que Falam da Alves Glass</h1>
-            <p className="text-white text-md md:text-lg m-0 self-start drop-shadow-md">
-              Veja o que nossos clientes dizem sobre o nosso trabalho
-            </p>
-          </div>
+      <div className="container mx-auto px-6 md:px-10 flex flex-col items-center gap-10 relative z-10">
+        {/* Título */}
+        <div className="text-center text-white space-y-2">
+          <h4 className="font-semibold tracking-wide">Avaliações</h4>
+          <h1 className="text-2xl md:text-4xl font-bold">
+            O que falam da <span className="text-base-blue">Alves Glass</span>
+          </h1>
+          <p className="text-sm md:text-lg opacity-90">
+            Veja o que nossos clientes dizem sobre o nosso trabalho
+          </p>
         </div>
 
+        {/* Google Reviews */}
         <Carousel
-          className="w-full"
+          className="w-full max-w-[900px]"
           plugins={[
             Autoplay({
               delay: 4000,
             }),
           ]}
-          data-aos="zoom-in-up"
-          data-aos-duration="1000"
         >
-          <CarouselContent>
-            {comentsArray.map((coment) => (
-              <CarouselItem
-                key={coment.id}
-                className="md:basis-1/2 lg:basis-1/1 flex items-center justify-center px-3"
-              >
-                <div
-                  className="md:w-2/3 h-64 p-6 flex flex-col items-center justify-center gap-3 rounded-2xl
-                  bg-transparent backdrop-blur-lg border border-white/20
-                  shadow-lg shadow-white/10 relative cursor-default
-                  hover:scale-[1.03] transition-transform duration-300 text-center"
-                >
-                  <p className="text-md font-semibold text-white drop-shadow-md">{coment.name}</p>
-                  <p className="text-sm text-white overflow-hidden italic drop-shadow-md">“{coment.text}”</p>
-                  <div className="flex gap-1 mt-auto">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-5 h-5 ${i < 5 ? 'text-yellow-400' : 'text-gray-300'
-                          }`}
-                      />
-                    ))}
-                  </div>
-                </div>
 
-              </CarouselItem>
-            ))}
-          </CarouselContent>
+          <ReactGoogleReviews
+            layout="custom"
+            featurableId={featurableWidgetId}
+            renderer={(reviews) => (
+              <CarouselContent className="gap-x-6 w-[95%] mx-auto">
+                {reviews.slice(0, 6).map(({ reviewId, reviewer, comment, starRating }) => (
+                  <CarouselItem
+                    key={reviewId}
+                    className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl shadow-md text-center text-white"
+                  >
+                    <p className="text-md font-semibold mb-2">{reviewer.displayName}</p>
+                    <p className="text-sm italic opacity-90">“{comment}”</p>
+
+                    {/* ⭐ Avaliação dinâmica */}
+                    <div className="flex justify-center gap-1 mt-3">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${i < starRating ? 'text-yellow-400' : 'text-gray-400/40'
+                            }`}
+                        />
+                      ))}
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            )}
+          />
+
+
         </Carousel>
       </div>
     </section>

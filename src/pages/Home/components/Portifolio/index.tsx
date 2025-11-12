@@ -48,7 +48,7 @@ export const Portifolio = () => {
   }, []);
 
   return (
-    <section className="w-full min-h-[35rem] h-auto flex items-center p-8 md:p-16 " id='portfolio'>
+    <section className="w-full min-h-[35rem] h-auto flex items-center p-8 lg:p-16 " id='portfolio'>
       <div className="container mx-auto h-full flex flex-col gap-10">
 
         {/* Título */}
