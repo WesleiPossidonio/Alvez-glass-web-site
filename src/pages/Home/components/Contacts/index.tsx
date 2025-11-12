@@ -83,10 +83,10 @@ export const Contacts = () => {
 
           <div className='col-span-2 lg:col-span-1 flex flex-col items-start justify-start gap-2'>
             <h2 className='text-2xl font-semibold'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Estamos prontos para ouvir você.
             </h2>
             <p className='text-sm'>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae esse iure, harum accusamus culpa dolorum vel
+              Entre em contato com nossa equipe e tire suas dúvidas, faça um orçamento ou agende um atendimento personalizado.
             </p>
 
             <div className='flex flex-col items-start justify-center gap-3 mt-5'>
