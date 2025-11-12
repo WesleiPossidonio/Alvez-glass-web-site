@@ -35,7 +35,7 @@ export const Hero = () => {
               industriais
             </p>
             <h1 className="text-2xl md:text-6xl font-bold mb-2">
-              Vidros, <br /> Esquadrias de Alumínio e Móveis
+              Vidros, <br className="md:hidden" /> Esquadrias de Alumínio e Móveis
               Planejados em um só lugar
             </h1>
             <p className="text-sm md:text-xl font-semibold">
