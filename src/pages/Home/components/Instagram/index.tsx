@@ -16,7 +16,8 @@ export const InstagramSection = () => {
         </p>
       </div>
 
-      <div className="container mx-auto h-full grid grid-cols-4 gap-8 items-center">
+      <div className="container mx-auto w-full h-full grid grid-cols-4 gap-8 items-center">
+
         <div
           className=" col-span-4 md:col-span-1 w-full h-64 rounded-lg relative bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: `url(https://img.freepik.com/fotos-gratis/design-de-interiores-de-cozinha-minimalista_23-2151008708.jpg)` }}

@@ -7,7 +7,7 @@ import {
   Footer,
   Header,
   Hero,
-  // InstagramSection,
+  InstagramSection,
   Portifolio,
   ServicesSection,
   WhatsappButton
@@ -21,10 +21,9 @@ export const Home = () => {
       <About />
       <ServicesSection />
       <CallAction />
-      {/* <AdjectsSection /> */}
       <Portifolio />
       <Coments />
-      {/* <InstagramSection /> */}
+      <InstagramSection />
       <Contacts />
       <Footer />
       <WhatsappButton />

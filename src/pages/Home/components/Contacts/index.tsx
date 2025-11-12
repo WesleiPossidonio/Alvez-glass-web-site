@@ -67,7 +67,7 @@ export const Contacts = () => {
 
   return (
     <section className="w-full h-auto min-h-[40rem] flex flex-col items-center justify-content-center gap-5 bg-white relative px-6 md:px-16" id='contacts'>
-      <div className="w-full container xl:max-w-[80%] h-auto min-h-[35rem] py-14 px-6 md:px-8 flex flex-col gap-16" data-aos="zoom-in" data-aos-duration="1000"
+      <div className="w-full container xl:max-w-[80%] h-auto min-h-[35rem] py-14 md:px-8 flex flex-col gap-16" data-aos="zoom-in" data-aos-duration="1000"
       >
         <div className="flex flex-col items-center justify-center gap-1">
           <p className="text-black text-sm md:text-xl font-bold">Contatos</p>
@@ -97,7 +97,7 @@ export const Contacts = () => {
 
                 <div>
                   <h1 className='font-semibold text-base-blue'>Telefone:</h1>
-                  <a href="#" className='font-semibold'>(22) 22222-2222</a>
+                  <a href="#" className='text-sm md:text-md font-semibold'>(22) 22222-2222</a>
                 </div>
               </div>
 
@@ -107,7 +107,7 @@ export const Contacts = () => {
                 </span>
                 <div>
                   <h1 className='font-semibold text-base-blue'>Email:</h1>
-                  <a href="#" className='font-semibold'>example@gmail.com</a>
+                  <a href="#" className='text-sm md:text-md font-semibold'>example@gmail.com</a>
                 </div>
               </div>
 
@@ -118,8 +118,8 @@ export const Contacts = () => {
 
                 <div className=''>
                   <h1 className='font-semibold text-base-blue'>Endereço:</h1>
-                  <a href="#" className='font-semibold'>
-                    R. Otávio Laurindo de Azevedo, N° 1040, <br /> Praia Campista, Macaé - RJ
+                  <a href="#" className='text-sm md:text-md font-semibold'>
+                    R. Otávio Laurindo <br className='md:hidden' /> de Azevedo, N° 1040, <br /> Praia Campista, Macaé - RJ
                   </a>
                 </div>
               </div>
