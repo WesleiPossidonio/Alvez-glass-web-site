@@ -34,18 +34,20 @@ export const Hero = () => {
               Projetos residenciais, comerciais e
               industriais
             </p>
-            <h1 className="text-3xl md:text-6xl font-bold">
-              Vidros, Esquadrias de Alumínio e Móveis
+            <h1 className="text-2xl md:text-6xl font-bold mb-2">
+              Vidros, <br /> Esquadrias de Alumínio e Móveis
               Planejados em um só lugar
             </h1>
-            <p className="text-md md:text-xl font-semibold">
+            <p className="text-sm md:text-xl font-semibold">
               Oferecemos soluções completas, da
               medição à instalação, garantindo
               excelência e segurança em cada etapa
             </p>
 
-            <div className="w-full flex space-x-4">
-              <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-transparent border text-white font-semibold">Saiba Mais!</Button>
+            <div className="w-full flex space-x-4 mt-2 md:mt-0">
+              <a href="#about-me">
+                <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-transparent border text-white font-semibold">Saiba Mais!</Button>
+              </a>
               <a href="https://wa.me/22981445335" target="_blank">
                 <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-base-blue border border-base-blue text-white font-semibold">
                   Solicitar Orçamento!
@@ -55,10 +57,6 @@ export const Hero = () => {
 
           </div>
         </CarouselItem>
-
-        {/* <CarouselItem className="h-svh border-0 bg-center bg-cover bg-no-repeat flex items-center" style={{ backgroundImage: `url(${ImgBannerTwo})` }}>
-          <p className="text-5xl">heloo</p>
-        </CarouselItem> */}
       </CarouselContent>
     </Carousel >
   )

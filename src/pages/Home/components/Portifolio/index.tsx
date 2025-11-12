@@ -75,7 +75,7 @@ export const Portifolio = () => {
               <img
                 src={galleryImages[0].src}
                 alt={galleryImages[0].alt}
-                className="h-[36rem] w-full object-cover rounded-lg"
+                className="h-52 md:h-[36rem] w-full object-cover rounded-lg"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               />
@@ -83,34 +83,88 @@ export const Portifolio = () => {
           </div>
 
           {/* Coluna 2 */}
-          <div className="flex flex-col col-span-4 md:col-span-1 gap-5">
+          <div className=" md:flex hidden md:flex-col col-span-4 md:col-span-1 gap-5">
             <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
               <img
                 src={galleryImages[1].src}
                 alt={galleryImages[1].alt}
-                className="h-[14.75rem] w-full object-cover rounded-lg"
+                className="h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               />
             </a>
+
+
             <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
               <img
                 src={galleryImages[2].src}
                 alt={galleryImages[2].alt}
-                className="h-[20rem] w-full object-cover rounded-lg"
+                className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               />
             </a>
           </div>
 
+          {/* Card de imagens Mobile */}
+
+          <div className='flex items-center col-span-4 md:hidden justify-center gap-4'>
+            <div className="w-full
+             flex flex-col col-span-4 md:col-span-1 gap-5">
+              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+                <img
+                  src={galleryImages[1].src}
+                  alt={galleryImages[1].alt}
+                  className="h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                />
+              </a>
+
+
+              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+                <img
+                  src={galleryImages[2].src}
+                  alt={galleryImages[2].alt}
+                  className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                />
+              </a>
+            </div>
+
+            <div className="w-full flex flex-col col-span-2 md:col-span-1 gap-5">
+              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+                <img
+                  src={galleryImages[4].src}
+                  alt={galleryImages[4].alt}
+                  className=" h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                />
+              </a>
+
+              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+                <img
+                  src={galleryImages[5].src}
+                  alt={galleryImages[5].alt}
+                  className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                />
+              </a>
+            </div>
+
+
+          </div>
+
           {/* Coluna 3 */}
-          <div className="flex flex-col col-span-4 md:col-span-1 gap-5">
+          <div className="col-span-4 md:col-span-1 gap-5">
             <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
               <img
                 src={galleryImages[3].src}
                 alt={galleryImages[3].alt}
-                className="h-[36rem] w-full object-cover rounded-lg"
+                className=" h-52 md:h-[36rem] w-full object-cover rounded-lg"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               />
@@ -118,21 +172,22 @@ export const Portifolio = () => {
           </div>
 
           {/* Coluna 4 */}
-          <div className="flex flex-col  col-span-4 md:col-span-1 gap-5">
+          <div className="md:flex hidden flex-col  col-span-2 md:col-span-1 gap-5">
             <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
               <img
                 src={galleryImages[4].src}
                 alt={galleryImages[4].alt}
-                className="h-[14.75rem] w-full object-cover rounded-lg"
+                className=" h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               />
             </a>
+
             <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
               <img
                 src={galleryImages[5].src}
                 alt={galleryImages[5].alt}
-                className="h-[20rem] w-full object-cover rounded-lg"
+                className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               />

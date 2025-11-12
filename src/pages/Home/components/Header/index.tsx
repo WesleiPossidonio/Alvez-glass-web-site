@@ -62,14 +62,15 @@ export const Header = () => {
       {/* Menu mobile */}
       {menuOpen && (
         <nav className="md:hidden mt-4 flex flex-col items-center space-y-4 py-4">
-          <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('/')}>Home</a>
+          <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" href="/">Home</a>
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#about')}>Sobre Nós</a>
           <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#services')}>Serviços</a>
-          <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#contact')}>Contatos</a>
+          <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#portfolio')}>Portfólio</a>
+          <a className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer" onClick={() => handleNavigate('#contacts')}>Contatos</a>
 
           <button
             onClick={() => handleNavigate('/login')}
-            className="hover:text-white font-semibold text-white"
+            className="hover:text-white font-semibold px-3 py-4 bg-base-blue text-white rounded-xl"
           >
             Portal do Cliente
           </button>
