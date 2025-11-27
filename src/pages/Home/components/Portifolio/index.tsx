@@ -108,7 +108,8 @@ export const Portifolio = () => {
 
           {/* Card de imagens Mobile */}
 
-          <div className='flex items-center col-span-4 md:hidden justify-center gap-4'>
+          <div className='flex items-center col-span-4 md:hidden justify-center gap-4
+          '>
             <div className="w-full
              flex flex-col col-span-4 md:col-span-1 gap-5">
               <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
