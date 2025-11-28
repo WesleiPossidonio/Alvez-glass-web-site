@@ -34,11 +34,11 @@ export const Hero = () => {
               Projetos residenciais, comerciais e
               industriais
             </p>
-            <h1 className="text-2xl md:text-6xl font-bold mb-2">
+            <h1 className="text-3xl md:text-6xl font-bold mb-2">
               Vidros, <br className="md:hidden" /> Esquadrias de Alumínio e Móveis
               Planejados em um só lugar
             </h1>
-            <p className="text-sm md:text-xl font-semibold">
+            <p className="text-md md:text-xl font-semibold">
               Oferecemos soluções completas, da
               medição à instalação, garantindo
               excelência e segurança em cada etapa

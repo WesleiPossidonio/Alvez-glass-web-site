@@ -94,10 +94,9 @@ export const Contacts = () => {
                 <span className='bg-base-blue w-18 h-18 flex items-center justify-center rounded-2xl'>
                   <PhoneIcon size={42} color='#fff' />
                 </span>
-
                 <div>
                   <h1 className='font-semibold text-base-blue'>Telefone:</h1>
-                  <a href="#" className='text-sm md:text-md font-semibold'>(22) 22222-2222</a>
+                  <a href="tel:+2227724714" className='text-sm md:text-md font-semibold'> (22) 27724714</a>
                 </div>
               </div>
 
@@ -105,9 +104,12 @@ export const Contacts = () => {
                 <span className='bg-base-blue w-18 h-18 flex items-center justify-center rounded-2xl'>
                   <EnvelopeIcon size={42} color='#fff' />
                 </span>
+
                 <div>
                   <h1 className='font-semibold text-base-blue'>Email:</h1>
-                  <a href="#" className='text-sm md:text-md font-semibold'>example@gmail.com</a>
+                  <a href="mailto:Alves.glass01@gmail.com" className='text-sm md:text-md font-semibold'>
+                    Alves.glass01@gmail.com
+                  </a>
                 </div>
               </div>
 

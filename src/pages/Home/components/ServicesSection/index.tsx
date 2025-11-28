@@ -58,19 +58,19 @@ export const ServicesSection = () => {
                     <div className="w-[95%] h-32 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-11 z-10 flex gap-4 items-start">
                       {list.icon}
                       <div>
-                        <h3 className="font-semibold text-base text-base-blue">
-                          {list.name}
-                        </h3>
+                        <a href={list.whatsapp} target="_blank" rel="noopener noreferrer">
+                          <h3 className="font-semibold text-base text-base-blue">
+                            {list.name}
+                          </h3>
+                        </a>
                         <p className="text-sm">
                           {list.text}
                         </p>
                       </div>
                     </div>
-                    <a href="http://">
-                      <img src={list.link_image}
-                        alt="Esquadrias de Alumínio" className="w-full h-[17rem] rounded-lg shadow object-cover"
-                      />
-                    </a>
+                    <img src={list.link_image}
+                      alt="Esquadrias de Alumínio" className="w-full h-[17rem] rounded-lg shadow object-cover"
+                    />
                   </CarouselItem>
                 )
               })
