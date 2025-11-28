@@ -1,7 +1,7 @@
 import axios, { type InternalAxiosRequestConfig } from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'https://api-api-alvesglass.1mbq2l.easypanel.host/',
   withCredentials: true,
 })
 
