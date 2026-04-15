@@ -2,3 +2,5 @@
 export * from './Home'
 export * from './Login'
 export * from './UpdatePassword'
+export * from './PrivacyPolicy'
+export * from './DashboardClient'

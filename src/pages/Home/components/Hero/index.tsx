@@ -49,7 +49,7 @@ export const Hero = () => {
                 <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-transparent border text-white font-semibold">Saiba Mais!</Button>
               </a>
               <a href="https://wa.me/22981445335" target="_blank">
-                <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-base-blue border border-base-blue text-white font-semibold">
+                <Button className="w-max md:w-52 py-7 text-md md:text-lg bg-base-blue border border-base-blue text-white font-semibold hover:bg-base-blue-hover hover:border-base-blue-hover">
                   Solicitar Orçamento!
                 </Button>
               </a>

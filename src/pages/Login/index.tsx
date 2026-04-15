@@ -60,9 +60,9 @@ export const LoginClient = () => {
 
   return (
     <main className="w-full h-svh grid grid-cols-3">
-      <div className="col-span-1 lg:col-span-2 bg-image bg-cover bg-no-repeat" style={{ backgroundImage: `url(${Image})` }}></div>
-      <div className="col-span-2 lg:col-span-1 w-full p-4 md:p-8 flex flex-col justify-center gap-2 relative">
-        <img src={logo} className='w-24 md:w-32 absolute top-0 left-0' alt="" />
+      <div className="col-span-1 lg:col-span-2 bg-image bg-cover bg-no-repeat hidden md:flex" style={{ backgroundImage: `url(${Image})` }}></div>
+      <div className="col-span-3 lg:col-span-1 w-full p-4 md:p-8 flex flex-col justify-center gap-2 relative">
+        <img src={logo} className='w-24 md:w-32 absolute top-0 right-0 md:left-0' alt="" />
         <div className='w-full space-y-2'>
           <h2 className='font-semibold text-base-blue'>- Login</h2>
           <h1 className='text-3xl md:text-5xl'>

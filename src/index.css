@@ -120,9 +120,9 @@
 }
 
 @theme {
-  --color-base-blue: #2D65A2;
+  --color-base-blue: #2d65a2;
+  --color-base-blue-hover: #1e4a73;
 }
-
 
 @keyframes zoomFadeIn {
   0% {

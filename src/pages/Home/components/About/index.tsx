@@ -21,16 +21,16 @@ export const About = () => {
 
           <div className='space-y-6'>
             <div className='w-42 h-42 lg:w-74 lg:h-74'>
-              <img className='w-full h-full object-cover rounded-lg shadow' src={Esquadrilha} alt="" />
+              <img className='w-full h-full object-cover rounded-lg shadow' loading='lazy' src={Esquadrilha} alt="" />
             </div>
 
             <div className='w-32 h-32 lg:w-64 lg:h-54 ml-16'>
-              <img className='w-full h-full object-cover rounded-lg shadow' src={Pergolado} alt="" />
+              <img className='w-full h-full object-cover rounded-lg shadow' loading='lazy' src={Pergolado} alt="" />
             </div>
           </div>
 
           <div className=' w-56 h-56 lg:w-84 lg:h-64 -mt-27 lg:mr-25'>
-            <img className='w-full h-full object-cover rounded-lg shadow' src={Moveis} alt="" />
+            <img className='w-full h-full object-cover rounded-lg shadow' loading='lazy' src={Moveis} alt="" />
           </div>
 
         </div>
