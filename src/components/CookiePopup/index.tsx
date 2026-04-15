@@ -26,7 +26,7 @@ export const CookiePopup = () => {
   if (!open) return null;
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[90%]">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[90%] shadow-lg">
       <div className="bg-white shadow-2xl rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-fadeIn">
 
         {/* Texto */}

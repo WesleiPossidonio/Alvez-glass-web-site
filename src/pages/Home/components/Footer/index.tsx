@@ -30,7 +30,7 @@ export const Footer = () => {
           <div className="flex flex-col gap-3">
             <a
               href="#"
-              className="text-sm text-neutral-700 hover:text-white transition-colors"
+              className="text-sm text-neutral-700 hover:text-base-blue-hover transition-colors"
             >
               Política de Privacidade
             </a>
@@ -54,7 +54,7 @@ export const Footer = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm text-neutral-700 hover:text-white transition-colors"
+                className="text-sm text-neutral-700 hover:text-base-blue-hover transition-colors"
               >
                 {item.label}
               </a>
@@ -72,7 +72,7 @@ export const Footer = () => {
 
             <a
               href="mailto:Alves.glass01@gmail.com"
-              className="flex items-center gap-2 text-neutral-700 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-neutral-700 hover:text-base-blue-hover transition-colors"
             >
               <EnvelopeIcon className="size-5" />
               <span>Email</span>
@@ -80,7 +80,7 @@ export const Footer = () => {
 
             <a
               href="tel:+2227724714"
-              className="flex items-center gap-2 text-neutral-700 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-neutral-700 hover:text-base-blue-hover transition-colors"
             >
               <Phone className="size-5" />
               <span>(22) 27724714</span>
