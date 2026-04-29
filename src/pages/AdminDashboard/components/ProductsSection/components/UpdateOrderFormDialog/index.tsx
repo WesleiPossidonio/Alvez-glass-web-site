@@ -125,8 +125,8 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
           </label>
 
           <div
-            className="w-44 h-18 p-2 rounded-md space-y-0.5 absolute top-18 
-            right-15 bg-base-blue "
+            className="w-44 h-18 p-2 rounded-md space-y-0.5 absolute top-10 
+            right-10 bg-base-blue "
           >
             <p className="text-sm text-white font-semibold">Total do Pedido</p>
             <div className="text-2xl font-bold text-white">
@@ -134,7 +134,8 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
             </div>
           </div>
 
-          <label>
+          <label className="text-sm font-medium text-gray-700">
+            Status do Pedido
             <Input placeholder="Status" {...register("status")} />
             {errors.status && (
               <p className="text-red-600 text-sm mt-1">
