@@ -24,7 +24,6 @@ const schema = z.object({
   order_number: z.string().nonempty("Número do pedido é obrigatório"),
   status_description: z.string().nonempty("Descrição do status é obrigatória"),
   status: z.string().nonempty("Status é obrigatório"),
-  total: z.coerce.number().min(0, "Total inválido"),
   products: z
     .array(
       z.object({
@@ -97,10 +96,14 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
   };
 
   return (
-    <DialogContent className="w-full h-full md:max-w-[90vw] md:h-[90vh] flex items-center justify-center p-0">
+    <DialogContent
+      className="w-full h-full md:max-w-[90vw] md:h-[90vh] flex 
+    items-center justify-center p-0"
+    >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full h-full flex flex-col overflow-y-auto bg-white p-8 rounded-xl shadow space-y-6"
+        className="w-full h-full flex flex-col overflow-y-auto bg-white 
+        p-8 rounded-xl shadow space-y-6 relative"
       >
         <div>
           <h2 className="text-2xl font-semibold">Atualizar status do pedido</h2>
@@ -121,23 +124,16 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
             )}
           </label>
 
-          <label className="text-sm font-medium text-gray-700">
-            Total do Pedido
-            <Input
-              className="mt-1 shadow-sm bg-base-blue 
-            cursor-not-allowed text-white font-bold"
-              readOnly
-              type="number"
-              placeholder="Total"
-              {...register("total", { valueAsNumber: true })}
-              value={total}
-            />
-            {errors.total && (
-              <p className="text-red-600 text-sm mt-1">
-                {errors.total.message}
-              </p>
-            )}
-          </label>
+          <div
+            className="w-44 h-18 p-2 rounded-md space-y-0.5 absolute top-18 
+            right-15 bg-base-blue "
+          >
+            <p className="text-sm text-white font-semibold">Total do Pedido</p>
+            <div className="text-2xl font-bold text-white">
+              R$ {total.toFixed(2)}
+            </div>
+          </div>
+
           <label>
             <Input placeholder="Status" {...register("status")} />
             {errors.status && (
@@ -180,7 +176,8 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
           {fields.map((field, index) => (
             <div
               key={field.id}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-md  bg-gray-50 relative"
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border 
+              rounded-md  bg-gray-50 relative"
             >
               <label className="text-sm font-medium text-gray-700">
                 Nome do Produto
@@ -231,7 +228,8 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
                 <button
                   type="button"
                   onClick={() => remove(index)}
-                  className="absolute top-2 right-2 text-red-600 hover:text-red-800"
+                  className="absolute top-2 right-2 text-red-600
+                   hover:text-red-800"
                 >
                   <Trash2 size={18} />
                 </button>
@@ -249,7 +247,8 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
         <div className="flex justify-end pt-4">
           <Button
             type="submit"
-            className="bg-base-blue hover:bg-base-blue-hover text-white py-6 font-semibold cursor-pointer"
+            className="bg-base-blue hover:bg-base-blue-hover 
+            text-white py-6 font-semibold cursor-pointer"
           >
             Enviar Pedido
           </Button>
