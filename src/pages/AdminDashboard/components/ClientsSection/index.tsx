@@ -58,9 +58,14 @@ export const ClientsSection = () => {
 
   return (
     <section className="w-full h-full flex flex-col bg-white rounded-lg shadow p-8">
-      <h1 className="text-2xl font-semibold mb-8">Nossos Clientes</h1>
+      <div className="mb-10">
+        <h1 className="text-3xl font-semibold">Nossos Clientes</h1>
+        <p className="text-gray-600 text-md">
+          Gerencie seus clientes e visualize suas informações.
+        </p>
+      </div>
 
-      <div className="w-full grid grid-cols-2 items-center px-3">
+      <div className="w-full grid grid-cols-2 items-center">
         <Input
           type="text"
           placeholder="Buscar Cliente"
@@ -70,11 +75,12 @@ export const ClientsSection = () => {
             setCurrentPage(1) // resetar para primeira página ao buscar
           }}
         />
-        <div className="w-full flex items-center justify-end gap-5">
+
+        <div className="w-full flex items-center justify-end gap-5 ">
           <Dialog>
             <DialogTrigger asChild>
               <Button className="text-md font-semibold py-6 bg-base-blue 
-              hover:bg-blue-800 cursor-pointer transform ease-in duration-75">
+              hover:bg-base-blue-hover cursor-pointer transform ease-in duration-75">
                 Adicionar Cliente
               </Button>
             </DialogTrigger>
@@ -125,7 +131,7 @@ export const ClientsSection = () => {
                       <PackagePlus className="text-neutral-700 size-9 hover:text-base-blue z-20" />
                     </div>
                   </DialogTrigger>
-                  <OrderFormDialog />
+                  <OrderFormDialog clientId={client.id} />
                 </Dialog>
               </div>
 

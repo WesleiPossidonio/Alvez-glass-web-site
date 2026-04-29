@@ -59,8 +59,6 @@ export const AdminDashboard = () => {
               <h1 className='text-2xl font-bold text-neutral-900'>Bem vindo ao painel administrativo!</h1>
               <p className='text-neutral-600'>Selecione uma opção no menu para começar.</p>
             </div>
-
-
           }
 
         </div>

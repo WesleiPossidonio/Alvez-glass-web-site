@@ -1,21 +1,19 @@
-import axios, { type InternalAxiosRequestConfig } from 'axios'
+import axios, { type InternalAxiosRequestConfig } from "axios";
 
 const api = axios.create({
-  baseURL: 'https://api-api-alvesglass.1mbq2l.easypanel.host/',
+  baseURL: "http://localhost:3333/",
   withCredentials: true,
-})
+});
 
 api.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
-  const userData = localStorage.getItem(
-    'AlvesClass:userData1.0',
-  )
-  const token = userData !== null ? JSON.parse(userData).token : null
+  const userData = localStorage.getItem("AlvesClass:userData1.0");
+  const token = userData !== null ? JSON.parse(userData).token : null;
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    config.headers.Authorization = `Bearer ${token}`;
   }
 
-  return config
-})
+  return config;
+});
 
-export default api
+export default api;
