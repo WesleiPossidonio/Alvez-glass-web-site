@@ -18,7 +18,6 @@ const schema = z.object({
   order_number: z.string().nonempty("Número do pedido é obrigatório"),
   status_description: z.string().nonempty("Descrição do status é obrigatória"),
   status: z.string().nonempty("Status é obrigatório"),
-  total: z.coerce.number().min(0, "Total inválido"),
 
   products: z
     .array(
@@ -46,7 +45,6 @@ export const OrderFormDialog = ({ clientId }: OrderFormDialogProps) => {
       order_number: "",
       status_description: "",
       status: "",
-      total: 0,
       products: [{ product_name: "", quantity: 1, price: 0 }],
     },
   });
@@ -55,6 +53,7 @@ export const OrderFormDialog = ({ clientId }: OrderFormDialogProps) => {
     control,
     name: "products",
   });
+
   const { handleCreateOrderProduct } = useOrderProduct();
 
   const { fields, append, remove } = useFieldArray({
@@ -82,12 +81,12 @@ export const OrderFormDialog = ({ clientId }: OrderFormDialogProps) => {
   return (
     <DialogContent
       className="w-full h-full md:max-w-[90vw] md:h-[90vh] 
-    flex items-center justify-center p-0"
+    flex items-center justify-center p-0 "
     >
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full h-full flex flex-col overflow-y-auto
-         bg-white p-8 rounded-xl shadow space-y-6"
+         bg-white p-8 rounded-xl shadow space-y-6 relative"
       >
         <div className="mb-15">
           <h2 className="text-2xl font-semibold">Cadastro de Pedido</h2>
@@ -112,23 +111,15 @@ export const OrderFormDialog = ({ clientId }: OrderFormDialogProps) => {
             )}
           </label>
 
-          <label className="text-sm font-medium text-gray-700">
-            Total do Pedido
-            <Input
-              className="mt-1 shadow-sm bg-base-blue 
-            cursor-not-allowed text-white font-bold"
-              readOnly
-              type="number"
-              placeholder="Total"
-              {...register("total", { valueAsNumber: true })}
-              value={total}
-            />
-            {errors.total && (
-              <p className="text-red-600 text-sm mt-1">
-                {errors.total.message}
-              </p>
-            )}
-          </label>
+          <div
+            className="w-44 h-18 p-2 rounded-md space-y-0.5 absolute top-18 
+            right-15 bg-base-blue "
+          >
+            <p className="text-sm text-white font-semibold">Total do Pedido</p>
+            <div className="text-2xl font-bold text-white">
+              R$ {total.toFixed(2)}
+            </div>
+          </div>
 
           <label className="text-sm font-medium text-gray-700">
             Status do Pedido

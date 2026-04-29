@@ -1,15 +1,13 @@
-import { useForm, useFieldArray, type Resolver, Controller } from "react-hook-form";
+import { useForm, useFieldArray, type Resolver } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { DialogContent } from "@/components/ui/dialog";
 import { Plus, Trash2 } from "lucide-react";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useClient } from "@/hooks/useClient";
 import { Textarea } from "@/components/ui/textarea";
 import { useOrderProduct } from "@/hooks/useOrderProducts";
-
+import { useWatch } from "react-hook-form";
 interface Product {
   product_name: string;
   quantity: number;
@@ -33,7 +31,7 @@ const schema = z.object({
         product_name: z.string().nonempty("Nome do produto é obrigatório"),
         quantity: z.coerce.number().min(1, "Quantidade obrigatória"),
         price: z.coerce.number().min(0, "Preço obrigatório"),
-      })
+      }),
     )
     .min(1, "Adicione pelo menos 1 produto"),
 });
@@ -41,9 +39,8 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
-  const { listOrderProduct } = useOrderProduct()
-
-  const orderToUpdate = listOrderProduct.find(order => order.id === id)
+  const { listOrderProduct } = useOrderProduct();
+  const orderToUpdate = listOrderProduct.find((order) => order.id === id);
 
   const {
     register,
@@ -58,36 +55,41 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
       order_number: orderToUpdate?.order_number || "",
       status_description: orderToUpdate?.status_description || "",
       status: orderToUpdate?.status || "",
-      total: orderToUpdate?.total || 0,
-      products:
-        orderToUpdate?.products?.length
-          ? orderToUpdate.products.map((p: Product) => ({
+      products: orderToUpdate?.products?.length
+        ? orderToUpdate.products.map((p: Product) => ({
             product_name: p.product_name || "",
             quantity: p.quantity || 1,
             price: p.price || 0,
           }))
-          : [{ product_name: "", quantity: 1, price: 0 }],
+        : [{ product_name: "", quantity: 1, price: 0 }],
     },
   });
 
-  const { listClients } = useClient()
-  const { handleUpdateOrderProduct } = useOrderProduct()
+  const products = useWatch({
+    control,
+    name: "products",
+  });
 
+  const { handleUpdateOrderProduct } = useOrderProduct();
   const { fields, append, remove } = useFieldArray({
     control,
     name: "products",
   });
 
+  const total = (products || []).reduce((acc, product) => {
+    return acc + product.quantity * product.price;
+  }, 0);
+
   const onSubmit = (data: FormValues) => {
     const payload = {
       id: id,
       ...data,
-      products: data.products.filter(
-        (p) => p.product_name && p.quantity > 0 && p.price > 0
-      ).map(p => ({
-        ...p,
-        id: orderToUpdate?.id || ""
-      })),
+      products: data.products
+        .filter((p) => p.product_name && p.quantity > 0 && p.price > 0)
+        .map((p) => ({
+          ...p,
+          id: orderToUpdate?.id || "",
+        })),
     };
 
     handleUpdateOrderProduct(payload);
@@ -100,65 +102,53 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
         onSubmit={handleSubmit(onSubmit)}
         className="w-full h-full flex flex-col overflow-y-auto bg-white p-8 rounded-xl shadow space-y-6"
       >
-        <h2 className="text-xl font-semibold">Cadastro de Pedido</h2>
-
+        <div>
+          <h2 className="text-2xl font-semibold">Atualizar status do pedido</h2>
+          <p>Atualize o status do pedido abaixo</p>
+        </div>
         {/* 🧾 Campos principais */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <Controller
-              name="client_id"
-              control={control}
-              render={({ field }) => (
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <SelectTrigger className='w-full p-5'>
-                    <SelectValue placeholder='Selecione o Nome do Client' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      {listClients.map(model => (
-                        <SelectItem key={model.id} value={String(model.id)}>
-                          {model.name}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              )}
+          <label className="text-sm font-medium text-gray-700">
+            Número do Pedido
+            <Input
+              placeholder="Número do Pedido"
+              {...register("order_number")}
             />
-          </div>
-
-          <div>
-            <Input placeholder="Número do Pedido" {...register("order_number")} />
             {errors.order_number && (
               <p className="text-red-600 text-sm mt-1">
                 {errors.order_number.message}
               </p>
             )}
-          </div>
+          </label>
 
-          <div>
+          <label className="text-sm font-medium text-gray-700">
+            Total do Pedido
             <Input
+              className="mt-1 shadow-sm bg-base-blue 
+            cursor-not-allowed text-white font-bold"
+              readOnly
               type="number"
               placeholder="Total"
               {...register("total", { valueAsNumber: true })}
+              value={total}
             />
             {errors.total && (
               <p className="text-red-600 text-sm mt-1">
                 {errors.total.message}
               </p>
             )}
-          </div>
-
-          <div>
+          </label>
+          <label>
             <Input placeholder="Status" {...register("status")} />
             {errors.status && (
               <p className="text-red-600 text-sm mt-1">
                 {errors.status.message}
               </p>
             )}
-          </div>
+          </label>
 
-          <div>
+          <label className="text-sm font-medium text-gray-700">
+            Descrição do Status
             <Textarea
               placeholder="Descrição do Status"
               {...register("status_description")}
@@ -168,7 +158,7 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
                 {errors.status_description.message}
               </p>
             )}
-          </div>
+          </label>
         </div>
 
         {/* 🛒 Lista de Produtos */}
@@ -178,7 +168,9 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
             <Button
               type="button"
               variant="outline"
-              onClick={() => append({ product_name: "", quantity: 1, price: 0 })}
+              onClick={() =>
+                append({ product_name: "", quantity: 1, price: 0 })
+              }
               className="flex items-center gap-2"
             >
               <Plus size={16} /> Adicionar Produto
@@ -188,9 +180,10 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
           {fields.map((field, index) => (
             <div
               key={field.id}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-md bg-gray-50 relative"
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-md  bg-gray-50 relative"
             >
-              <div>
+              <label className="text-sm font-medium text-gray-700">
+                Nome do Produto
                 <Input
                   placeholder="Nome do Produto"
                   {...register(`products.${index}.product_name` as const)}
@@ -200,9 +193,10 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
                     {errors.products[index]?.product_name?.message}
                   </p>
                 )}
-              </div>
+              </label>
 
-              <div>
+              <label className="text-sm font-medium text-gray-700">
+                Quantidade
                 <Input
                   type="number"
                   placeholder="Quantidade"
@@ -215,9 +209,10 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
                     {errors.products[index]?.quantity?.message}
                   </p>
                 )}
-              </div>
+              </label>
 
-              <div>
+              <label className="text-sm font-medium text-gray-700">
+                Preço
                 <Input
                   type="number"
                   placeholder="Preço"
@@ -230,7 +225,7 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
                     {errors.products[index]?.price?.message}
                   </p>
                 )}
-              </div>
+              </label>
 
               {fields.length > 1 && (
                 <button
@@ -245,14 +240,16 @@ export const UpdateOrderFormDialog = ({ id }: UpdateOrderFormDialogProps) => {
           ))}
 
           {errors.products && (
-            <p className="text-red-600 text-sm mt-2">{errors.products.message}</p>
+            <p className="text-red-600 text-sm mt-2">
+              {errors.products.message}
+            </p>
           )}
         </div>
 
         <div className="flex justify-end pt-4">
           <Button
             type="submit"
-            className="bg-base-blue hover:bg-blue-700 text-white py-6 font-semibold"
+            className="bg-base-blue hover:bg-base-blue-hover text-white py-6 font-semibold cursor-pointer"
           >
             Enviar Pedido
           </Button>
