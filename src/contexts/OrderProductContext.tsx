@@ -22,19 +22,21 @@ interface AddOrderProductProps {
   }>;
 }
 
-interface OrderProductProps {
+interface UpdateOrderProductProps {
   id: string;
   order_number: string;
   client_id: string;
   status_description: string;
   status: string;
-  total: number;
   products: Array<{
     id: string;
     product_name: string;
     quantity: number;
     price: number;
   }>;
+}
+interface OrderProductProps extends UpdateOrderProductProps {
+  total: number;
 }
 
 interface ProjectImageUploadProps {
@@ -97,7 +99,7 @@ export const OrderProductContextProvider = ({
   );
 
   const handleUpdateOrderProduct = useCallback(
-    async (data: OrderProductProps) => {
+    async (data: UpdateOrderProductProps) => {
       const { id } = data;
 
       try {
