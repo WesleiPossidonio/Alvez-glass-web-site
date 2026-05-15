@@ -28,6 +28,7 @@ interface OrderProductProps {
   client_id: string;
   status_description: string;
   status: string;
+  total: number;
   products: Array<{
     id: string;
     product_name: string;
