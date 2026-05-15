@@ -1,4 +1,10 @@
-import { DashboardClient, Home, LoginClient, PrivacyPolicy, UpdatePassword } from "@/pages";
+import {
+  DashboardClient,
+  Home,
+  LoginClient,
+  PrivacyPolicy,
+  UpdatePassword,
+} from "@/pages";
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoutes } from "./privateRoutes";
 
@@ -13,15 +19,16 @@ export const AppRoutes = () => {
       <Route path="/login" element={<LoginClient />} />
       <Route path="/admin" element={<UpdatePassword />} />
       <Route path="/cadastrar-senha" element={<UpdatePassword />} />
+      <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
 
       <Route path="/dashboard-client" element={<PrivateRoutesClients />}>
         <Route index element={<DashboardClient />} />
       </Route>
 
-      <Route path="/dashboard-admin" element={<PrivateRoutes />} >
+      <Route path="/dashboard-admin" element={<PrivateRoutes />}>
         <Route index element={<AdminDashboard />} />
       </Route>
       <Route path="/politica-privacidade" element={<PrivacyPolicy />} />
     </Routes>
   );
-}
+};

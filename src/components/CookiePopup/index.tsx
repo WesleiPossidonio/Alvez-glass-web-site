@@ -13,6 +13,19 @@ export const CookiePopup = () => {
     }
   }, []);
 
+  // BLOQUEAR SCROLL DA PÁGINA
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
+
   const handleAccept = () => {
     localStorage.setItem(STORAGE_KEY, "true");
     setOpen(false);
@@ -28,7 +41,6 @@ export const CookiePopup = () => {
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[90%] shadow-lg">
       <div className="bg-white shadow-2xl rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-fadeIn">
-
         {/* Texto */}
         <div className="flex-1">
           <h2 className="text-lg font-semibold text-gray-900">
