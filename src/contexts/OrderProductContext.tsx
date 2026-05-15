@@ -47,7 +47,7 @@ interface ProjectImageUploadProps {
 
 interface OrderProductContextType {
   handleCreateOrderProduct: (data: AddOrderProductProps) => Promise<void>;
-  handleUpdateOrderProduct: (data: OrderProductProps) => Promise<void>;
+  handleUpdateOrderProduct: (data: UpdateOrderProductProps) => Promise<void>;
   handleProjectImageUpload: (data: ProjectImageUploadProps) => Promise<void>;
   listOrderProduct: OrderProductProps[];
 }
