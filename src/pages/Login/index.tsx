@@ -8,8 +8,8 @@ import { useState } from "react";
 import { useUser } from "@/hooks/userUser";
 import { toast } from "react-toastify";
 
-import Image from "@/assets/BannerHero.webp";
 import logo from "@/assets/Logo.png";
+import Image from "@/assets/BannerHero.webp";
 
 const confirmOrderLoginValidationSchema = zod.object({
   email: zod.string().email("Informe o seu email"),
