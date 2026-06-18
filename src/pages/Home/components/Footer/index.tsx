@@ -1,7 +1,8 @@
-import ImageLogo from "@/assets/Logo2.png";
 import { EnvelopeIcon } from "@phosphor-icons/react";
 import { MapPin, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+import ImageLogo from "@/assets/Logo2.png";
 
 export const Footer = () => {
   const navigate = useNavigate();
@@ -13,12 +14,12 @@ export const Footer = () => {
         <div className="md:col-span-2 flex flex-col gap-4">
           <img src={ImageLogo} className="w-32" alt="alves-glass-logo" />
 
-          <p className="text-sm text-neutral-700 leading-relaxed max-w-sm">
+          <p className="text-sm md:text-md lg:text-lg text-neutral-700 leading-relaxed max-w-sm">
             Atendimento personalizado e compromisso com a excelência em cada
             detalhe.
           </p>
 
-          <p className="text-xs text-neutral-900 mt-2">
+          <p className="text-xs md:text-sm lg:text-md text-neutral-900 mt-2">
             Copyright © 2026 |
             <span className="font-medium text-neutral-700">
               {" "}
@@ -29,7 +30,7 @@ export const Footer = () => {
 
         {/* NAVEGAÇÃO */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900">
+          <h2 className="text-sm md:text-md lg:text-lg font-semibold uppercase tracking-wider text-neutral-900">
             Navegação
           </h2>
 
@@ -44,7 +45,7 @@ export const Footer = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm text-neutral-700 hover:text-base-blue-hover transition-colors"
+                className="text-sm md:text-md lg:text-lg text-neutral-700 hover:text-base-blue-hover transition-colors"
               >
                 {item.label}
               </a>
@@ -54,11 +55,11 @@ export const Footer = () => {
 
         {/* CONTATOS */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900">
+          <h2 className="text-sm md:text-md lg:text-lg font-semibold uppercase tracking-wider text-neutral-900">
             Contatos
           </h2>
 
-          <div className="flex flex-col gap-4 text-sm">
+          <div className="flex flex-col gap-4 text-sm md:text-md lg:text-lg">
             <a
               href="mailto:Alves.glass01@gmail.com"
               className="flex items-center gap-2 text-neutral-700 hover:text-base-blue-hover transition-colors"
@@ -76,7 +77,9 @@ export const Footer = () => {
             </a>
 
             <div className="flex items-start gap-2 text-neutral-700">
-              <MapPin className="size-5 mt-1" />
+              <span>
+                <MapPin className="size-5 mt-1" />
+              </span>
               <p className="leading-relaxed">
                 R. Otávio Laurindo de Azevedo, N° 1040 <br />
                 Praia Campista, Macaé - RJ
@@ -87,14 +90,14 @@ export const Footer = () => {
 
         {/* SUPORTE */}
         <div className="flex flex-col gap-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900">
+          <h2 className="text-sm md:text-md lg:text-lg font-semibold uppercase tracking-wider text-neutral-900">
             Suporte
           </h2>
 
           <div className="flex flex-col gap-3">
             <a
               onClick={() => navigate("/politica-de-privacidade")}
-              className="text-sm text-neutral-700 hover:text-base-blue-hover transition-colors cursor-pointer"
+              className="text-sm md:text-md lg:text-lg text-neutral-700 hover:text-base-blue-hover transition-colors cursor-pointer"
             >
               Política de Privacidade
             </a>

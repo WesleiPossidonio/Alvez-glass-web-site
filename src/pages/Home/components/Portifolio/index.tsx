@@ -1,44 +1,43 @@
-import Aos from 'aos';
-import { useEffect } from 'react';
+import Aos from "aos";
+import { useEffect } from "react";
 
-import imageCozinha from '@/assets/cozinhaTwo.jpg'
-import imageSacada from '@/assets/IMG_9432.jpg'
-import imagePorteiro from '@/assets/IMG_9638.jpg'
-import imageEscada from '@/assets/IMG_9882.jpg'
-import imageMoveis from '@/assets/IMG_8615.jpg'
-import ImageTwo from '@/assets/IMG_8173.jpg'
-
+import imageCozinha from "@/assets/cozinhaTwo.jpg";
+import imageSacada from "@/assets/IMG_9432.webp";
+import imagePorteiro from "@/assets/IMG_9638.jpg";
+import imageEscada from "@/assets/IMG_9882.webp";
+import imageMoveis from "@/assets/IMG_8615.jpg";
+import ImageTwo from "@/assets/IMG_8173.webp";
 
 const galleryImages = [
   {
     id: 1,
     src: imageMoveis,
-    alt: 'Cabine de duche com moldura de metal preto',
+    alt: "Cabine de duche com moldura de metal preto",
   },
   {
     id: 2,
     src: imageSacada,
-    alt: 'Interior moderno com janelas de vidro',
+    alt: "Interior moderno com janelas de vidro",
   },
   {
     id: 3,
     src: imageEscada,
-    alt: 'Mockup de logotipo em parede de escritório',
+    alt: "Mockup de logotipo em parede de escritório",
   },
   {
     id: 4,
     src: imagePorteiro,
-    alt: 'Cozinha minimalista branca',
+    alt: "Cozinha minimalista branca",
   },
   {
     id: 5,
     src: ImageTwo,
-    alt: 'Entrada de casa com escadas estilo japonês',
+    alt: "Entrada de casa com escadas estilo japonês",
   },
   {
     id: 6,
     src: imageCozinha,
-    alt: 'Armários modernos com gavetas retráteis',
+    alt: "Armários modernos com gavetas retráteis",
   },
 ];
 
@@ -48,18 +47,21 @@ export const Portifolio = () => {
   }, []);
 
   return (
-    <section className="w-full min-h-[35rem] h-auto flex items-center p-8 lg:p-16 " id='portfolio'>
+    <section
+      className="w-full min-h-[35rem] h-auto flex items-center p-8 lg:p-16 "
+      id="portfolio"
+    >
       <div className="container mx-auto h-full flex flex-col gap-10">
-
         {/* Título */}
-        <div className="w-full flex flex-col items-center justify-center gap-1 text-center">
+        <div className="w-full flex flex-col items-center justify-center gap-2 md:gap-4 text-center">
           <p className="font-bold text-base-blue">Portfólio</p>
-          <h3 className="text-2xl md:text-4xl font-semibold max-w-3xl">
-            Nosso portfólio de projetos realizados com{' '}
+          <h3 className="text-2xl md:text-5xl font-semibold max-w-6xl">
+            Nosso portfólio de projetos realizados com{" "}
             <span className="text-base-blue">excelência e inovação</span>
           </h3>
-          <p className="text-gray-500 text-sm max-w-xl">
-            Veja abaixo uma seleção dos nossos melhores trabalhos organizados em uma galeria moderna e responsiva.
+          <p className="text-gray-500 text-sm md:text-md lg:text-lg max-w-xl">
+            Veja abaixo uma seleção dos nossos melhores trabalhos organizados em
+            uma galeria moderna e responsiva.
           </p>
         </div>
 
@@ -71,7 +73,11 @@ export const Portifolio = () => {
         >
           {/* Coluna 1 */}
           <div className="flex col-span-4 md:col-span-1 flex-col gap-5">
-            <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={galleryImages[0].src}
                 alt={galleryImages[0].alt}
@@ -84,7 +90,11 @@ export const Portifolio = () => {
 
           {/* Coluna 2 */}
           <div className=" md:flex hidden md:flex-col col-span-4 md:col-span-1 gap-5">
-            <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={galleryImages[1].src}
                 alt={galleryImages[1].alt}
@@ -94,8 +104,11 @@ export const Portifolio = () => {
               />
             </a>
 
-
-            <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={galleryImages[2].src}
                 alt={galleryImages[2].alt}
@@ -108,11 +121,19 @@ export const Portifolio = () => {
 
           {/* Card de imagens Mobile */}
 
-          <div className='flex items-center col-span-4 md:hidden justify-center gap-4
-          '>
-            <div className="w-full
-             flex flex-col col-span-4 md:col-span-1 gap-5">
-              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+          <div
+            className="flex items-center col-span-4 md:hidden justify-center gap-4
+          "
+          >
+            <div
+              className="w-full
+             flex flex-col col-span-4 md:col-span-1 gap-5"
+            >
+              <a
+                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={galleryImages[1].src}
                   alt={galleryImages[1].alt}
@@ -122,8 +143,11 @@ export const Portifolio = () => {
                 />
               </a>
 
-
-              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={galleryImages[2].src}
                   alt={galleryImages[2].alt}
@@ -135,7 +159,11 @@ export const Portifolio = () => {
             </div>
 
             <div className="w-full flex flex-col col-span-2 md:col-span-1 gap-5">
-              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={galleryImages[4].src}
                   alt={galleryImages[4].alt}
@@ -145,7 +173,11 @@ export const Portifolio = () => {
                 />
               </a>
 
-              <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={galleryImages[5].src}
                   alt={galleryImages[5].alt}
@@ -155,13 +187,15 @@ export const Portifolio = () => {
                 />
               </a>
             </div>
-
-
           </div>
 
           {/* Coluna 3 */}
           <div className="col-span-4 md:col-span-1 gap-5">
-            <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={galleryImages[3].src}
                 alt={galleryImages[3].alt}
@@ -174,7 +208,11 @@ export const Portifolio = () => {
 
           {/* Coluna 4 */}
           <div className="md:flex hidden flex-col  col-span-2 md:col-span-1 gap-5">
-            <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={galleryImages[4].src}
                 alt={galleryImages[4].alt}
@@ -184,7 +222,11 @@ export const Portifolio = () => {
               />
             </a>
 
-            <a href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={galleryImages[5].src}
                 alt={galleryImages[5].alt}

@@ -12,7 +12,7 @@ import {
   HardDrive,
   Lock,
   Bug,
-  Sun
+  Sun,
 } from "lucide-react";
 
 export type CarouselItemType = {
@@ -27,23 +27,24 @@ export type CarouselItemType = {
 const whatsappBase = "https://wa.me/22981445335?text=";
 
 const makeMessage = (service: string) =>
-  encodeURIComponent(`Olá! Tenho interesse no serviço de ${service}. Pode me enviar mais informações?`);
+  encodeURIComponent(
+    `Olá! Tenho interesse no serviço de ${service}. Pode me enviar mais informações?`,
+  );
 
-import Vidros from '@/assets/Porta de vidro para sala_ 9 modelos para se inspirar.jpeg'
-import Esquadrilha from '@/assets/esquadrilahs.jpeg'
-import Moveis from '@/assets/moveis-planejados.jpeg'
-import Espelho from '@/assets/espelho.jpeg'
-import Corrimao from '@/assets/vista-da-estrutura-construida-da-escada_1048944-4472968.jpg'
-import Mosquiteiro from '@/assets/tela-mosquiteiro-.jpg'
-import Sacada from '@/assets/sacada.jpeg'
-import Gradil from '@/assets/Gradil.jpg'
-import Portas from '@/assets/PortasECM.jpg'
-import GuardaCopo from '@/assets/Guarda-copo.jpg'
-import Insulfilm from '@/assets/Insulfilm Jateado Residencial.jpeg'
-import Pergolado from '@/assets/pergolado.jpeg'
-import PeledeVidro from '@/assets/pele de vidro.jpg'
-import inox from '@/assets/inox.jpeg'
-
+import Vidros from "@/assets/Porta de vidro para sala_ 9 modelos para se inspirar.jpeg";
+import Esquadrilha from "@/assets/esquadrilahs.jpeg";
+import Moveis from "@/assets/moveis-planejados.jpeg";
+import Espelho from "@/assets/espelho.jpeg";
+import Corrimao from "@/assets/vista-da-estrutura-construida-da-escada_1048944-4472968.jpg";
+import Mosquiteiro from "@/assets/tela-mosquiteiro-.jpg";
+import Sacada from "@/assets/sacada.jpeg";
+import Gradil from "@/assets/Gradil.jpg";
+import Portas from "@/assets/PortasECM.jpg";
+import GuardaCopo from "@/assets/Guarda-copo.jpg";
+import Insulfilm from "@/assets/Insulfilm Jateado Residencial.jpeg";
+import Pergolado from "@/assets/pergolado.jpeg";
+import PeledeVidro from "@/assets/pele de vidro.jpg";
+import inox from "@/assets/inox.jpeg";
 
 export const carouselItems: CarouselItemType[] = [
   {
