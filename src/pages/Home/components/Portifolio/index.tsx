@@ -1,11 +1,11 @@
 import Aos from "aos";
 import { useEffect } from "react";
 
-import imageCozinha from "@/assets/cozinhaTwo.jpg";
+import imageCozinha from "@/assets/cozinhaTwo.webp";
 import imageSacada from "@/assets/IMG_9432.webp";
-import imagePorteiro from "@/assets/IMG_9638.jpg";
+import imagePorteiro from "@/assets/IMG_9638.webp";
 import imageEscada from "@/assets/IMG_9882.webp";
-import imageMoveis from "@/assets/IMG_8615.jpg";
+import imageMoveis from "@/assets/IMG_8615.webp";
 import ImageTwo from "@/assets/IMG_8173.webp";
 
 const galleryImages = [

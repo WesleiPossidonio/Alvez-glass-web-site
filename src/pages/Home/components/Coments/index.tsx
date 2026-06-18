@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 
 import "react-google-reviews/dist/index.css";
-import image from "@/assets/BannerHero.jpg";
+import image from "@/assets/BannerHero.webp";
 
 export const Coments = () => {
   const featurableWidgetId = "36bd4ab2-a057-4c3b-8d42-f4f49bc71a98";

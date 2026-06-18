@@ -6,7 +6,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-import ImgBanner from "@/assets/bg-bannerOne.jpg";
+import ImgBanner from "@/assets/bg-bannerOne.webp";
 
 export const Hero = () => {
   return (

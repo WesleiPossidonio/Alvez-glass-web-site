@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import image from "@/assets/BannerHero.jpg";
+import image from "@/assets/BannerHero.webp";
 
 export const CallAction = () => {
   return (

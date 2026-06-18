@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Aos from "aos";
 
-import Image from "@/assets/ImageAbout.jpg";
+import Image from "@/assets/ImageAbout.webp";
 import Icones from "@/assets/IconsAboutOne.svg";
 
 export const AdjectsSection = () => {

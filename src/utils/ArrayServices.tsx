@@ -31,20 +31,20 @@ const makeMessage = (service: string) =>
     `Olá! Tenho interesse no serviço de ${service}. Pode me enviar mais informações?`,
   );
 
-import Vidros from "@/assets/Porta de vidro para sala_ 9 modelos para se inspirar.jpeg";
-import Esquadrilha from "@/assets/esquadrilahs.jpeg";
-import Moveis from "@/assets/moveis-planejados.jpeg";
-import Espelho from "@/assets/espelho.jpeg";
-import Corrimao from "@/assets/vista-da-estrutura-construida-da-escada_1048944-4472968.jpg";
+import Vidros from "@/assets/Porta de vidro para sala_ 9 modelos para se inspirar.webp";
+import Esquadrilha from "@/assets/esquadrilahs.webp";
+import Moveis from "@/assets/moveis-planejados.webp";
+import Espelho from "@/assets/espelho.webp";
+import Corrimao from "@/assets/vista-da-estrutura-construida-da-escada_1048944-4472968.webp";
 import Mosquiteiro from "@/assets/tela-mosquiteiro-.jpg";
-import Sacada from "@/assets/sacada.jpeg";
-import Gradil from "@/assets/Gradil.jpg";
-import Portas from "@/assets/PortasECM.jpg";
-import GuardaCopo from "@/assets/Guarda-copo.jpg";
-import Insulfilm from "@/assets/Insulfilm Jateado Residencial.jpeg";
-import Pergolado from "@/assets/pergolado.jpeg";
+import Sacada from "@/assets/sacada.webp";
+import Gradil from "@/assets/Gradil.webp";
+import Portas from "@/assets/PortasECM.webp";
+import GuardaCopo from "@/assets/Guarda-copo.webp";
+import Insulfilm from "@/assets/Insulfilm Jateado Residencial.webp";
+import Pergolado from "@/assets/pergolado.webp";
 import PeledeVidro from "@/assets/pele de vidro.jpg";
-import inox from "@/assets/inox.jpeg";
+import inox from "@/assets/inox.webp";
 
 export const carouselItems: CarouselItemType[] = [
   {

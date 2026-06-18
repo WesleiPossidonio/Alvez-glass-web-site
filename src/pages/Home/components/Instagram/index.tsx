@@ -2,7 +2,7 @@ import Aos from "aos";
 import { useEffect } from "react";
 import { FaInstagram } from "react-icons/fa";
 
-import Image from "@/assets/ImageAbout.jpg";
+import Image from "@/assets/ImageAbout.webp";
 
 export const InstagramSection = () => {
   useEffect(() => {

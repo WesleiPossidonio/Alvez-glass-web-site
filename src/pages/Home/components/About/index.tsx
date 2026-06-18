@@ -3,7 +3,7 @@ import Aos from "aos";
 import { useEffect } from "react";
 
 import Pergolado from "@/assets/ImageAboutMe-Two.webp";
-import Esquadrilha from "@/assets/esquadrilahs.jpeg";
+import Esquadrilha from "@/assets/esquadrilahs.webp";
 import Moveis from "@/assets/ImageAboutMeTree.webp";
 
 export const About = () => {
