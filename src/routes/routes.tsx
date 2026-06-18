@@ -21,7 +21,7 @@ export const AppRoutes = () => {
       <Route path="/cadastrar-senha" element={<UpdatePassword />} />
       <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
 
-      <Route path="/dashboard-client" element={<PrivateRoutesClients />}>
+      <Route path="/area-cliente" element={<PrivateRoutesClients />}>
         <Route index element={<DashboardClient />} />
       </Route>
 

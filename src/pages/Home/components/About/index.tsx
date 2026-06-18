@@ -59,7 +59,7 @@ export const About = () => {
           data-aos-duration="1000"
         >
           <div className="space-y-1">
-            <h3 className="text-md font-bold text-base-blue">- Sobre Nós</h3>
+            <p className="text-md font-bold text-base-blue">- Sobre Nós</p>
             <h1 className=" text-2xl md:text-5xl font-bold text-neutral-700">
               Soluções sob medida em alumínio, vidro e móveis{" "}
               <span className="text-base-blue"> com precisão, elegância.</span>
