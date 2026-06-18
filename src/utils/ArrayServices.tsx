@@ -36,14 +36,14 @@ import Esquadrilha from "@/assets/esquadrilahs.webp";
 import Moveis from "@/assets/moveis-planejados.webp";
 import Espelho from "@/assets/espelho.webp";
 import Corrimao from "@/assets/vista-da-estrutura-construida-da-escada_1048944-4472968.webp";
-import Mosquiteiro from "@/assets/tela-mosquiteiro-.jpg";
+import Mosquiteiro from "@/assets/tela-mosquiteiro.webp";
 import Sacada from "@/assets/sacada.webp";
 import Gradil from "@/assets/Gradil.webp";
 import Portas from "@/assets/PortasECM.webp";
 import GuardaCopo from "@/assets/Guarda-copo.webp";
 import Insulfilm from "@/assets/Insulfilm Jateado Residencial.webp";
 import Pergolado from "@/assets/pergolado.webp";
-import PeledeVidro from "@/assets/pele de vidro.jpg";
+import PeledeVidro from "@/assets/pele de vidro.webp";
 import inox from "@/assets/inox.webp";
 
 export const carouselItems: CarouselItemType[] = [
