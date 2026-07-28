@@ -5,12 +5,13 @@ import {
   PrivacyPolicy,
   UpdatePassword,
 } from "@/pages";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { PrivateRoutes } from "./privateRoutes";
 
-import { PrivateRoutesClients } from "./privateRoutesClients";
+// import { PrivateRoutesClients } from "./privateRoutesClients";
 
 import { AdminDashboard } from "@/pages/AdminDashboard/index.";
+import { PrivateRoutesClients } from "./privateRoutesClients";
 
 export const AppRoutes = () => {
   return (
@@ -28,6 +29,7 @@ export const AppRoutes = () => {
       <Route path="/dashboard-admin" element={<PrivateRoutes />}>
         <Route index element={<AdminDashboard />} />
       </Route>
+      
       <Route path="/politica-privacidade" element={<PrivacyPolicy />} />
     </Routes>
   );
