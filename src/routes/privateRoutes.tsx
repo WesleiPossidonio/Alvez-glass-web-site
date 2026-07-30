@@ -1,20 +1,17 @@
-
-import { Navigate, Outlet } from 'react-router-dom'
-import { decodeToken } from '@/utils/DecodeToken'
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "@/hooks/authSession";
+import { SplinePointerIcon } from "lucide-react";
 
 export const PrivateRoutes = () => {
+  const { loading, authenticated, role } = useAuth();
 
-  const token = localStorage.getItem(
-    'AlvesClass:userData1.0',
-  )
+  if (loading) {
+    <SplinePointerIcon />
+  }
 
-  const dataUser = decodeToken(token)
+  if (!authenticated || role !== "admin") {
+    return <Navigate to="/admin" replace />;
+  }
 
-  return token !== null && (dataUser?.role === 'admin') ? (
-    <>
-      <Outlet />
-    </>
-  ) : (
-    <Navigate to="/login" replace />
-  )
-}
+  return <Outlet />;
+};

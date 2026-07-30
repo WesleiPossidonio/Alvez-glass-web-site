@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useClient } from "@/hooks/useClient";
+import { useClientManagement } from "@/hooks/ClientManagement";
 
 interface UpdateDialogClientsProps {
   id: string;
@@ -34,7 +34,7 @@ const updateClientFormSchema = zod.object({
 type updateClientFormData = zod.infer<typeof updateClientFormSchema>;
 
 export const UpdateDialogClients = ({ id }: UpdateDialogClientsProps) => {
-  const { handleUpdateClient, listClients } = useClient();
+  const { handleUpdateClient, listClients } = useClientManagement();
 
   const clientToUpdate = listClients.find((client) => client.id === id);
 

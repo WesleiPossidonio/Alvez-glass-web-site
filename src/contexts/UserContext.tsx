@@ -4,19 +4,10 @@ import {
   createContext,
   useState,
   useCallback,
-  useEffect,
 } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import api from '../services/api'
-import { decodeToken } from '../utils/DecodeToken'
-
-interface UserLoginProps {
-  email: string
-  password: string
-  typeSessions?: string
-}
 
 export interface ResponseDataUser {
   admin: boolean
@@ -46,18 +37,18 @@ interface ConfirmMailProps {
   email: string
 }
 
-interface UpdatePasswordProps {
-  password: string
-  confirmPassword: string
-  updateNumber: string
-}
+// interface UpdatePasswordProps {
+//   password: string
+//   confirmPassword: string
+//   updateNumber: string
+// }
 
 interface UserContextType {
   handleCreateUser: (data: CreaterUser) => Promise<void>
-  handleLoginUser: (data: UserLoginProps) => Promise<void>
   confirmMail: (data: ConfirmMailProps) => Promise<void>
-  updatePassword: (data: UpdatePasswordProps) => Promise<void>
+  // updatePassword: (data: UpdatePasswordProps) => Promise<void>
   handleUpdateUser: (data: UpdateUser) => Promise<void>
+  setUserDataLogin: (data: ResponseDataUser) => void
   userDataLogin: ResponseDataUser
 }
 
@@ -68,64 +59,9 @@ interface UserContextProviderProps {
 export const UserContext = createContext({} as UserContextType)
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
-  const navigate = useNavigate()
   const [userDataLogin, setUserDataLogin] = useState<ResponseDataUser>(
     {} as ResponseDataUser
   )
-
-  const handleLoginUser = useCallback(
-    async (data: UserLoginProps) => {
-      const { email, password } = data
-
-      try {
-        const response = await toast.promise(
-          api.post('session', { email, password }),
-          {
-            pending: 'Verificando seus dados',
-            success: 'Seja bem-vindo(a)!',
-            error: 'Verifique o nome do usuário e senha 🤯',
-          }
-        )
-        const dataUser = response.data
-        const decodeUserId = decodeToken(dataUser)
-        await localStorage.setItem('AlvesClass:userData1.0', JSON.stringify(dataUser))
-
-        setUserDataLogin({ ...dataUser, id: decodeUserId?.id })
-
-        switch (dataUser.role) {
-          case 'client':
-            navigate('/dashboard-client')
-            break
-          case 'admin':
-            navigate('/dashboard-admin')
-            break
-          default:
-            navigate('/login')
-        }
-
-      } catch (error) {
-        console.log(error)
-      }
-    },
-    [navigate]
-  )
-
-  useEffect(() => {
-    const LoadDataUser = async () => {
-      const dataUserLogin = await localStorage.getItem('AlvesClass:userData1.0')
-
-      if (dataUserLogin) {
-        const { token, name, email }: ResponseDataUser = JSON.parse(dataUserLogin)
-        const decodeUserId = decodeToken(token)
-        if (decodeUserId !== null) {
-          setUserDataLogin({ name, email, id: decodeUserId.id, admin: false, token: token })
-        }
-      }
-    }
-
-    LoadDataUser()
-
-  }, [])
 
   const handleCreateUser = useCallback(async (data: CreaterUser) => {
     const { password, admin, name, registration, email } = data
@@ -186,38 +122,37 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
     }
   }, [])
 
-  const updatePassword = useCallback(async (data: UpdatePasswordProps) => {
-    const confirmEmailId = localStorage.getItem('AlvesClass:DataConfirmEmail')
-    const idUser = decodeToken(confirmEmailId)
+  // const updatePassword = useCallback(async (data: UpdatePasswordProps) => {
+  //   const confirmEmailId = localStorage.getItem('AlvesClass:DataConfirmEmail')
 
-    const { password, updateNumber } = data
+  //   const { password, updateNumber } = data
 
-    if (idUser) {
-      const updateData = { password, updateNumber }
+  //   if (idUser) {
+  //     const updateData = { password, updateNumber }
 
-      try {
-        await toast.promise(
-          api.patch(`updatePassword/${idUser.id}`, updateData),
-          {
-            pending: 'Verificando seus dados',
-            success: 'Senha Atualizada com Sucesso!',
-            error: 'Ops! Verifique os Dados Digitados',
-          }
-        )
-      } catch (error) {
-        console.log(error)
-      }
-    }
-  }, [])
+  //     try {
+  //       await toast.promise(
+  //         api.patch(`updatePassword/${idUser.id}`, updateData),
+  //         {
+  //           pending: 'Verificando seus dados',
+  //           success: 'Senha Atualizada com Sucesso!',
+  //           error: 'Ops! Verifique os Dados Digitados',
+  //         }
+  //       )
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  // }, [])
 
   return (
     <UserContext.Provider
       value={{
-        handleLoginUser,
         userDataLogin,
+        setUserDataLogin,
         handleCreateUser,
         confirmMail,
-        updatePassword,
+        // updatePassword,
         handleUpdateUser,
       }}
     >

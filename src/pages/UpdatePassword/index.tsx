@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 import bgAdmin from '@/assets/BgHero.webp'
 import { Lock, Mail } from 'lucide-react';
-
+import { useAuth } from '@/hooks/authSession';
 
 const validationSchema = zod.object({
   email: zod.email('Digite o seu email coretamente'),
@@ -29,7 +29,7 @@ export const UpdatePassword = () => {
     resolver: zodResolver(validationSchema),
   })
 
-  // const { updatePassword } = useClient()
+  const { loginAdmin } = useAuth()
   const [captcha, setCaptcha] = useState<string | null>(null)
 
   const handleLogin = (data: FormData) => {
@@ -39,7 +39,9 @@ export const UpdatePassword = () => {
       })
       return
     }
-   console.log(data)
+
+    const { email, password } = data
+    loginAdmin(email, password)
     reset()
   }
 
@@ -76,12 +78,14 @@ export const UpdatePassword = () => {
             />
           </div>
 
-           <div className="w-full flex justify-end gap-1 text-sm md:text-md">
-             <p className="text-neutral-100 font-semibold">Esqueci senha?</p>
-             <p className="text-neutral-100 font-bold cursor-pointer">Click aqui</p>
-           </div>
+          <div className="w-full flex justify-end gap-1 text-sm md:text-md">
+            <p className="text-neutral-100 font-semibold">Esqueci senha?</p>
+            <p className="text-neutral-100 font-bold cursor-pointer">Click aqui</p>
+          </div>
 
-          <Button type="submit" className="w-40 h-11 py-4 text-lg font-semibold cursor-pointer bg-transparent border-2 rounded-none self-center hover:bg-neutral-50 hover:text-black">Entrar</Button>
+          <Button type="submit" className="w-40 h-11 py-4 text-lg font-semibold 
+          cursor-pointer bg-transparent border-2 rounded-none self-center
+           hover:bg-neutral-50 hover:text-black active:bg-neutral-400">Entrar</Button>
         </form>
       </div>
     </section>

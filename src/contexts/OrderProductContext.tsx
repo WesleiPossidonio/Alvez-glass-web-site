@@ -67,7 +67,7 @@ export const OrderProductContextProvider = ({
 
   const getListOrderProducts = useCallback(async () => {
     try {
-      const listProducts = await api.get("getListOrderProducts");
+      const listProducts = await api.get("order/all");
       setListOrderProducts(listProducts.data);
     } catch (error) {
       console.log(error, "error no servidor");
@@ -82,7 +82,7 @@ export const OrderProductContextProvider = ({
     async (data: AddOrderProductProps) => {
       try {
         const response = await toast.promise(
-          api.post("createOrderProducts", data),
+          api.post("order", data),
           {
             pending: "Enviando Dados",
             success: "Produto Cadastrado com Sucesso!",
@@ -103,7 +103,7 @@ export const OrderProductContextProvider = ({
       const { id } = data;
 
       try {
-        await toast.promise(api.put(`updateListOrder/${id}`, data), {
+        await toast.promise(api.put(`order/${id}`, data), {
           pending: "Verificando seus dados",
           success: "Status do serviço atualisado com sucesso!",
           error: "Ops! Verifique os Dados Digitados",

@@ -5,11 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { useUser } from "@/hooks/userUser";
 import { toast } from "react-toastify";
 
 import logo from "@/assets/Logo.png";
 import Image from "@/assets/BannerHero.webp";
+import { useAuth } from "@/hooks/authSession";
 
 const confirmOrderLoginValidationSchema = zod.object({
   email: zod.string().email("Informe o seu email"),
@@ -33,7 +33,7 @@ export const LoginClient = () => {
   });
 
   const [captcha, setCaptcha] = useState<string | null>("");
-  const { handleLoginUser } = useUser();
+  const { loginClient } = useAuth();
 
   const handleCapcha = (token: string | null) => {
     setCaptcha(token);
@@ -49,12 +49,7 @@ export const LoginClient = () => {
       return;
     }
 
-    const dataLogin = {
-      email,
-      password,
-      typeSessions: "user",
-    };
-    handleLoginUser(dataLogin);
+    loginClient(email, password);
     reset();
   };
 

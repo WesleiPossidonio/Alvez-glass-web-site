@@ -1,17 +1,17 @@
 import { type ReactNode } from 'react'
-import { UserContextProvider } from './UserContext'
-import { ClientContextProvider } from './ClientContext'
-import { OrderProductContextProvider } from './OrderProductContext'
-interface AppProviderProps {
+import { AuthProvider } from './AuthContext'
+import { ApplicationProvider } from './AplicationProvider';
+export interface AppProviderProps {
   children: ReactNode
 }
 
-export const AppProvider = ({ children }: AppProviderProps) => {
+export function AppProvider({ children }: AppProviderProps) {
   return (
-    <UserContextProvider>
-      <OrderProductContextProvider>
-        <ClientContextProvider >{children}</ClientContextProvider>
-      </OrderProductContextProvider>
-    </UserContextProvider>
-  )
+    <AuthProvider>
+      <ApplicationProvider>
+        {children}
+      </ApplicationProvider>
+    </AuthProvider>
+  );
+
 }
