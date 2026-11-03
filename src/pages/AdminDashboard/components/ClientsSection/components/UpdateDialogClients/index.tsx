@@ -1,212 +1,262 @@
+
+import { useEffect, useState } from "react";
 import * as zod from "zod";
-
-import { Button } from "@/components/ui/button";
-import { DialogContent } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+
 import { useClientManagement } from "@/hooks/ClientManagement";
+
+import { Button } from "@/components/ui/button";
+import {
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+import {
+  AlertCircle,
+  LoaderCircle,
+  UserRound,
+} from "lucide-react";
 
 interface UpdateDialogClientsProps {
   id: string;
 }
 
 const updateClientFormSchema = zod.object({
-  name: zod.string().min(1, "Marca é obrigatória"),
-  email: zod.email("email é obrigatório"),
+  name: zod.string().trim().min(1, "O nome é obrigatório"),
+  email: zod.string().trim().email("Informe um e-mail válido"),
   cpf_cnpj: zod
     .string()
-    .min(11, "CPF ou CNPJ é obrigatório")
-    .max(14, "Máximo 14 caracteres"),
+    .trim()
+    .min(11, "Informe um CPF ou CNPJ válido")
+    .max(14, "CPF ou CNPJ deve ter no máximo 14 caracteres"),
   phone: zod
     .string()
-    .min(9, "Nª Celular é obrigatório")
-    .max(11, "Máximo 11 caracteres"),
-  rua: zod.string().min(3, "o Nome da Rua é obrigatório"),
-  numberHouse: zod.string().min(1, "Número é obrigatório"),
-  bairro: zod.string().min(3, "Bairro é obrigatório"),
-  cidade: zod.string().min(3, "Cidade é obrigatório"),
-  uf: zod.string().min(2, "Estado é obrigatório"),
-  cep: zod.string().min(8, "CEP é obrigatório").max(8, "Máximo 8 caracteres"),
+    .trim()
+    .min(9, "Informe um telefone válido")
+    .max(11, "Telefone deve ter no máximo 11 caracteres"),
 });
 
-type updateClientFormData = zod.infer<typeof updateClientFormSchema>;
+type UpdateClientFormData = zod.infer<typeof updateClientFormSchema>;
 
-export const UpdateDialogClients = ({ id }: UpdateDialogClientsProps) => {
+const inputClassName =
+  "mt-1.5 h-11 rounded-lg border-gray-200 bg-white shadow-sm transition-colors " +
+  "placeholder:text-gray-400 focus-visible:ring-2 focus-visible:ring-blue-500/20";
+
+export const UpdateDialogClients = ({
+  id,
+}: UpdateDialogClientsProps) => {
   const { handleUpdateClient, listClients } = useClientManagement();
 
   const clientToUpdate = listClients.find((client) => client.id === id);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
     reset,
-    getValues,
-  } = useForm<updateClientFormData>({
+    setValue,
+    formState: { errors, isDirty },
+  } = useForm<UpdateClientFormData>({
     resolver: zodResolver(updateClientFormSchema),
     defaultValues: {
-      name: clientToUpdate?.name || "",
-      email: clientToUpdate?.email || "",
-      cpf_cnpj: clientToUpdate?.cpf_cnpj || "",
-      phone: clientToUpdate?.phone || "",
-      rua: clientToUpdate?.rua || "",
-      numberHouse: clientToUpdate?.numberHouse || "",
-      bairro: clientToUpdate?.bairro || "",
-      cidade: clientToUpdate?.cidade || "",
-      uf: clientToUpdate?.uf || "",
-      cep: clientToUpdate?.cep || "",
+      name: "",
+      email: "",
+      cpf_cnpj: "",
+      phone: "",
     },
   });
 
-  const updateClient = (data: updateClientFormData) => {
-    const dataClient = {
-      id,
-      ...data,
-    };
-    handleUpdateClient(dataClient);
-    reset();
-  };
+  useEffect(() => {
+    if (!clientToUpdate) return;
 
-  const searchCep = async (cep: string) => {
-    const cleanCep = cep.replace(/\D/g, ""); // Remove caracteres não numéricos
-    if (cleanCep.length !== 8) return;
+    reset({
+      name: clientToUpdate.name ?? "",
+      email: clientToUpdate.email ?? "",
+      phone: clientToUpdate.phone?.replace(/\D/g, "") ?? "",
+    });
+  }, [clientToUpdate, reset]);
+
+  const updateClient = async (data: UpdateClientFormData) => {
+    setIsSubmitting(true);
+    setSubmitError("");
 
     try {
-      const response = await fetch(
-        `https://viacep.com.br/ws/${cleanCep}/json/`,
-      );
-      const data = await response.json();
-
-      if (data.erro) {
-        console.error("CEP não encontrado");
-        return;
-      }
-
-      // Preenche os campos automaticamente
-      reset({
-        ...getValues(),
-        rua: data.logradouro || "",
-        bairro: data.bairro || "",
-        cidade: data.localidade || "",
-        uf: data.uf || "",
+      await handleUpdateClient({
+        id,
+        ...data,
       });
-    } catch (error) {
-      console.error("Erro ao buscar CEP:", error);
+
+      reset(data);
+    } catch {
+      setSubmitError(
+        "Não foi possível atualizar o cliente. Tente novamente.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
+  const renderFieldError = (message?: string) => {
+    if (!message) return null;
+
+    return (
+      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-red-600">
+        <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+        {message}
+      </p>
+    );
+  };
+
   return (
-    <DialogContent className="md:max-w-[90%] md:h-[90%]">
-      <h1 className="text-xl font-semibold mt-5">Atualizar Cliente</h1>
+    <DialogContent className="flex max-h-[90vh] flex-col gap-0 overflow-hidden rounded-2xl p-0 sm:max-w-3xl lg:min-w-2/3">
+      <DialogHeader className="border-b border-gray-100 bg-gray-50/80 px-6 py-5 text-left sm:px-8">
+        <div className="mt-5 flex items-center gap-3">
+          <div className="min-w-0">
+            <DialogTitle className="text-2xl font-semibold tracking-tight text-gray-900">
+              Atualizar cliente
+            </DialogTitle>
+
+            <DialogDescription className="mt-1 text-sm text-gray-500">
+              Edite os dados cadastrais e de contato do cliente.
+            </DialogDescription>
+          </div>
+        </div>
+      </DialogHeader>
 
       <form
-        action=""
-        className="w-full space-y-4"
+        className="flex min-h-0 flex-1 flex-col"
         onSubmit={handleSubmit(updateClient)}
       >
-        <Input
-          defaultValue={clientToUpdate?.name}
-          className="p-5"
-          placeholder="Nome "
-          {...register("name")}
-        />
-        {errors.name && (
-          <p className="text-red-600 text-sm mt-1">{errors.name.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.cpf_cnpj}
-          className="p-5"
-          placeholder="CPF ou CNPJ"
-          {...register("cpf_cnpj")}
-        />
-        {errors.cpf_cnpj && (
-          <p className="text-red-600 text-sm mt-1">{errors.cpf_cnpj.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.email}
-          className="p-5"
-          placeholder="Email"
-          {...register("email")}
-        />
-        {errors.email && (
-          <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.phone}
-          className="p-5"
-          placeholder="Nª Telefone"
-          {...register("phone")}
-        />{" "}
-        {errors.phone && (
-          <p className="text-red-600 text-sm mt-1">{errors.phone.message}</p>
-        )}
-        <p>Endereço Residencial</p>
-        <Input
-          defaultValue={clientToUpdate?.cep}
-          className="p-5"
-          placeholder="Cep"
-          {...register("cep")}
-          onBlur={(e) => searchCep(e.target.value)}
-        />
-        {errors.cep && (
-          <p className="text-red-600 text-sm mt-1">{errors.cep.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.rua}
-          className="p-5"
-          placeholder="Nome da Rua"
-          {...register("rua")}
-        />
-        {errors.rua && (
-          <p className="text-red-600 text-sm mt-1">{errors.rua.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.bairro}
-          className="p-5"
-          placeholder="Bairro"
-          {...register("bairro")}
-        />
-        {errors.bairro && (
-          <p className="text-red-600 text-sm mt-1">{errors.bairro.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.cidade}
-          className="p-5"
-          placeholder="Cidade"
-          {...register("cidade")}
-        />
-        {errors.cidade && (
-          <p className="text-red-600 text-sm mt-1">{errors.cidade.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.uf}
-          className="p-5"
-          placeholder="Uf"
-          {...register("uf")}
-        />
-        {errors.uf && (
-          <p className="text-red-600 text-sm mt-1">{errors.uf.message}</p>
-        )}
-        <Input
-          defaultValue={clientToUpdate?.numberHouse}
-          className="p-5"
-          placeholder="Nª Casa"
-          {...register("numberHouse")}
-        />
-        {errors.numberHouse && (
-          <p className="text-red-600 text-sm mt-1">
-            {errors.numberHouse.message}
-          </p>
-        )}
-        <Button
-          type="submit"
-          className="bg-base-blue hover:bg-blue-800 py-6 font-semibold text-md
-          cursor-pointer transform ease-in duration-75 mt-5"
-        >
-          Adicionar Cliente
-        </Button>
+        <div className="min-h-0 flex-1 space-y-8 overflow-y-auto px-6 py-6 sm:px-8">
+          {!clientToUpdate && (
+            <div className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+              <p>
+                Não foi possível localizar este cliente. Verifique se ele
+                ainda está disponível na listagem.
+              </p>
+            </div>
+          )}
+
+          <section className="space-y-5">
+            <div className="flex items-center gap-3 border-b border-gray-100 pb-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
+                <UserRound className="h-4 w-4" />
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-gray-900">
+                  Dados do cliente
+                </h3>
+                <p className="text-xs text-gray-500">
+                  Informações pessoais e de contato.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5 sm:col-span-2">
+                <Label htmlFor="name">Nome / Razão social</Label>
+                <Input
+                  id="name"
+                  placeholder="Nome do cliente ou empresa"
+                  className={inputClassName}
+                  aria-invalid={!!errors.name}
+                  {...register("name")}
+                />
+                {renderFieldError(errors.name?.message)}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="cpf_cnpj">CPF / CNPJ</Label>
+                <Input
+                  id="cpf_cnpj"
+                  placeholder="Somente números"
+                  maxLength={14}
+                  className={inputClassName}
+                  aria-invalid={!!errors.cpf_cnpj}
+                  {...register("cpf_cnpj", {
+                    onChange: (event) => {
+                      const value = event.target.value.replace(/\D/g, "");
+                      setValue("cpf_cnpj", value, {
+                        shouldDirty: true,
+                        shouldValidate: true,
+                      });
+                    },
+                  })}
+                />
+                {renderFieldError(errors.cpf_cnpj?.message)}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="phone">Telefone</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="(22) 99999-9999"
+                  maxLength={11}
+                  className={inputClassName}
+                  aria-invalid={!!errors.phone}
+                  {...register("phone", {
+                    onChange: (event) => {
+                      const value = event.target.value.replace(/\D/g, "");
+                      setValue("phone", value, {
+                        shouldDirty: true,
+                        shouldValidate: true,
+                      });
+                    },
+                  })}
+                />
+                {renderFieldError(errors.phone?.message)}
+              </div>
+
+              <div className="space-y-1.5 sm:col-span-2">
+                <Label htmlFor="email">E-mail</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="cliente@empresa.com.br"
+                  className={inputClassName}
+                  aria-invalid={!!errors.email}
+                  {...register("email")}
+                />
+                {renderFieldError(errors.email?.message)}
+              </div>
+            </div>
+          </section>
+
+          {submitError && (
+            <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+              <p>{submitError}</p>
+            </div>
+          )}
+        </div>
+
+        <DialogFooter className="flex-row justify-end gap-3 border-t border-gray-100 bg-white px-6 py-4 sm:px-8">
+          <Button
+            type="submit"
+            disabled={!clientToUpdate || isSubmitting || !isDirty}
+            className="h-11 min-w-40 rounded-lg bg-base-blue px-5 font-medium text-white transition-colors hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {isSubmitting ? (
+              <>
+                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                Atualizando...
+              </>
+            ) : (
+              "Salvar alterações"
+            )}
+          </Button>
+        </DialogFooter>
       </form>
     </DialogContent>
   );

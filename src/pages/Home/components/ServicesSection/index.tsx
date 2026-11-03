@@ -1,7 +1,5 @@
 import Autoplay from "embla-carousel-autoplay";
-import Aos from "aos";
 
-import { useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -11,90 +9,93 @@ import { Button } from "@/components/ui/button";
 import { carouselItems } from "@/utils/ArrayServices";
 
 export const ServicesSection = () => {
-  useEffect(() => {
-    Aos.init();
-  }, []);
-
   return (
     <section
-      className="w-full bg-neutral-100 min-h-[35rem] h-auto pb-10 md:pb-0 flex items-center"
+      className="flex h-auto min-h-[35rem] w-full items-center scroll-mt-24 bg-neutral-100 pb-10 md:pb-0"
       id="services"
     >
-      <div className="container mx-auto h-full grid grid-cols-5 gap-10 md:gap-4 px-6 md:px-8 ">
+      <div className="container mx-auto grid h-full grid-cols-5 gap-10 px-6 md:gap-4 md:px-8">
         <div
-          className="col-span-5 md:col-span-2 self-start space-y-4"
+          className="col-span-5 space-y-4 self-start md:col-span-2"
           data-aos="fade-right"
           data-aos-duration="1000"
         >
-          <p className="font-semibold text-base text-base-blue-blue">
-            {" "}
+          <p className="text-base font-semibold text-base-blue-blue">
             - Serviços
           </p>
-          <h1 className="text-2xl md:text-5xl font-semibold">
-            Nós temos a <span className="text-base-blue"> solução certa </span>
-            para a <span className="text-base-blue"> sua obra! </span>
+
+          <h1 className="text-2xl font-semibold md:text-5xl">
+            Nós temos a <span className="text-base-blue">solução certa</span>{" "}
+            para a <span className="text-base-blue">sua obra!</span>
           </h1>
 
           <div>
-            <p className="mt-3 text-neutral-600 text-sm md:text-md lg:text-lg">
-              Na <strong> Alves Glass Serviços </strong>, oferecemos uma ampla
+            <p className="mt-3 text-sm text-neutral-600 md:text-md lg:text-lg">
+              Na <strong>Alves Glass Serviços</strong>, oferecemos uma ampla
               linha de produtos e serviços personalizados. Unimos{" "}
-              <strong> beleza, segurança e funcionalidade </strong> para
+              <strong>beleza, segurança e funcionalidade</strong> para
               transformar seu projeto em um ambiente único e exclusivo.
             </p>
           </div>
 
           <Button
-            className="w-56 py-6 mt-4 text-lg bg-base-blue border
-           border-base-blue text-white font-semibold hover:bg-base-blue-hover"
+            asChild
+            className="mt-4 w-56 border border-base-blue bg-base-blue py-6 text-lg font-semibold text-white hover:bg-base-blue-hover"
           >
-            <a href="https://wa.me/22981445335" target="_blank">
+            <a
+              href="https://wa.me/5522981445335?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Solicite um orçamento!
             </a>
           </Button>
         </div>
 
         <Carousel
-          className="col-span-5 md:col-span-3 z-0 test h-[20rem]"
+          className="test z-0 col-span-5 h-[20rem] md:col-span-3"
           plugins={[
             Autoplay({
               delay: 4500,
+              stopOnInteraction: true,
             }),
           ]}
           data-aos="zoom-in"
           data-aos-duration="1000"
         >
-          <CarouselContent className="md:px-12 gap-12">
-            {carouselItems.map((list) => {
-              return (
-                <CarouselItem
-                  className="md:basis-2/2 xl:basis-1/2 relative"
-                  key={list.id}
-                >
-                  <div className="w-[95%] h-32 p-4 bg-white shadow-lg rounded-lg absolute left-10 -bottom-11 z-10 flex gap-4 items-start">
-                    {list.icon}
-                    <div>
-                      <a
-                        href={list.whatsapp}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <h3 className="font-semibold text-base text-base-blue">
-                          {list.name}
-                        </h3>
-                      </a>
-                      <p className="text-sm">{list.text}</p>
-                    </div>
+          <CarouselContent className="gap-12 md:px-12">
+            {carouselItems.map((list) => (
+              <CarouselItem
+                className="relative md:basis-2/2 xl:basis-1/2"
+                key={list.id}
+              >
+                <div className="absolute -bottom-11 left-10 z-10 flex h-32 w-[95%] items-start gap-4 rounded-lg bg-white p-4 shadow-lg">
+                  {list.icon}
+
+                  <div>
+                    <a
+                      href={list.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <h3 className="text-base font-semibold text-base-blue">
+                        {list.name}
+                      </h3>
+                    </a>
+
+                    <p className="text-sm">{list.text}</p>
                   </div>
-                  <img
-                    src={list.link_image}
-                    alt="Esquadrias de Alumínio"
-                    className="w-full h-[17rem] rounded-lg shadow object-cover"
-                    loading="lazy"
-                  />
-                </CarouselItem>
-              );
-            })}
+                </div>
+
+                <img
+                  src={list.link_image}
+                  alt={list.name}
+                  className="h-[17rem] w-full rounded-lg object-cover shadow"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </CarouselItem>
+            ))}
           </CarouselContent>
         </Carousel>
       </div>

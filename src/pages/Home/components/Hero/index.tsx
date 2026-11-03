@@ -11,23 +11,34 @@ import ImgBanner from "@/assets/bg-bannerOne.webp";
 export const Hero = () => {
   return (
     <Carousel
-      className="w-full h-[calc(100svh - 6rem)]"
+      className="h-[calc(100svh-5rem)] min-h-[34rem] w-full"
       plugins={[
         Autoplay({
-          delay: 3500,
+          delay: 5000,
+          stopOnInteraction: true,
         }),
       ]}
-      opts={{
-        loop: true,
-      }}
+      opts={{ loop: true }}
     >
-      <CarouselContent className=" text-white">
-        <CarouselItem className="h-svh relative border-0 bg-black bg-center bg-no-repeat flex items-center  px-8 md:p-16">
+
+      <CarouselContent className="h-full text-white">
+        <CarouselItem className="relative flex h-[calc(100svh-5rem)] min-h-[34rem] items-center border-0 bg-black bg-center bg-no-repeat px-6 sm:px-8 md:px-16">
           {/* Camada de imagem escurecida */}
-          <div
-            className="absolute inset-0 bg-cover bg-center filter brightness-65 z-0"
-            style={{ backgroundImage: `url(${ImgBanner})` }}
+          <img
+            src={ImgBanner}
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 size-full object-cover brightness-[0.65]"
           />
+
+          {/* <img
+            src={list.link_image}
+            alt={list.name}
+            loading="lazy"
+            decoding="async"
+            className="h-[17rem] w-full rounded-lg object-cover"
+          /> */}
 
           {/* Conteúdo em cima da imagem */}
           <div className="w-full relative z-10 md:w-2/3 flex flex-col gap-2 md:gap-4 text-white mt-26">

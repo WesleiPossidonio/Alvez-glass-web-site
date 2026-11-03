@@ -12,17 +12,30 @@ export const Header = () => {
 
   // Função para navegação e manipulação de âncoras
   const handleNavigate = (path: string) => {
+    setMenuOpen(false);
+
     if (path.startsWith("#")) {
+      const hash = path;
+
       if (window.location.pathname !== "/") {
-        navigate(`/${path}`); // ex: navegando para /#about
-      } else {
-        window.location.hash = path; // ex: #about
+        navigate(`/${hash}`);
+        return;
       }
-    } else {
-      navigate(path); // rotas como /login-estudante ou /admin
+
+      document.querySelector(hash)?.scrollIntoView({
+        behavior: window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches
+          ? "auto"
+          : "smooth",
+        block: "start",
+      });
+
+      window.history.replaceState(null, "", hash);
+      return;
     }
 
-    if (menuOpen) toggleMenu();
+    navigate(path);
   };
 
   return (
@@ -39,30 +52,30 @@ export const Header = () => {
           >
             Home
           </a>
-          <p
+          <a
             className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer"
             onClick={() => handleNavigate("#about")}
           >
             Sobre Nós
-          </p>
-          <p
+          </a>
+          <a
             className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer"
             onClick={() => handleNavigate("#services")}
           >
             Serviços
-          </p>
-          <p
+          </a>
+          <a
             className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer"
             onClick={() => handleNavigate("#portfolio")}
           >
             Portfólio
-          </p>
-          <p
+          </a>
+          <a
             className="md:text-lg text-black hover:text-base-blue font-semibold cursor-pointer"
             onClick={() => handleNavigate("#contacts")}
           >
             Contatos
-          </p>
+          </a>
 
           <button
             onClick={() => handleNavigate("/login")}

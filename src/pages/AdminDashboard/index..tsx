@@ -1,72 +1,108 @@
-import Logo from '@/assets/Logo.png'
-import { ShoppingBagIcon, User, Users } from 'lucide-react'
-import { useState } from 'react'
-import { ClientsSection, MyData, ProductsSection } from './components'
+
+import { useState } from "react";
+
+import {
+  Box,
+  ShoppingBagIcon,
+  User,
+  Users,
+} from "lucide-react";
+
+import {
+  ClientsSection,
+  MyData,
+  ProductsSection,
+  Stock,
+  UsersSection,
+} from "./components";
+
+import { useAuth } from "@/hooks/authSession";
+import { MenuDashboard } from "@/components/MenuDashboard";
+
+type AdminSection =
+  | "Meus-Dados"
+  | "usuarios"
+  | "Produtos"
+  | "Clientes"
+  | "estoque";
+
+const isAdmin = import.meta.env.VITE_PROVIDER_ROLE;
 
 export const AdminDashboard = () => {
-  const [clickMenu, setClikMenu] = useState('')
+  const [activeSection, setActiveSection] =
+    useState<AdminSection | "">("");
+
+  const { role } = useAuth();
+
+  const navigation = [
+    {
+      label: "Meus dados",
+      value: "Meus-Dados",
+      icon: User,
+    },
+    {
+      label: "Usuários",
+      value: "usuarios",
+      icon: Users,
+    },
+    {
+      label: "Vendas",
+      value: "Produtos",
+      icon: ShoppingBagIcon,
+    },
+    {
+      label: "Clientes",
+      value: "Clientes",
+      icon: Users,
+    },
+    {
+      label: "Estoque",
+      value: "estoque",
+      icon: Box,
+    },
+  ];
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case "Meus-Dados":
+        return <MyData />;
+
+      case "usuarios":
+        return role === isAdmin ? <UsersSection /> : null;
+
+      case "Produtos":
+        return <ProductsSection />;
+
+      case "Clientes":
+        return <ClientsSection />;
+
+      case "estoque":
+        return <Stock />;
+
+      default:
+        return (
+          <div className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-4 text-center lg:min-h-screen">
+            <h1 className="text-2xl font-bold text-neutral-900">
+              Bem-vindo ao painel administrativo!
+            </h1>
+
+            <p className="text-neutral-600">
+              Selecione uma opção no menu para começar.
+            </p>
+          </div>
+        );
+    }
+  };
+
   return (
-    <main className="w-full h-dvh">
-      <section className="w-full h-svh grid grid-cols-5">
-        <aside className="col-span-1 flex flex-col gap-10 items-star bg-neutral-50 p-6">
-          <div>
-            <img className='w-22 -ml-6' src={Logo} alt="" />
-          </div>
-
-          <div className='w-full h-full flex flex-col justify-between'>
-            <div className='space-y-2'>
-              <div data-success={clickMenu} className='group flex items-center gap-1 py-3.5 px-2 border-l-6 border-neutral-50
-             hover:border-base-blue cursor-pointer transform transition-all ease-in-out duration-350 
-             data-[success="Meus-Dados"]:border-base-blue '>
-                <User data-success={clickMenu} className='text-neutral-500 group-hover:text-base-blue size-7 data-[success="Meus-Dados"]:text-base-blue' />
-                <p data-success={clickMenu} className='text-neutral-500 group-hover:text-neutral-900 
-              font-semibold data-[success="Meus-Dados"]:text-neutral-900'
-                  onClick={() => setClikMenu('Meus-Dados')}>
-                  Meus Dados
-                </p>
-              </div>
-
-              <div data-success={clickMenu} className='group flex items-center gap-1 py-3.5 px-2 border-l-6 border-neutral-50
-             hover:border-base-blue data-[success="Produtos"]:border-base-blue cursor-pointer transform transition-all ease-in-out duration-350'>
-                <ShoppingBagIcon data-success={clickMenu} className='text-neutral-500 group-hover:text-base-blue size-7 data-[success="Produtos"]:text-base-blue' />
-                <p data-success={clickMenu} className='text-neutral-500 group-hover:text-neutral-900
-               font-semibold data-[success="Produtos"]:text-neutral-900'  onClick={() => setClikMenu('Produtos')}>
-                  Vendas
-                </p>
-              </div>
-
-              <div data-success={clickMenu} className='group flex items-center gap-1 py-3.5 px-2 border-l-6 border-neutral-50
-             hover:border-base-blue data-[success="Clientes"]:border-base-blue cursor-pointer transform transition-all ease-in-out duration-350'>
-                <Users data-success={clickMenu} className='text-neutral-500 group-hover:text-base-blue size-7 data-[success="Clientes"]:text-base-blue' />
-                <p data-success={clickMenu} className='text-neutral-500 group-hover:text-neutral-900
-               font-semibold data-[success="Clientes"]:text-neutral-900'  onClick={() => setClikMenu('Clientes')}>
-                  Clientes
-                </p>
-              </div>
-
-            </div>
-
-            <p className='text-neutral-500'>Log Out</p>
-          </div>
-        </aside>
-
-        <div className='col-span-4'>
-          {
-            clickMenu === 'Meus-Dados' && <MyData /> ||
-            clickMenu === 'Clientes' && <ClientsSection /> ||
-            clickMenu === 'Produtos' && <ProductsSection /> ||
-            <div className='w-full h-full flex flex-col justify-center items-center gap-4'>
-              <h1 className='text-2xl font-bold text-neutral-900'>Bem vindo ao painel administrativo!</h1>
-              <p className='text-neutral-600'>Selecione uma opção no menu para começar.</p>
-            </div>
-          }
-
-        </div>
-
-      </section>
-
-    </main >
-  )
-}
-
-
+    <MenuDashboard
+      navigation={navigation}
+      activeSection={activeSection}
+      onSectionChange={(value) =>
+        setActiveSection(value as AdminSection)
+      }
+    >
+      {renderContent()}
+    </MenuDashboard>
+  );
+};

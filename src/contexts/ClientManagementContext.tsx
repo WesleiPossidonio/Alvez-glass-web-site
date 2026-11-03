@@ -9,26 +9,13 @@ import {
 import { toast } from 'react-toastify'
 
 import api from '../services/api'
+import type { CreaterClient } from './AuthContext';
 
 interface Pagination {
   page: number;
   limit: number;
   total: number;
   totalPages: number;
-}
-
-interface CreaterClient {
-  name: string
-  update_number?: string
-  cpf_cnpj: string
-  email: string
-  phone: string
-  rua: string
-  numberHouse: string
-  bairro: string
-  cidade: string
-  uf: string
-  cep: string
 }
 
 export interface ListDataClient extends CreaterClient {
@@ -48,10 +35,10 @@ interface SearchClientProps {
 }
 
 interface ClientManagementContextType {
-  handleCreateClient: (data: CreaterClient) => Promise<void>
   handleUpdateClient: (data: UpdateClient) => Promise<void>
   setCurrentPage: (data: number) => void
   handleSearchClients: (data: SearchClientProps) => Promise<void>
+  handleResendActivationCode: (clientId: string) => Promise<void>
   pagination: Pagination
   currentPage: number
   listClients: ListDataClient[]
@@ -73,29 +60,31 @@ export const ClientManagementProvider = ({ children }: ClientManagementContextPr
     totalPages: 0,
   });
 
-const getListClients = async (page = 1) => {
-  try {
-    const { data } = await api.get("/client/all", {
-      params: {
-        page,
-        limit: 10,
-      },
-    });
+  const getListClients = async (page = 1) => {
+    try {
+      const { data } = await api.get("client/all", {
+        params: {
+          page,
+          limit: 10,
+        },
+      });
 
-    setListClients(data.clients);
-    setPagination(data.pagination);
+      setListClients(data.clients);
+      setPagination(data.pagination);
 
-  } catch (error) {
-    console.log(error);
-  }
-};
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
 
   useEffect(() => {
     getListClients()
   }, [currentPage])
 
   const handleSearchClients = useCallback(async (dataSearch: SearchClientProps) => {
-    const {search, page} = dataSearch
+    const { search, page } = dataSearch
     const { data } = await api.get("/client/all", {
       params: {
         search,
@@ -106,26 +95,6 @@ const getListClients = async (page = 1) => {
 
     setListClients(data.clients);
     setPagination(data.pagination);
-  }, [])
-
-  const handleCreateClient = useCallback(async (data: CreaterClient) => {
-    const dataClient = {
-      ...data,
-      number_house: data.numberHouse,
-    }
-
-    try {
-      await toast.promise(
-        api.post('client', dataClient),
-        {
-          pending: 'Enviando Dados',
-          success: 'Usuário Criado com Sucesso!',
-          error: 'Usuário existente Verifique seu email e senha 🤯',
-        }
-      )
-    } catch (error) {
-      console.log(error)
-    }
   }, [])
 
   const handleUpdateClient = useCallback(async (data: UpdateClient) => {
@@ -141,16 +110,34 @@ const getListClients = async (page = 1) => {
     }
   }, [])
 
+
+  const handleResendActivationCode = useCallback(
+    async (clientId: string) => {
+      try {
+        await toast.promise(
+          api.post(`/client/${clientId}/resend-activation`),
+          {
+            pending: 'Gerando e enviando novo código...',
+            success: 'Novo código de ativação enviado com sucesso!',
+            error: 'Não foi possível reenviar o código de ativação.',
+          }
+        )
+      } catch (error) {
+        console.error('Erro ao reenviar código de ativação:', error)
+      }
+    },
+    []
+  )
   return (
     <ClientManagementContext.Provider
       value={{
         currentPage,
         pagination,
         listClients,
-        handleCreateClient,
         handleUpdateClient,
         handleSearchClients,
-        setCurrentPage
+        setCurrentPage,
+        handleResendActivationCode,
       }}
     >
       {children}

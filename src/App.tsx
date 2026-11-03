@@ -1,5 +1,5 @@
 
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AppRoutes } from './routes/routes'
 import { AppProvider } from './contexts'
 import { ToastContainer } from 'react-toastify'
@@ -10,14 +10,17 @@ function App() {
 
   return (
     <>
-      <CookiePopup />
-      <BrowserRouter>
-        <AppProvider>
-
-          <ToastContainer />
-          <AppRoutes />
-        </AppProvider>
-      </BrowserRouter>
+      <GoogleOAuthProvider
+        clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
+      >
+        <CookiePopup />
+        <BrowserRouter>
+          <AppProvider>
+            <ToastContainer />
+            <AppRoutes />
+          </AppProvider>
+        </BrowserRouter>
+      </GoogleOAuthProvider>
     </>
   )
 }

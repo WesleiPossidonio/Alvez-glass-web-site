@@ -15,7 +15,7 @@ export const Coments = () => {
 
   return (
     <section
-      className="relative w-full flex items-center justify-center overflow-hidden py-16"
+      className="relative w-full flex items-center justify-center overflow-hidden py-16 scroll-mt-24"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",

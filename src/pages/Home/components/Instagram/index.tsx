@@ -9,7 +9,7 @@ export const InstagramSection = () => {
     Aos.init();
   }, []);
   return (
-    <section className="w-full min-h-[35rem] h-auto bg-neutral-100 py-16 px-8">
+    <section className="w-full min-h-[35rem] h-auto bg-neutral-100 py-16 px-8 scroll-mt-24">
       <div
         className="w-full text-center space-y-3 mb-10 md:mb-0"
         data-aos="zoom-in"

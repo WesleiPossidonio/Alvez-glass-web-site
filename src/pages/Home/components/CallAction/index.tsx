@@ -4,7 +4,7 @@ import image from "@/assets/BannerHero.webp";
 export const CallAction = () => {
   return (
     <section
-      className="relative w-full h-auto flex items-center overflow-hidden"
+      className="relative w-full h-auto flex items-center overflow-hidden scroll-mt-24"
       style={{
         minHeight: "35rem",
         backgroundImage: `url(${image})`,

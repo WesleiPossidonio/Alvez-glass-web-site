@@ -18,10 +18,17 @@ interface AddOrderProductProps {
   products: Array<{
     product_name: string;
     quantity: number;
-    price: number;
+    unit_price: number;
   }>;
+  address: {
+    cep: string;
+    rua: string;
+    number_house: string;
+    bairro: string;
+    cidade: string;
+    uf: string;
+  }
 }
-
 interface UpdateOrderProductProps {
   id: string;
   order_number: string;
@@ -32,11 +39,21 @@ interface UpdateOrderProductProps {
     id: string;
     product_name: string;
     quantity: number;
-    price: number;
+    unit_price: number;
   }>;
 }
 interface OrderProductProps extends UpdateOrderProductProps {
   total: number;
+}
+
+interface Budget {
+  id: string
+  name_budget: string
+  description_budget: string
+  expiration_date: string
+  total_value: number
+  client_id: string
+  pdf_object_name?: string
 }
 
 interface ProjectImageUploadProps {
@@ -49,7 +66,13 @@ interface OrderProductContextType {
   handleCreateOrderProduct: (data: AddOrderProductProps) => Promise<void>;
   handleUpdateOrderProduct: (data: UpdateOrderProductProps) => Promise<void>;
   handleProjectImageUpload: (data: ProjectImageUploadProps) => Promise<void>;
+  handleCreateBudget: (data: FormData) => Promise<void>;
+  getListBudgets: (clientId: string) => Promise<void>;
+  handleUpdateBudget: (id: string, data: FormData) => Promise<void>;
+  handleDeleteBudget: (id: string) => Promise<void>;
   listOrderProduct: OrderProductProps[];
+  budgets: Budget[];
+  loading: boolean;
 }
 
 interface OrderProductContextProviderProps {
@@ -64,6 +87,8 @@ export const OrderProductContextProvider = ({
   const [listOrderProduct, setListOrderProducts] = useState<
     OrderProductProps[]
   >([]);
+  const [budgets, setBudgets] = useState<Budget[]>([])
+  const [loading, setLoading] = useState(false)
 
   const getListOrderProducts = useCallback(async () => {
     try {
@@ -73,6 +98,18 @@ export const OrderProductContextProvider = ({
       console.log(error, "error no servidor");
     }
   }, []);
+
+  const getListBudgets = useCallback(async (clientId: string) => {
+    try {
+      setLoading(true)
+      const response = await api.get(`/budget/client/${clientId}`)
+      setBudgets(response.data)
+    } catch (error) {
+      console.error('Erro ao buscar orçamentos:', error)
+    } finally {
+      setLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     void getListOrderProducts();
@@ -142,13 +179,78 @@ export const OrderProductContextProvider = ({
     [],
   );
 
+  const handleCreateBudget = useCallback(
+    async (data: FormData) => {
+      try {
+        const budget = await toast.promise(api.post("budget", data), {
+          pending: "Enviando Orçamento",
+          success: "Orçamento Enviado com Sucesso!",
+          error: "Erro ao enviar orçamento, tente novamente 🤯",
+        });
+        console.log(budget.data, "budget.data")
+        setBudgets((prevState) => [...prevState, budget.data]);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [],
+  );
+
+  const handleUpdateBudget = useCallback(
+    async (id: string, data: FormData) => {
+      try {
+        await toast.promise(
+          api.put(`/budget/${id}`, data),
+          {
+            pending: "Atualizando orçamento...",
+            success: "Orçamento atualizado com sucesso!",
+            error: "Erro ao atualizar orçamento.",
+          }
+        );
+
+        await getListBudgets(data.get("client_id") as string);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [getListBudgets]
+  );
+
+  const handleDeleteBudget = useCallback(
+    async (id: string) => {
+      try {
+        await toast.promise(
+          api.delete(`/budget/${id}`),
+          {
+            pending: "Excluindo orçamento...",
+            success: "Orçamento excluído com sucesso!",
+            error: "Erro ao excluir orçamento.",
+          }
+        );
+
+        setBudgets((prev) =>
+          prev.filter((budget) => budget.id !== id)
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    []
+  );
+
   return (
     <OrderProductContext.Provider
       value={{
         handleCreateOrderProduct,
         handleUpdateOrderProduct,
         handleProjectImageUpload,
+        handleCreateBudget,
+        getListBudgets,
+        handleUpdateBudget,
+        handleDeleteBudget,
         listOrderProduct,
+        budgets,
+        loading,
       }}
     >
       {children}

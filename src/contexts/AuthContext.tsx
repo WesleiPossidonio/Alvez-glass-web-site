@@ -19,8 +19,15 @@ interface User {
   email: string;
 }
 
+export interface CreaterClient {
+  name: string
+  update_number?: string
+  email: string
+  phone: string
+}
+
 interface Client {
-  id: number;
+  id: string;
   name: string;
   email: string;
 }
@@ -31,6 +38,7 @@ interface AuthContextData {
   role: Role | null;
   user: User | null;
   client: Client | null;
+  handleCreateClient: (data: CreaterClient) => Promise<void>
   loginAdmin(email: string, password: string): Promise<void>;
   loginClient(email: string, password: string): Promise<void>;
   logout(): Promise<void>;
@@ -55,7 +63,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const refreshUser = useCallback(async () => {
     try {
       const { data } = await api.get("/check-auth");
-      setAuthenticated(true);
+      setAuthenticated(data.authenticated);
       setRole(data.role);
 
       if (data.role === "admin") {
@@ -77,6 +85,23 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }, []);
 
+  const handleCreateClient = useCallback(async (data: CreaterClient) => {
+    const dataClient = { ...data }
+
+    try {
+      await toast.promise(
+        api.post('client', dataClient),
+        {
+          pending: 'Enviando Dados',
+          success: 'Usuário Criado com Sucesso!',
+          error: 'Usuário existente Verifique seu email e senha 🤯',
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
+
   async function loginAdmin(email: string, password: string) {
     try {
       await toast.promise(
@@ -96,7 +121,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   async function loginClient(email: string, password: string) {
     try {
-       await toast.promise(
+      await toast.promise(
         api.post('session/client', { email, password }),
         {
           pending: 'Verificando seus dados',
@@ -139,6 +164,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         loginClient,
         logout,
         refreshUser,
+        handleCreateClient
       }}
     >
       {children}

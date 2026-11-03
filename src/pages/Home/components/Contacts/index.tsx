@@ -71,7 +71,7 @@ export const Contacts = () => {
 
   return (
     <section
-      className="w-full h-auto min-h-[40rem] flex flex-col items-center justify-content-center gap-5 bg-white relative px-6 md:px-16"
+      className="w-full h-auto min-h-[40rem] flex flex-col items-center justify-content-center gap-5 bg-white relative px-6 md:px-16 scroll-mt-24"
       id="contacts"
     >
       <div
@@ -164,17 +164,21 @@ export const Contacts = () => {
               {...register("name")}
             />
             <Input
-              className="col-span-2 md:col-span-1 py-3.5 md:py-6 
+               className="col-span-2 md:col-span-1 py-3.5 md:py-6 
             text-sm md:text-md text-black placeholder:text-black bg-white"
               type="tel"
-              placeholder="Digite seu nº Telefone"
+              inputMode="numeric"
+              autoComplete="tel"
+              placeholder="Digite seu número de telefone"
               {...register("phone")}
             />
             <Input
-              className="py-3.5 md:py-6 text-sm md:text-md col-span-2
-          text-black placeholder:text-black bg-white"
-              type="tel"
-              placeholder="Digite seu E-Mail"
+            className="col-span-2 py-3.5 md:py-6 
+            text-sm md:text-md text-black placeholder:text-black bg-white"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              placeholder="Digite seu E-mail"
               {...register("email")}
             />
             <Textarea
@@ -194,8 +198,10 @@ export const Contacts = () => {
       </div>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.877171742176!2d-41.79094592377121!3d-22.395987419817306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96308a263ac2dd%3A0xee6992d202a10b1d!2sAlves%20Glass%20Servi%C3%A7os!5e0!3m2!1spt-BR!2sbr!4v1754438286292!5m2!1spt-BR!2sbr"
+        title="Localização da Alves Glass em Macaé"
         loading="lazy"
-        className="w-full h-92 rounded-2xl"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="h-92 w-full rounded-2xl"
       ></iframe>
     </section>
   );

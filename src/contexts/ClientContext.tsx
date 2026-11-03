@@ -4,10 +4,22 @@ import {
   createContext,
   useState,
   useCallback,
+  useEffect,
 } from 'react'
 import { toast } from 'react-toastify'
 
 import api from '../services/api'
+
+export interface GetBudgetProps {
+  id: string,
+  name_budget: string,
+  description_budget: string
+  expiration_date: string
+  total_value: string
+  pdf_object_name: string
+  created_at: string
+}
+
 export interface ResponseLoginDataClient {
   clientNumber: string
   id: string
@@ -17,18 +29,25 @@ export interface ResponseLoginDataClient {
   cpf_cnpj?: string
 }
 
+interface MyOrdersProps {
+  id: string
+  order_number: string
+  status_description: string
+  status: string,
+  total: number
+}
+
 interface ConfirmMailProps {
   email: string
 }
-// interface UpdatePasswordProps {
-//   password: string
-//   update_number: string
-// }
+
 interface ClientContextType {
   setClientDataLogin: (data: ResponseLoginDataClient) => void
   confirmMail: (data: ConfirmMailProps) => Promise<void>
-  // updatePassword: (data: UpdatePasswordProps) => Promise<void>
+  handleGetBudget: (date: string) => Promise<void>
+  budgetData: GetBudgetProps[]
   ClientDataLogin: ResponseLoginDataClient
+  myOrders: MyOrdersProps[]
 }
 
 interface ClientContextProviderProps {
@@ -41,6 +60,31 @@ export const ClientContextProvider = ({ children }: ClientContextProviderProps) 
   const [ClientDataLogin, setClientDataLogin] = useState<ResponseLoginDataClient>(
     {} as ResponseLoginDataClient
   )
+  const [myOrders, setMyorders] = useState<MyOrdersProps[]>([])
+  const [budgetData, setBudgetData] = useState<GetBudgetProps[]>([])
+
+  const getMyOrders = async () => {
+      try {
+      const listOrders = await api.get("/order/me");
+      setMyorders(listOrders.data);
+    } catch (error) {
+      console.log(error, "error no servidor");
+    }
+  }
+
+    const handleGetBudget = useCallback(async (clientId: string) => {
+      try {
+        const { data } = await api.get(`budget/client/${clientId}`);
+  
+        setBudgetData(data);
+      } catch (error) {
+        console.error("Erro ao buscar orçamentos:", error);
+      }
+    }, []);
+
+  useEffect(() => {
+    getMyOrders()
+  }, [])
 
   const confirmMail = useCallback(async (data: ConfirmMailProps) => {
     const { email } = data
@@ -63,28 +107,15 @@ export const ClientContextProvider = ({ children }: ClientContextProviderProps) 
     }
   }, [])
 
-  // const updatePassword = useCallback(async (data: UpdatePasswordProps) => {
-  //   try {
-  //     await toast.promise(
-  //       api.patch(`updatePassword/${data.}`, data),
-  //       {
-  //         pending: 'Verificando seus dados',
-  //         success: 'Senha Atualizada com Sucesso!',
-  //         error: 'Ops! Verifique os Dados Digitados',
-  //       }
-  //     )
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }, [])
-
   return (
     <ClientContext.Provider
       value={{
         setClientDataLogin,
         ClientDataLogin,
+        handleGetBudget,
+        myOrders,
         confirmMail,
-        // updatePassword,
+        budgetData
       }}
     >
       {children}

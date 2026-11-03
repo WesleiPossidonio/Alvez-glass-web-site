@@ -1,19 +1,14 @@
 import { Button } from "@/components/ui/button";
-import Aos from "aos";
-import { useEffect } from "react";
 
 import Pergolado from "@/assets/ImageAboutMe-Two.webp";
 import Esquadrilha from "@/assets/esquadrilahs.webp";
 import Moveis from "@/assets/ImageAboutMeTree.webp";
 
 export const About = () => {
-  useEffect(() => {
-    Aos.init();
-  }, []);
 
   return (
     <section
-      className="lg;w-[90%] h-auto mx-auto bg-white mb-13 bg-cover bg-no-repeat overflow-x-hidden"
+      className="lg;w-[90%] h-auto mx-auto bg-white mb-13 bg-cover bg-no-repeat overflow-x-hidden scroll-mt-24"
       id="about"
     >
       <div className="container my-0 mx-auto grid grid-cols-2 sm:gap-0 md:gap-6 lg:gap-0 min-h-auto px-6 lg:px-10 py-24">

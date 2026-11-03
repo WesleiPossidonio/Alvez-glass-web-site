@@ -10,7 +10,7 @@ export const AdjectsSection = () => {
   }, []);
 
   return (
-    <section className="w-full h-[45rem] bg-white">
+    <section className="w-full h-[45rem] bg-white scroll-mt-24">
       <div className="container max-w-[85rem] h-full mx-auto flex items-center justify-evenly px-8">
         <div
           className="w-1/2 flex items-center justify-start"

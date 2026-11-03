@@ -1,49 +1,78 @@
-import Logo from '@/assets/Logo.png'
-import { CardSim, User } from 'lucide-react'
-import { useState } from 'react'
-import { MyData, MyProducts } from './components'
+
+import { useState } from "react";
+
+import {
+  CardSim,
+  FileText,
+  UserRound,
+} from "lucide-react";
+
+import { MyBudgets, MyData, MyProducts } from "./components";
+import { useClient } from "@/hooks/useClient";
+import { useAuth } from "@/hooks/authSession";
+import { MenuDashboard } from "@/components/MenuDashboard";
+
+type ClientSection =
+  | "Meus-Dados"
+  | "Minhas-Compras"
+  | "Orcamentos";
 
 export const DashboardClient = () => {
-  const [clickMenu, setClikMenu] = useState('')
+  const [activeSection, setActiveSection] =
+    useState<ClientSection>("Minhas-Compras");
+
+  const { handleGetBudget } = useClient();
+  const { client } = useAuth();
+
+  const navigation = [
+    {
+      label: "Meus dados",
+      value: "Meus-Dados",
+      icon: UserRound,
+    },
+    {
+      label: "Minhas compras",
+      value: "Minhas-Compras",
+      icon: CardSim,
+    },
+    {
+      label: "Orçamentos",
+      value: "Orcamentos",
+      icon: FileText,
+    },
+  ];
+
+  const handleSectionChange = (value: string) => {
+    const section = value as ClientSection;
+
+    if (section === "Orcamentos" && client) {
+      handleGetBudget(client.id);
+    }
+
+    setActiveSection(section);
+  };
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case "Meus-Dados":
+        return <MyData />;
+
+      case "Orcamentos":
+        return <MyBudgets />;
+
+      case "Minhas-Compras":
+      default:
+        return <MyProducts />;
+    }
+  };
+
   return (
-    <main className="w-full h-svh grid grid-cols-5">
-      <aside className="col-span-1 flex flex-col gap-10 items-star bg-neutral-50 p-6">
-        <div>
-          <img className='w-22 -ml-6' src={Logo} alt="" />
-        </div>
-
-        <div className='w-full h-full flex flex-col justify-between'>
-          <div className='space-y-2'>
-            <div data-success={clickMenu} className='group flex items-center gap-1 py-3.5 px-2 border-l-6 border-neutral-50
-             hover:border-base-blue cursor-pointer transform transition-all ease-in-out duration-350 
-             data-[success="Meus-Dados"]:border-base-blue '>
-              <User data-success={clickMenu} className='text-neutral-500 group-hover:text-base-blue size-7 data-[success="Meus-Dados"]:text-base-blue' />
-              <p data-success={clickMenu} className='text-neutral-500 group-hover:text-neutral-900 
-              font-semibold data-[success="Meus-Dados"]:text-neutral-900'
-                onClick={() => setClikMenu('Meus-Dados')}>
-                Meus Dados
-              </p>
-            </div>
-
-            <div data-success={clickMenu} className='group flex items-center gap-1 py-3.5 px-2 border-l-6 border-neutral-50
-             hover:border-base-blue data-[success="Minhas-Compras"]:border-base-blue cursor-pointer transform transition-all ease-in-out duration-350'>
-              <CardSim data-success={clickMenu} className='text-neutral-500 group-hover:text-base-blue size-7 data-[success="Minhas-Compras"]:text-base-blue' />
-              <p data-success={clickMenu} className='text-neutral-500 group-hover:text-neutral-900
-               font-semibold data-[success="Minhas-Compras"]:text-neutral-900'  onClick={() => setClikMenu('Minhas-Compras')}>
-                Minhas Compras
-              </p>
-            </div>
-          </div>
-
-          <p className='text-neutral-500'>Log Out</p>
-        </div>
-      </aside>
-
-      {
-        clickMenu !== 'Meus-Dados' ? <MyProducts /> : <MyData />
-      }
-    </main>
-  )
-}
-
-
+    <MenuDashboard
+      navigation={navigation}
+      activeSection={activeSection}
+      onSectionChange={handleSectionChange}
+    >
+      {renderContent()}
+    </MenuDashboard>
+  );
+};

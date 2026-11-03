@@ -1,6 +1,3 @@
-import Aos from "aos";
-import { useEffect } from "react";
-
 import imageCozinha from "@/assets/cozinhaTwo.webp";
 import imageSacada from "@/assets/IMG_9432.webp";
 import imagePorteiro from "@/assets/IMG_9638.webp";
@@ -8,234 +5,107 @@ import imageEscada from "@/assets/IMG_9882.webp";
 import imageMoveis from "@/assets/IMG_8615.webp";
 import ImageTwo from "@/assets/IMG_8173.webp";
 
+const WHATSAPP_URL =
+  "https://wa.me/5522981445335?text=" +
+  encodeURIComponent(
+    "Gostei desse projeto e quero entender melhor como funciona. Pode me ajudar?",
+  );
+
 const galleryImages = [
   {
     id: 1,
     src: imageMoveis,
-    alt: "Cabine de duche com moldura de metal preto",
+    alt: "Projeto de móveis planejados em vidro",
+    className: "md:row-span-2",
   },
   {
     id: 2,
     src: imageSacada,
-    alt: "Interior moderno com janelas de vidro",
+    alt: "Projeto de fechamento de sacada com vidro",
+    className: "md:row-span-1",
   },
   {
     id: 3,
     src: imageEscada,
-    alt: "Mockup de logotipo em parede de escritório",
+    alt: "Projeto de escada com elementos em vidro",
+    className: "md:row-span-1",
   },
   {
     id: 4,
     src: imagePorteiro,
-    alt: "Cozinha minimalista branca",
+    alt: "Projeto de instalação de vidro",
+    className: "md:row-span-2",
   },
   {
     id: 5,
     src: ImageTwo,
-    alt: "Entrada de casa com escadas estilo japonês",
+    alt: "Projeto de vidro em ambiente residencial",
+    className: "md:row-span-1",
   },
   {
     id: 6,
     src: imageCozinha,
-    alt: "Armários modernos com gavetas retráteis",
+    alt: "Projeto de cozinha com móveis planejados",
+    className: "md:row-span-1",
   },
 ];
 
 export const Portifolio = () => {
-  useEffect(() => {
-    Aos.init();
-  }, []);
-
   return (
     <section
-      className="w-full min-h-[35rem] h-auto flex items-center p-8 lg:p-16 "
       id="portfolio"
+      aria-labelledby="portfolio-title"
+      className="w-full scroll-mt-24 px-4 py-12 sm:px-6 md:py-16 lg:px-16 lg:py-20"
     >
-      <div className="container mx-auto h-full flex flex-col gap-10">
-        {/* Título */}
-        <div className="w-full flex flex-col items-center justify-center gap-2 md:gap-4 text-center">
+      <div className="container mx-auto flex flex-col gap-8 md:gap-10">
+        <header className="flex w-full flex-col items-center justify-center gap-3 text-center md:gap-4">
           <p className="font-bold text-base-blue">Portfólio</p>
-          <h3 className="text-2xl md:text-5xl font-semibold max-w-6xl">
-            Nosso portfólio de projetos realizados com{" "}
-            <span className="text-base-blue">excelência e inovação</span>
-          </h3>
-          <p className="text-gray-500 text-sm md:text-md lg:text-lg max-w-xl">
-            Veja abaixo uma seleção dos nossos melhores trabalhos organizados em
-            uma galeria moderna e responsiva.
-          </p>
-        </div>
 
-        {/* Galeria */}
-        <div
-          className="grid grid-cols-4 gap-5"
-          data-aos="zoom-in-up"
-          data-aos-duration="1000"
-        >
-          {/* Coluna 1 */}
-          <div className="flex col-span-4 md:col-span-1 flex-col gap-5">
-            <a
-              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={galleryImages[0].src}
-                alt={galleryImages[0].alt}
-                className="h-52 md:h-[36rem] w-full object-cover rounded-lg"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
-            </a>
-          </div>
-
-          {/* Coluna 2 */}
-          <div className=" md:flex hidden md:flex-col col-span-4 md:col-span-1 gap-5">
-            <a
-              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={galleryImages[1].src}
-                alt={galleryImages[1].alt}
-                className="h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
-            </a>
-
-            <a
-              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={galleryImages[2].src}
-                alt={galleryImages[2].alt}
-                className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
-            </a>
-          </div>
-
-          {/* Card de imagens Mobile */}
-
-          <div
-            className="flex items-center col-span-4 md:hidden justify-center gap-4
-          "
+          <h2
+            id="portfolio-title"
+            className="max-w-6xl text-2xl font-semibold md:text-4xl lg:text-5xl"
           >
-            <div
-              className="w-full
-             flex flex-col col-span-4 md:col-span-1 gap-5"
-            >
-              <a
-                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={galleryImages[1].src}
-                  alt={galleryImages[1].alt}
-                  className="h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
-                  data-aos="zoom-in"
-                  data-aos-duration="1000"
-                />
-              </a>
+            Nosso portfólio de projetos realizados com{" "}
+            <span className="text-base-blue">
+              excelência e inovação
+            </span>
+          </h2>
 
-              <a
-                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={galleryImages[2].src}
-                  alt={galleryImages[2].alt}
-                  className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
-                  data-aos="zoom-in"
-                  data-aos-duration="1000"
-                />
-              </a>
-            </div>
+          <p className="max-w-xl text-sm text-gray-500 md:text-base lg:text-lg">
+            Conheça alguns dos nossos trabalhos e inspire-se para o seu próximo
+            projeto.
+          </p>
+        </header>
 
-            <div className="w-full flex flex-col col-span-2 md:col-span-1 gap-5">
-              <a
-                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={galleryImages[4].src}
-                  alt={galleryImages[4].alt}
-                  className=" h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
-                  data-aos="zoom-in"
-                  data-aos-duration="1000"
-                />
-              </a>
-
-              <a
-                href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={galleryImages[5].src}
-                  alt={galleryImages[5].alt}
-                  className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
-                  data-aos="zoom-in"
-                  data-aos-duration="1000"
-                />
-              </a>
-            </div>
-          </div>
-
-          {/* Coluna 3 */}
-          <div className="col-span-4 md:col-span-1 gap-5">
+        <div
+          className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 md:auto-rows-[14rem] md:gap-5 lg:auto-rows-[16rem]"
+          data-aos="zoom-in-up"
+        >
+          {galleryImages.map((image) => (
             <a
-              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
+              key={image.id}
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Consultar pelo WhatsApp sobre: ${image.alt}`}
+              className={`group relative block min-w-0 overflow-hidden rounded-lg bg-gray-100 outline-none focus-visible:ring-2 focus-visible:ring-base-blue focus-visible:ring-offset-2 ${image.className}`}
             >
               <img
-                src={galleryImages[3].src}
-                alt={galleryImages[3].alt}
-                className=" h-52 md:h-[36rem] w-full object-cover rounded-lg"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                decoding="async"
+                className="h-40 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 group-focus-visible:scale-105 sm:h-52 md:h-full"
               />
-            </a>
-          </div>
 
-          {/* Coluna 4 */}
-          <div className="md:flex hidden flex-col  col-span-2 md:col-span-1 gap-5">
-            <a
-              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={galleryImages[4].src}
-                alt={galleryImages[4].alt}
-                className=" h-30 md:h-[14.75rem] w-full object-cover rounded-lg"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
+              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-3 opacity-100 transition-opacity duration-300 sm:p-4 md:opacity-0 md:group-hover:opacity-100 md:group-focus-visible:opacity-100">
+                <span className="text-sm font-medium text-white sm:text-base">
+                  Converse com nossa equipe
+                  <span aria-hidden="true"> ↗</span>
+                </span>
+              </div>
             </a>
-
-            <a
-              href="https://wa.me/5522981445335?text=Gostei%20desse%20projeto%20e%20quero%20entender%20melhor%20como%20funciona.%20Pode%20me%20ajudar%3F%0A"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={galleryImages[5].src}
-                alt={galleryImages[5].alt}
-                className="h-30 md:h-[20rem] w-full object-cover rounded-lg"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </section>

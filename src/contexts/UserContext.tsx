@@ -20,8 +20,7 @@ export interface ResponseDataUser {
 interface CreaterUser {
   admin: boolean
   name: string
-  password: string
-  registration: string
+  password?: string
   email: string
 }
 
@@ -29,8 +28,8 @@ interface UpdateUser {
   id: string
   name: string
   password: string
-  registration: string
   email: string
+  admin: string
 }
 
 interface ConfirmMailProps {
@@ -56,6 +55,7 @@ interface UserContextProviderProps {
   children: ReactNode
 }
 
+
 export const UserContext = createContext({} as UserContextType)
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
@@ -63,12 +63,22 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
     {} as ResponseDataUser
   )
 
+  const isAdmin = import.meta.env.VITE_PROVIDER_ROLE
+  const user = import.meta.env.VITE_PROVIDER_ROLE2
+
   const handleCreateUser = useCallback(async (data: CreaterUser) => {
-    const { password, admin, name, registration, email } = data
+    const { password, admin, name, email } = data
+
+    const dataUser = {
+      password,
+      name,
+      email,
+      role: admin ? isAdmin : user
+    }
 
     try {
       await toast.promise(
-        api.post('users', { password, admin, name, registration, email }),
+        api.post('user', dataUser),
         {
           pending: 'Enviando Dados',
           success: 'Usuário Criado com Sucesso!',
@@ -78,7 +88,7 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
     } catch (error) {
       console.log(error)
     }
-  }, [])
+  }, [isAdmin, user])
 
   const confirmMail = useCallback(async (data: ConfirmMailProps) => {
     const { email } = data
@@ -102,13 +112,12 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
   }, [])
 
   const handleUpdateUser = useCallback(async (data: UpdateUser) => {
-    const { email, id, name, password, registration } = data
+    const { email, id, name, password, } = data
 
     const updatedData = {
       email,
       name,
       password,
-      registration,
     }
 
     try {
@@ -121,29 +130,6 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
       console.log(error)
     }
   }, [])
-
-  // const updatePassword = useCallback(async (data: UpdatePasswordProps) => {
-  //   const confirmEmailId = localStorage.getItem('AlvesClass:DataConfirmEmail')
-
-  //   const { password, updateNumber } = data
-
-  //   if (idUser) {
-  //     const updateData = { password, updateNumber }
-
-  //     try {
-  //       await toast.promise(
-  //         api.patch(`updatePassword/${idUser.id}`, updateData),
-  //         {
-  //           pending: 'Verificando seus dados',
-  //           success: 'Senha Atualizada com Sucesso!',
-  //           error: 'Ops! Verifique os Dados Digitados',
-  //         }
-  //       )
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  // }, [])
 
   return (
     <UserContext.Provider

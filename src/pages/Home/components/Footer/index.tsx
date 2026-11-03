@@ -8,7 +8,7 @@ export const Footer = () => {
   const navigate = useNavigate();
 
   return (
-    <footer className="w-full bg-neutral-50 text-neutral-200 mt-16 py-14">
+    <footer className="w-full bg-neutral-50 text-neutral-200 mt-16 py-14 scroll-mt-24">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 px-6 md:px-10">
         {/* LOGO + TEXTO */}
         <div className="md:col-span-2 flex flex-col gap-4">

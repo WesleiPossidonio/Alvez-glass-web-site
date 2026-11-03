@@ -1,4 +1,5 @@
 import {
+  CreatePassword,
   DashboardClient,
   Home,
   LoginClient,
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
       <Route path="/admin" element={<UpdatePassword />} />
       <Route path="/cadastrar-senha" element={<UpdatePassword />} />
       <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+      <Route path="/senha" element={<CreatePassword  />} />
 
       <Route path="/area-cliente" element={<PrivateRoutesClients />}>
         <Route index element={<DashboardClient />} />
